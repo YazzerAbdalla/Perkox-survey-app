@@ -48,7 +48,7 @@ const Navbar = () => {
               </div>
               Home
             </a>
-            <a className="flex items-center" href="my-actavities">
+            <a className="flex items-center" href="actavities">
               <div className="mr-2">
                 <svg
                   width="17"
@@ -73,7 +73,7 @@ const Navbar = () => {
                   ></path>
                 </svg>
               </div>
-              My activity
+              actavities
             </a>
             <a className="flex items-center" href="Settings">
               <div className="mr-2">
