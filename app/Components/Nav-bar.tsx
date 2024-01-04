@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -21,7 +22,7 @@ const Navbar = () => {
 
         <div className="w-[500px] h-full flex flex-row items-center justify-between md:mr-20">
           <div className="flex items-center justify-between w-full h-auto border border-[#7042f861] bg-[#0300145e] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-100">
-            <a className="flex items-center" href="/">
+            <Link className="flex items-center" href="/">
               <div className="mr-2">
                 <svg
                   width="17"
@@ -47,8 +48,8 @@ const Navbar = () => {
                 </svg>
               </div>
               Home
-            </a>
-            <a className="flex items-center" href="actavities">
+            </Link>
+            <Link className="flex items-center" href="actavities">
               <div className="mr-2">
                 <svg
                   width="17"
@@ -74,8 +75,8 @@ const Navbar = () => {
                 </svg>
               </div>
               actavities
-            </a>
-            <a className="flex items-center" href="Settings">
+            </Link>
+            <Link className="flex items-center" href="Settings">
               <div className="mr-2">
                 <svg
                   width="17"
@@ -116,7 +117,7 @@ const Navbar = () => {
                 </svg>
               </div>
               Settings
-            </a>
+            </Link>
           </div>
         </div>
       </div>
