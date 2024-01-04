@@ -9,7 +9,6 @@ const Activity = () => {
 
   // useEffect to set the initial selected device
   useEffect(() => {
-    // Set the initial selected device here (for example, 'Desktop')
     setSelectedDevice('Desktop');
   }, []);
 
@@ -17,7 +16,7 @@ const Activity = () => {
     <div>
       <h1>Activities page</h1>
       <div>
-        <p>Choose a device:</p>
+        <p  >Choose a device:</p>
         {['iOS', 'Desktop', 'Android'].map((device) => (
           <button
             key={device}
@@ -31,9 +30,9 @@ const Activity = () => {
             }}
             onClick={() => setSelectedDevice(device as Device)}
           >
-            {device === 'iOS'    &&     <FaApple />}
-            {device === 'Desktop' && <FaDesktop />}
-            {device === 'Android' && <FaAndroid />}
+            {device === 'iOS'    &&     <FaApple color="white" />}
+            {device === 'Desktop' && <FaDesktop color="white"/>}
+            {device === 'Android' && <FaAndroid color="green"/>}
             {device}
           </button>
         ))}
