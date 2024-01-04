@@ -15,7 +15,7 @@ const Navbar = () => {
             className="cursor-pointer hover:animate-slowspin"
           />
 
-          <span className="font-bold ml-[10px] hidden md:block text-gray-800">
+          <span className="font-bold ml-[10px] uppercase hidden md:block text-gray-800">
             prekos
           </span>
         </a>
