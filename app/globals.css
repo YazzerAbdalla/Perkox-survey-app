@@ -120,7 +120,7 @@
 }
 .offer-card__bottom .platform .desktop {
   display: block;
-  background-image: url(https://torox.io/assets/images/desktop-icon.svg);
+  background-image: url(/desktop-icon.svg);
   background-repeat: no-repeat;
   background-size: contain;
   width: 24px;
@@ -136,5 +136,22 @@ body {
   /* background-size: auto; */
   background-position: 71% 54%;
   background-repeat: no-repeat;
-  overflow: hidden;
+}
+
+.offer-card__bottom .platform .android {
+  display: block;
+  background-image: url(https://torox.io/assets/images/android-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 24px;
+  height: 24px;
+}
+
+.offer-card__bottom .platform .ios {
+  display: block;
+  background-image: url(/ios-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 24px;
+  height: 24px;
 }
