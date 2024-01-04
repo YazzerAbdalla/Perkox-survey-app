@@ -19,7 +19,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="fixed bottom-0 right-0 p-3 font-bold">
+    <div className="fixed z-30 bottom-0 right-0 p-3 font-bold">
       <Popover>
         <PopoverTrigger asChild>
           <Button>
