@@ -1,16 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import Card from "./Components/card";
+import DrawerDemo from "./Components/Drawer";
 interface dataProps {
+  id: number;
   name: string;
   instructions: string;
   image: string;
   os: string;
   reward: number;
-  id: number;
 }
 export default function Home() {
-  const data = [
+  const dataJ = [
     {
       id: 609,
       offer_type: "CPE",
@@ -1748,19 +1750,23 @@ export default function Home() {
       reward: 390,
     },
   ];
-
   return (
-    <div className="flex flex-col sm:flex-row  p-5 gap-[16px] flex-wrap">
-      {data.map(({ name, instructions, image, reward, os, id }: dataProps) => (
-        <Card
-          key={id}
-          name={name}
-          instructions={instructions}
-          image={image}
-          reward={reward}
-          os={os}
-        />
-      ))}
-    </div>
+    <>
+      <div className="flex flex-col sm:flex-row  p-5 gap-[16px] flex-wrap">
+        {dataJ.map(
+          ({ id, name, instructions, image, reward, os }: dataProps) => (
+            <DrawerDemo
+              key={id}
+              name={name}
+              instructions={instructions}
+              image={image}
+              reward={reward}
+              os={os}
+              id={0}
+            />
+          )
+        )}
+      </div>
+    </>
   );
 }

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Components/Nav-bar";
 import Footer from "./Components/Footer";
+import { DrawerProvider } from "@/contexts/DrawerContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,9 @@ export default function RootLayout({
       <body>
         <Navbar />
         <Footer />
-        <div className="mt-[5rem]">{children}</div>
+        <div className="mt-[5rem]">
+          <DrawerProvider>{children}</DrawerProvider>
+        </div>
       </body>
     </html>
   );
