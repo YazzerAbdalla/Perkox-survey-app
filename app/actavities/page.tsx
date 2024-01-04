@@ -9,8 +9,7 @@ const Activity = () => {
 
   // useEffect to set the initial selected device
   useEffect(() => {
-    // Set the initial selected device here (for example, 'Desktop')
-    setSelectedDevice("iOS");
+    setSelectedDevice('Desktop');
   }, []);
 
   return (
