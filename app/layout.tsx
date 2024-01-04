@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Components/Nav-bar";
-import Footer from './Components/Footer';
+import Footer from "./Components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,16 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-<<<<<<< HEAD
-      <Navbar />
-      <Footer />
-        {children}
-        </body>
-=======
         <Navbar />
+        <Footer />
         <div className="mt-[5rem]">{children}</div>
       </body>
->>>>>>> bad2a61a524821fda3309a0cd4a8f7f55052fd5f
     </html>
   );
 }

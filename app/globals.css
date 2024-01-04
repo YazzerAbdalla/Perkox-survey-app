@@ -1,10 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-<<<<<<< HEAD
- 
-=======
 
 * {
   box-sizing: border-box;
@@ -130,4 +126,3 @@
   width: 24px;
   height: 24px;
 }
->>>>>>> bad2a61a524821fda3309a0cd4a8f7f55052fd5f
