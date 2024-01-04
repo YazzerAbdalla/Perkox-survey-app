@@ -1,6 +1,11 @@
 "use client";
 
+import Card from "./Components/card";
 
 export default function Home() {
-  return <h1>Main page</h1>;
+  return (
+    <div>
+      <Card />
+    </div>
+  );
 }

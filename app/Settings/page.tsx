@@ -1,13 +1,11 @@
 "use client";
 
-
-
 const Settings = () => {
-    return (
-      <div>
-      </div>
-    );
-  };
-  
-  export default Settings;
-  
+  return (
+    <div>
+      <h1>Settings page</h1>
+    </div>
+  );
+};
+
+export default Settings;
