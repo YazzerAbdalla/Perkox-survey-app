@@ -1,7 +1,14 @@
 import Image from "next/image";
 import React from "react";
 
-const Card = () => {
+interface dataProps {
+  name: string;
+  instructions: string;
+  image: string;
+  os: string;
+  reward: number;
+}
+const Card = ({ name, instructions, image, os, reward }: dataProps) => {
   return (
     <div
       className="offer-card "
@@ -13,17 +20,11 @@ const Card = () => {
       data-offer-amount="180"
     >
       <div className="offer-card__top">
-        <Image
-          src="/card-img-1.jpg"
-          width={60}
-          height={60}
-          alt=""
-          loading="lazy"
-        />
+        <Image src={image} width={60} height={60} alt="" loading="lazy" />
         <div className="text-content">
-          <span className="title">Donald&apos;s Empire - iOS</span>
+          <span className="title">{name}</span>
           <p className="description">
-            Play the game and build a Florida private club.
+            {instructions}
             <br />
           </p>
         </div>
@@ -31,7 +32,7 @@ const Card = () => {
       <div className="offer-card__bottom">
         <div className="offer-tags">
           <div className="platform">
-            <span className="desktop"></span>
+            <span className={os == "all" ? "desktop" : os}></span>
           </div>
 
           <span className="offer-tag">Gaming</span>
@@ -44,7 +45,7 @@ const Card = () => {
             height={16}
             alt="reward"
           />
-          <span className="actual-reward">180 points</span>
+          <span className="actual-reward">{reward} points</span>
         </div>
       </div>
     </div>
