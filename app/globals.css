@@ -155,3 +155,33 @@ body {
   width: 24px;
   height: 24px;
 }
+.device {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #3b4c7a;
+  border-radius: 50px;
+  max-width: 80px;
+  width: 100%;
+  height: 44px;
+  cursor: pointer;
+}
+.device.active {
+  position: relative;
+  background: #6a38ff;
+  padding-left: 13.5px;
+  justify-content: start;
+}
+
+.device.active::after {
+  content: "";
+  position: absolute;
+  background-image: url(/active.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 21px;
+  height: 16px;
+  transform: translate(0, -50%);
+  top: 50%;
+  right: 13.5px;
+}

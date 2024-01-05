@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 // "use client" and other imports as needed
 
 import { useEffect, useState } from "react";
@@ -9,12 +10,9 @@ const Settings = () => {
 
   useEffect(() => {
     // Handle side effects or cleanup code if needed
-    return () => {
-      // Cleanup code if needed
-    };
-  }, []);
+  }, [selectedDevice]);
 
-  const handleDeviceChange = (device: string) => {
+  const handleDeviceClick = (device: string) => {
     setSelectedDevice(device);
   };
 
@@ -33,38 +31,33 @@ const Settings = () => {
             <br />
 
             <div className="platforms flex">
-              <button
-                className={`device flex items-center ${
-                  selectedDevice === "ios" ? "active" : ""
-                } relative p-1`}
-                onClick={() => handleDeviceChange("ios")}
+              <span
+                className={`device mr-2 ${selectedDevice == "iOS" && "active"}`}
+                onClick={() =>
+                  selectedDevice != "iOS"
+                    ? setSelectedDevice("iOS")
+                    : setSelectedDevice("")
+                }
               >
-                <div
-                  className="selected-circle bg-gray-500 rounded-full p-1 flex justify-center items-center"
-                  style={{ width: "4rem", height: "4rem" }}
-                >
-                  <IoLogoApple size={30} className="text-black" />
-                  {selectedDevice === "ios" && (
-                    <span className="checkmark text-white">&#10003;</span>
-                  )}
-                </div>
-              </button>
-              <button
-                className={`device flex items-center ${
-                  selectedDevice === "android" ? "active" : ""
-                } relative p-1`}
-                onClick={() => handleDeviceChange("android")}
+                <Image src="/ios-icon.svg" width={32} height={32} alt="iOS" />
+              </span>
+              <span
+                className={`device ${selectedDevice == "android" && "active"}`}
+                onClick={() =>
+                  selectedDevice != "android"
+                    ? setSelectedDevice("android")
+                    : setSelectedDevice("")
+                }
+                data-device="3"
+                data-user-device="1"
               >
-                <div
-                  className="selected-circle bg-gray-500 rounded-full p-1 flex justify-center items-center"
-                  style={{ width: "4rem", height: "4rem" }}
-                >
-                  <IoLogoAndroid size={30} className="text-green-500" />
-                  {selectedDevice === "android" && (
-                    <span className="checkmark text-white">&#10003;</span>
-                  )}
-                </div>
-              </button>
+                <Image
+                  src="/android-icon.svg"
+                  width={32}
+                  height={32}
+                  alt="Android"
+                />
+              </span>
             </div>
           </div>
           <div className="more-page__terms-wrapper">
