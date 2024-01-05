@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./Components/Nav-bar";
 import Footer from "./Components/Footer";
 import { DrawerProvider } from "@/contexts/DrawerContext";
+import { DeviceProvider } from "@/contexts/DeviceContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +27,9 @@ export default function RootLayout({
         <Navbar />
         <Footer />
         <div className="mt-[5rem]">
-          <DrawerProvider>{children}</DrawerProvider>
+          <DeviceProvider>
+            <DrawerProvider>{children}</DrawerProvider>
+          </DeviceProvider>
         </div>
       </body>
     </html>

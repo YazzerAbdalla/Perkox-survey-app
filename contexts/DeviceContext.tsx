@@ -1,4 +1,12 @@
-import React, { createContext, useState, useContext, ReactNode, Dispatch, SetStateAction } from 'react';
+"use client";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  Dispatch,
+  SetStateAction,
+} from "react";
 
 interface DeviceContextProps {
   device: string;
@@ -12,7 +20,7 @@ interface DeviceProviderProps {
 }
 
 export const DeviceProvider: React.FC<DeviceProviderProps> = ({ children }) => {
-  const [device, setDevice] = useState<string>(''); // Set the initial state as needed
+  const [device, setDevice] = useState<string>(""); // Set the initial state as needed
 
   return (
     <DeviceContext.Provider value={{ device, setDevice }}>
@@ -24,7 +32,7 @@ export const DeviceProvider: React.FC<DeviceProviderProps> = ({ children }) => {
 export const useDevice = (): DeviceContextProps => {
   const context = useContext(DeviceContext);
   if (!context) {
-    throw new Error('useDevice must be used within a DeviceProvider');
+    throw new Error("useDevice must be used within a DeviceProvider");
   }
   return context;
 };

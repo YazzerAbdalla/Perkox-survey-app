@@ -1,20 +1,12 @@
 "use client";
+import { useDevice } from "@/contexts/DeviceContext";
 import Image from "next/image";
 // "use client" and other imports as needed
 
-import { useEffect, useState } from "react";
-import { IoLogoApple, IoLogoAndroid } from "react-icons/io5";
+import { useEffect } from "react";
 
 const Settings = () => {
-  const [selectedDevice, setSelectedDevice] = useState("ios");
-
-  useEffect(() => {
-    // Handle side effects or cleanup code if needed
-  }, [selectedDevice]);
-
-  const handleDeviceClick = (device: string) => {
-    setSelectedDevice(device);
-  };
+  const { device, setDevice } = useDevice();
 
   return (
     <div>
@@ -32,21 +24,17 @@ const Settings = () => {
 
             <div className="platforms flex">
               <span
-                className={`device mr-2 ${selectedDevice == "iOS" && "active"}`}
+                className={`device mr-2 ${device == "iOS" && "active"}`}
                 onClick={() =>
-                  selectedDevice != "iOS"
-                    ? setSelectedDevice("iOS")
-                    : setSelectedDevice("")
+                  device != "iOS" ? setDevice("iOS") : setDevice("")
                 }
               >
                 <Image src="/ios-icon.svg" width={32} height={32} alt="iOS" />
               </span>
               <span
-                className={`device ${selectedDevice == "android" && "active"}`}
+                className={`device ${device == "android" && "active"}`}
                 onClick={() =>
-                  selectedDevice != "android"
-                    ? setSelectedDevice("android")
-                    : setSelectedDevice("")
+                  device != "android" ? setDevice("android") : setDevice("")
                 }
                 data-device="3"
                 data-user-device="1"
