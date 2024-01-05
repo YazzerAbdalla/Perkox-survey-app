@@ -1764,7 +1764,7 @@ const dataJ = [
   },
 ];
 
-const DrawerDemo = () => {
+const DrawerDemo = ({ name, instructions, image, os, reward }: dataProps) => {
   const [goal, setGoal] = useState(350);
 
   const { isDrawerOpen, setIsDrawerOpen } = useDrawer();
@@ -1779,21 +1779,14 @@ const DrawerDemo = () => {
   };
   return (
     <Drawer>
-      <DrawerTrigger>
-        <div className="flex flex-col sm:flex-row  p-5 gap-[16px] flex-wrap">
-          {dataJ.map(
-            ({ id, name, instructions, image, reward, os }: dataProps) => (
-              <Card
-                key={id}
-                name={name}
-                instructions={instructions}
-                image={image}
-                reward={reward}
-                os={os}
-              />
-            )
-          )}
-        </div>
+      <DrawerTrigger asChild>
+        <Card
+          name={name}
+          instructions={instructions}
+          image={image}
+          reward={reward}
+          os={os}
+        />
       </DrawerTrigger>
 
       <RadixDrawer open={isDrawerOpen} onClose={closeDrawer}>
