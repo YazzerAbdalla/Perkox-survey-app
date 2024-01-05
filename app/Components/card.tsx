@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import React from "react";
 import { useDrawer } from "@/contexts/DrawerContext";
+import Silder from "./Silder";
 interface dataProps {
   name: string;
   instructions: string;
@@ -28,7 +29,7 @@ const Card = ({ name, instructions, image, os, reward }: dataProps) => {
   };
 
   return (
-    <div onClick={openDrawer} className="offer-card ">
+   <div onClick={openDrawer} className="offer-card  ">
       <div className="offer-card__top" onClick={openDrawer}>
         <Image src={image} width={60} height={60} alt="" loading="lazy" />
         <div className="text-content">

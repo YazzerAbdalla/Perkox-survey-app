@@ -15,9 +15,6 @@ const Navbar = () => {
             className="cursor-pointer min-w-[130px] mt-2 hover:animate-slowspin"
           />
 
-          {/* <span className="font-bold ml-[10px] uppercase hidden md:block text-gray-800">
-            prekos
-          </span> */}
         </Link>
 
         <div className="w-[500px] h-full flex flex-row items-center justify-between md:mr-20">
