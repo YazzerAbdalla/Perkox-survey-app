@@ -14,6 +14,7 @@ interface DrawerProviderProps {
 
 export const DrawerProvider: React.FC<DrawerProviderProps> = ({ children }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  
 
   return (
     <DrawerContext.Provider value={{ isDrawerOpen, setIsDrawerOpen }}>

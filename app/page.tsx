@@ -1753,7 +1753,7 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col sm:flex-row  p-5 gap-[16px] flex-wrap">
-        {dataJ.map(
+        {/* {dataJ.map(
           ({ id, name, instructions, image, reward, os }: dataProps) => (
             <DrawerDemo
               key={id}
@@ -1765,7 +1765,8 @@ export default function Home() {
               id={0}
             />
           )
-        )}
+        )} */}
+        <DrawerDemo />
       </div>
     </>
   );
