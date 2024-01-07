@@ -5,6 +5,8 @@
 * {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  z-index:  100;
+
 }
 
 .offer-card {

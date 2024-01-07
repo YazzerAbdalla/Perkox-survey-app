@@ -6,6 +6,7 @@ import Footer from "./Components/Footer";
 import { DrawerProvider } from "@/contexts/DrawerContext";
 import { DeviceProvider } from "@/contexts/DeviceContext";
 import { FilterProvider } from "@/contexts/FilterContext";
+import StarBackground from "./Components/StarBackground";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
             <Footer />
             <DeviceProvider>
               <DrawerProvider>{children}</DrawerProvider>
+              <StarBackground />
             </DeviceProvider>
           </FilterProvider>
         </div>
