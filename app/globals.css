@@ -185,3 +185,25 @@ body {
   top: 50%;
   right: 13.5px;
 }
+
+.filter.active {
+  position: relative;
+  background: #6a38ff;
+  padding-left: 11px;
+  justify-content: start;
+  max-width: 100px;
+}
+
+.filter.active::after {
+  content: "";
+  position: absolute;
+  background-image: url(/active.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 21px;
+  height: 16px;
+  transform: translate(0, -50%);
+  top: 50%;
+  right: 13.5px;
+  margin-left: 5px;
+}

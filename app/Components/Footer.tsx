@@ -7,17 +7,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-import Link from "next/link";
+import { useFilter } from "@/contexts/FilterContext";
 
 const Footer = () => {
+  const { filter, setFilter } = useFilter();
   return (
     <div className="fixed z-30 bottom-0 right-0 p-3 font-bold">
       <Popover>
@@ -31,33 +24,32 @@ const Footer = () => {
             />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-80">
-          <div className="grid gap-4">
+        <PopoverContent className="w-[150px] ">
+          <div className="flex flex-col gap-4">
             <div className="space-y-2">
-              <h4 className="font-medium leading-none">Dimensions</h4>
-              <p className="text-sm text-muted-foreground">
-                Set the dimensions for the selector.
-              </p>
+              <h2 className="font-bold leading-none">Filters</h2>
             </div>
-            <div className="grid gap-2">
-              <div className="grid grid-cols-3 items-center gap-4">
-                {/* seleter start */}
-                <Select>
-                  <SelectTrigger className="w-[180px] ">
-                    <SelectValue placeholder="Theme" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-100">
-                    <SelectItem className="text-black" value="light">
-                      Light
-                    </SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
-                  </SelectContent>
-                </Select>
-                {/* selecter end */}
+            <div className="flex flex-col">
+              <div
+                className={`bg-[#3b4c7a] flex mb-1 justify-center items-center rounded-[15px] max-w-[90px] px-2 cursor-pointer filter ${
+                  filter == "servay" && "active"
+                }`}
+                onClick={() =>
+                  filter == "servay" ? setFilter("") : setFilter("servay")
+                }
+              >
+                <h5>Servay</h5>
               </div>
-
-              <div className="grid grid-cols-3 items-center gap-4"></div>
+              <div
+                onClick={() =>
+                  filter == "offer" ? setFilter("") : setFilter("offer")
+                }
+                className={`bg-[#3b4c7a] flex mb-1 justify-center items-center rounded-[15px] max-w-[90px] px-2 cursor-pointer filter ${
+                  filter == "offer" && "active"
+                }`}
+              >
+                <h5>Offer</h5>
+              </div>
             </div>
           </div>
         </PopoverContent>

@@ -5,6 +5,7 @@ import Navbar from "./Components/Nav-bar";
 import Footer from "./Components/Footer";
 import { DrawerProvider } from "@/contexts/DrawerContext";
 import { DeviceProvider } from "@/contexts/DeviceContext";
+import { FilterProvider } from "@/contexts/FilterContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,11 +26,13 @@ export default function RootLayout({
       </head>
       <body>
         <Navbar />
-        <Footer />
         <div className="mt-[5rem]">
-          <DeviceProvider>
-            <DrawerProvider>{children}</DrawerProvider>
-          </DeviceProvider>
+          <FilterProvider>
+            <Footer />
+            <DeviceProvider>
+              <DrawerProvider>{children}</DrawerProvider>
+            </DeviceProvider>
+          </FilterProvider>
         </div>
       </body>
     </html>
