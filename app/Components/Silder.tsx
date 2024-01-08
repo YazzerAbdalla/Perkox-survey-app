@@ -1,6 +1,6 @@
 // Import necessary components and styles
 "use client";
-import * as React from "react"
+import * as React from "react";
 import card from "./card";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,7 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
   type CarouselApi,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
 import DrawerDemo from "./Drawer";
 
 const dataJ = [
@@ -1153,8 +1153,7 @@ const dataJ = [
     name: "Block King: Woody Puzzle Game - iOS",
     instructions:
       "Play and reach level 401 in sort puzzle mode within 10 days.",
-    description:
-      "Play and reach level 401 in sort puzzle mode within 10 days.",
+    description: "Play and reach level 401 in sort puzzle mode within 10 days.",
     short_description:
       "Play and reach level 401 in sort puzzle mode within 10 days.",
     disclaimer: "This offer rewards within 24 hours. New users only.",
@@ -1753,10 +1752,6 @@ const dataJ = [
   },
 ];
 
-
-
-
-
 interface dataProps {
   name: string;
   instructions: string;
@@ -1764,85 +1759,62 @@ interface dataProps {
   os: string;
   reward: number;
   id: number;
-
 }
 
 const Silder = () => {
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
 
-
-
-  const [api, setApi] = React.useState<CarouselApi>()
-  const [current, setCurrent] = React.useState(0)
-  const [count, setCount] = React.useState(0)
- 
   React.useEffect(() => {
     if (!api) {
-      return
+      return;
     }
- 
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap() + 1)
- 
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
     api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1)
-    })
-  }, [api])
- 
-
-
-
-
-
-
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
 
   return (
-<>
-  <div className="flex items-center justify-center h-screen">
-    <Carousel setApi={setApi} className="w-full max-w-5xl" > {/* Adjust max-w-md to your desired width */}
-      <CarouselContent className="ml-[1rem]">
-      {dataJ.map(
-  ({ id, name, instructions, image, reward, os }: dataProps) => (
-    <CarouselItem key={id} className="pl-1 md:basis-1/2 lg:basis-[40%]">
-      <div className="p-1">
-
-        <DrawerDemo
-          
-          name={name}
-          instructions={instructions}
-          image={image}
-          reward={reward}
-          os={os}
-          id={0}
-        />
+    <>
+      <div className="flex items-center justify-center z-[-50] h-screen">
+        <Carousel setApi={setApi} className="w-full max-w-5xl">
+          {" "}
+          {/* Adjust max-w-md to your desired width */}
+          <CarouselContent className="ml-[1rem]">
+            {dataJ.map(
+              ({ id, name, instructions, image, reward, os }: dataProps) => (
+                <CarouselItem
+                  key={id}
+                  className="pl-1 md:basis-1/2 lg:basis-[40%]"
+                >
+                  <div className="p-1">
+                    <DrawerDemo
+                      name={name}
+                      instructions={instructions}
+                      image={image}
+                      reward={reward}
+                      os={os}
+                      id={0}
+                    />
+                  </div>
+                </CarouselItem>
+              )
+            )}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+          <div className="py-1 mb-25 text-center text-lg text-muted-foreground">
+            Slide {current} of {count}
+          </div>
+        </Carousel>
       </div>
-    </CarouselItem>
-
-  )
-)}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-      <div className="py-1 mb-25 text-center text-lg text-muted-foreground">
-        Slide {current} of {count}
-      </div>
-    </Carousel>
-    
-  </div>
- 
-</>
-
+    </>
   );
 };
 
 export default Silder;
- 
-
-
-
-
-
-
-
-
-
-

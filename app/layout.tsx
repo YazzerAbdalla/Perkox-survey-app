@@ -27,7 +27,7 @@ export default function RootLayout({
       </head>
       <body>
         <Navbar />
-        <div className="mt-[5rem]">
+        <div className="mt-6">
           <FilterProvider>
             <Footer />
             <DeviceProvider>
