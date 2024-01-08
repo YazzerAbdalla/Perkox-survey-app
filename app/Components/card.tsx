@@ -5,7 +5,9 @@ import Image from "next/image";
 import React from "react";
 import { useDrawer } from "@/contexts/DrawerContext";
 import Silder from "./Silder";
+import { useCardContext } from "@/contexts/CardContext";
 interface dataProps {
+  id: number;
   name: string;
   instructions: string;
   image: string;
@@ -13,24 +15,22 @@ interface dataProps {
   reward: number;
 }
 // Create the Card component
-const Card = ({ name, instructions, image, os, reward }: dataProps) => {
+const Card = ({ id, name, instructions, image, os, reward }: dataProps) => {
   // State to manage the drawer visibility
-  const { isDrawerOpen, setIsDrawerOpen } = useDrawer();
+  const { setIsDrawerOpen } = useDrawer();
+  const { setCardID } = useCardContext();
 
   // Sample data for the card
 
   // Function to open the drawer
-  const openDrawer = () => {
+  const handleCardClick = () => {
     setIsDrawerOpen(true);
-    console.log(
-      "🚀 ~ file: Drawer.tsx:66 ~ DrawerDemo ~ isDrawerOpen:",
-      isDrawerOpen
-    );
+    setCardID(id);
   };
 
   return (
-   <div onClick={openDrawer} className="offer-card  ">
-      <div className="offer-card__top" onClick={openDrawer}>
+    <div onClick={handleCardClick} className="offer-card  ">
+      <div className="offer-card__top" onClick={handleCardClick}>
         <Image src={image} width={60} height={60} alt="" loading="lazy" />
         <div className="text-content">
           <span className="title">{name}</span>

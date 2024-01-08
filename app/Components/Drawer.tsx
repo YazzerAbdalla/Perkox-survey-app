@@ -16,6 +16,14 @@ import {
 } from "@/components/ui/drawer";
 import Card from "./card";
 import { useDrawer } from "@/contexts/DrawerContext";
+import DrawerNewContent from "./DrawerComponents/DrawerDetails";
+import Image from "next/image";
+import DrawerNewHeader from "./DrawerComponents/DrawerNewHeader";
+import DrawerTabs from "./DrawerComponents/DrawerTabs";
+import DrawerDetails from "./DrawerComponents/DrawerDetails";
+import DrawerLinks from "./DrawerComponents/DrawerLinks";
+import { useDrawerTabs } from "@/contexts/DrawerTabs";
+import { useCardContext } from "@/contexts/CardContext";
 
 interface dataProps {
   name: string;
@@ -26,10 +34,19 @@ interface dataProps {
   id: number;
 }
 
-const DrawerDemo = ({ name, instructions, image, os, reward }: dataProps) => {
+const DrawerDemo = ({
+  id,
+  name,
+  instructions,
+  image,
+  os,
+  reward,
+}: dataProps) => {
   const [goal, setGoal] = useState(350);
 
   const { isDrawerOpen, setIsDrawerOpen } = useDrawer();
+  const { setDrawerTab } = useDrawerTabs();
+  const { cardID } = useCardContext();
 
   function onClick(adjustment: number) {
     setGoal(Math.max(200, Math.min(400, goal + adjustment)));
@@ -38,11 +55,13 @@ const DrawerDemo = ({ name, instructions, image, os, reward }: dataProps) => {
   // Function to close the drawer
   const closeDrawer = () => {
     setIsDrawerOpen(false);
+    setDrawerTab("details");
   };
   return (
     <Drawer>
       <DrawerTrigger asChild>
         <Card
+          id={id}
           name={name}
           instructions={instructions}
           image={image}
@@ -52,24 +71,21 @@ const DrawerDemo = ({ name, instructions, image, os, reward }: dataProps) => {
       </DrawerTrigger>
 
       <RadixDrawer open={isDrawerOpen} onClose={closeDrawer}>
-        <DrawerContent className="z-[100]">
-          <div className="mx-auto w-full max-w-sm">
-            <DrawerHeader>
-              <DrawerTitle>Move Goal</DrawerTitle>
-              <DrawerDescription>
-                Set your daily activity goal.
-              </DrawerDescription>
+        <DrawerContent className="z-[100] text-white">
+          <>
+            <DrawerHeader className="">
+              <DrawerNewHeader cardId={cardID} />
+              <DrawerTabs />
+              <button
+                onClick={closeDrawer}
+                className="popup__close-js top-[2rem] right-[2rem] absolute"
+              >
+                <Image src="/x.svg" alt="" width={16} height={16} />
+              </button>
             </DrawerHeader>
-            <div className="p-4 pb-0"></div>
-            <DrawerFooter>
-              <Button>Submit</Button>
-              <DrawerClose asChild>
-                <Button variant="outline" onClick={closeDrawer}>
-                  Cancel
-                </Button>
-              </DrawerClose>
-            </DrawerFooter>
-          </div>
+            <DrawerDetails cardId={cardID} />
+            <DrawerLinks cardId={cardID} />
+          </>
         </DrawerContent>
       </RadixDrawer>
     </Drawer>
