@@ -30,21 +30,20 @@ export default function RootLayout({
       </head>
       <body>
         <Navbar />
-        <div>
-          <DataProvider>
-            <CardProvider>
-              <FilterProvider>
-                <Footer />
-                <DeviceProvider>
-                  <DrawerTabsProvider>
-                    <DrawerProvider>{children}</DrawerProvider>
-                  </DrawerTabsProvider>
-                  <StarBackground />
-                </DeviceProvider>
-              </FilterProvider>
-            </CardProvider>
-          </DataProvider>
-        </div>
+
+        <DataProvider>
+          <CardProvider>
+            <FilterProvider>
+              <Footer />
+              <DeviceProvider>
+                <DrawerTabsProvider>
+                  <DrawerProvider>{children}</DrawerProvider>
+                </DrawerTabsProvider>
+                <StarBackground />
+              </DeviceProvider>
+            </FilterProvider>
+          </CardProvider>
+        </DataProvider>
       </body>
     </html>
   );

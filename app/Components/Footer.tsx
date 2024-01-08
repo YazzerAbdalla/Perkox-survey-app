@@ -12,7 +12,7 @@ import { useFilter } from "@/contexts/FilterContext";
 const Footer = () => {
   const { filter, setFilter } = useFilter();
   return (
-    <div className="fixed z-30 bottom-0 right-0 p-3 font-bold">
+    <div className="fixed z-[1000] bottom-0 right-0 p-3 font-bold">
       <Popover>
         <PopoverTrigger asChild>
           <Button>

@@ -71,7 +71,7 @@ const DrawerDemo = ({
       </DrawerTrigger>
 
       <RadixDrawer open={isDrawerOpen} onClose={closeDrawer}>
-        <DrawerContent className="z-[100] text-white">
+        <DrawerContent className="z-[2000] text-white">
           <>
             <DrawerHeader className="">
               <DrawerNewHeader cardId={cardID} />

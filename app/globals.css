@@ -415,6 +415,9 @@ body {
   border-radius: 18px;
   height: max-content;
 }
+.page{
+  z-index: -100 !important;
+}
 .horizontal-line {
   width: 100%;
   height: 1px;
