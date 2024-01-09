@@ -1,51 +1,17 @@
 "use client";
 import { useDevice } from "@/contexts/DeviceContext";
-import Image from "next/image";
-// "use client" and other imports as needed
 
-import { useEffect } from "react";
 
 const Settings = () => {
-  const { device, setDevice } = useDevice();
+
 
   return (
-    <section className="content-wrapper page more-page-active  mt-7 ">
+    <section className="content-wrapper page more-page-active  mt-14 ">
       <div className="more-page flex flex-col row-gap-10 p-10 md:p-10">
         <div className="more-page__device-select">
-          <div className="text-wrapper">
-            <p className="title text-white">Select your devices</p>
-            <p className="text text-gray-400">
-              Choosing a device will allow us to display the best offers for
-              your device.
-            </p>
-          </div>
-          <br />
+          
 
-          <div className="platforms flex">
-            <span
-              className={`device mr-2 ${device == "iOS" && "active"}`}
-              onClick={() =>
-                device != "iOS" ? setDevice("iOS") : setDevice("")
-              }
-            >
-              <Image src="/ios-icon.svg" width={32} height={32} alt="iOS" />
-            </span>
-            <span
-              className={`device ${device == "android" && "active"}`}
-              onClick={() =>
-                device != "android" ? setDevice("android") : setDevice("")
-              }
-              data-device="3"
-              data-user-device="1"
-            >
-              <Image
-                src="/android-icon.svg"
-                width={32}
-                height={32}
-                alt="Android"
-              />
-            </span>
-          </div>
+          
         </div>
         <div className="more-page__terms-wrapper">
           <br />

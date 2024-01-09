@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -28,9 +31,10 @@
   padding: 8px;
   height: auto;
   border-radius: 18px;
-  background: #0a1f59;
+  background:linear-gradient(45deg, #B44092,#8b2654);
   overflow: hidden;
   cursor: pointer;
+  width: calc(85% - 20px);
 }
 .offer-card__top {
   z-index: 1;
