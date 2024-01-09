@@ -1,4 +1,5 @@
 "use client";
+import ButtonFilter from "./Components/ButtonFilter";
 
 import { useEffect } from "react";
 import Silder from "./Components/Silder";
@@ -1755,7 +1756,8 @@ export default function Home() {
   }, []);
   return (
     <>
-      <Silder />
+     <ButtonFilter />
+       <Silder />
     </>
   );
 }
