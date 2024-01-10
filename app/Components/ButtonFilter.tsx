@@ -17,7 +17,7 @@ const Button = () => {
               <option value="Easiest">Easiest</option>
             </select>
             <div className="absolute justify-center right-0 bottom-3 px-2 cursor-pointer pointer-events-none transition-all duration-250 ease-in-out hover:text-teal-500">
-              <span className="text-teal-500">&#9660;</span>
+              <span className="text-[#a33578]">&#9660;</span>
             </div>
           </div>
           <div className="relative flex w-55 h-12 overflow-hidden rounded-md">
@@ -32,7 +32,7 @@ const Button = () => {
               <option value="epub">IOS</option>
             </select>
             <div className="absolute justify-center right-0 bottom-3 px-2 cursor-pointer pointer-events-none transition-all duration-250 ease-in-out hover:text-teal-500">
-              <span className="text-teal-500">&#9660;</span>
+              <span className="text-[#a33578]">&#9660;</span>
             </div>
           </div>
         </div>

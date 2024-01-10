@@ -15,14 +15,6 @@ import {
 import DrawerDemo from "./Drawer";
 import { useDataContext } from "@/contexts/DataContext";
 
-interface dataProps {
-  name: string;
-  instructions: string;
-  image: string;
-  os: string;
-  reward: number;
-  id: number;
-}
 
 const Silder = () => {
   const [api, setApi] = React.useState<CarouselApi>();
@@ -49,25 +41,7 @@ const Silder = () => {
         <Carousel setApi={setApi} className="w-full max-w-5xl">
           {/* Adjust max-w-md to your desired width */}
           <CarouselContent className="ml-[1rem]">
-            {dataArr.map(
-              ({ id, name, instructions, image, reward, os }: dataProps) => (
-                <CarouselItem
-                  key={id}
-                  className="pl-1 md:basis-1/2 lg:basis-[40%]"
-                >
-                  <div className="p-1">
-                    <DrawerDemo
-                      name={name}
-                      instructions={instructions}
-                      image={image}
-                      reward={reward}
-                      os={os}
-                      id={id}
-                    />
-                  </div>
-                </CarouselItem>
-              )
-            )}
+            
           </CarouselContent>
           <CarouselPrevious className="bg-white" />
           <CarouselNext className="bg-white"  />

@@ -2,11 +2,20 @@
 import ButtonFilter from "./Components/ButtonFilter";
 
 import { useEffect } from "react";
-import Silder from "./Components/Silder";
 import { useDataContext } from "@/contexts/DataContext";
+import DrawerDemo from "./Components/Drawer";
+
+interface dataProps {
+  name: string;
+  instructions: string;
+  image: string;
+  os: string;
+  reward: number;
+  id: number;
+}
 
 export default function Home() {
-  const { setDataArr } = useDataContext();
+  const { dataArr, setDataArr } = useDataContext();
 
   useEffect(() => {
     // Simulating fetching data from an API or any asynchronous operation
@@ -1756,8 +1765,23 @@ export default function Home() {
   }, []);
   return (
     <>
-     <ButtonFilter />
-       <Silder />
+      <ButtonFilter />
+      {/* <Silder /> */}
+      <div className="flex flex-row flex-wrap p-4 w-full">
+        {dataArr.map(
+          ({ id, name, instructions, image, reward, os }: dataProps) => (
+            <DrawerDemo
+              key={id}
+              name={name}
+              instructions={instructions}
+              image={image}
+              reward={reward}
+              os={os}
+              id={id}
+            />
+          )
+        )}
+      </div>
     </>
   );
 }
