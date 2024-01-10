@@ -24,7 +24,7 @@ const Footer = () => {
             />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[150px] ">
+        <PopoverContent className="w-[150px] z-[1000] ">
           <div className="flex flex-col gap-4">
             <div className="space-y-2">
               <h2 className="font-bold leading-none">Filters</h2>
