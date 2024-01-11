@@ -36,6 +36,13 @@
   cursor: pointer;
   width: calc(85% - 20px);
 }
+
+@media (max-width: 767px) {
+  .offer-card {
+    flex-basis: 100%;
+    width: calc(100% - 20px);
+  }
+}
 .offer-card__top {
   z-index: 1;
   display: flex;
