@@ -1767,7 +1767,7 @@ export default function Home() {
     <>
       <ButtonFilter />
       {/* <Silder /> */}
-      <div className="flex flex-row flex-wrap p-4 w-full">
+      <div className="flex flex-col justify-center content-center md:flex-row flex-wrap p-4 w-full">
         {dataArr.map(
           ({ id, name, instructions, image, reward, os }: dataProps) => (
             <DrawerDemo
