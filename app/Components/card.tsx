@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import React from "react";
 import { useDrawer } from "@/contexts/DrawerContext";
-import Silder from "./Silder";
 import { useCardContext } from "@/contexts/CardContext";
 interface dataProps {
   id: number;
