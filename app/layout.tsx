@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Components/Nav-bar";
-import Footer from "./Components/Footer";
 import { DrawerProvider } from "@/contexts/DrawerContext";
 import { DeviceProvider } from "@/contexts/DeviceContext";
 import { FilterProvider } from "@/contexts/FilterContext";
@@ -10,6 +9,7 @@ import StarBackground from "./Components/StarBackground";
 import { DrawerTabsProvider } from "@/contexts/DrawerTabs";
 import { CardProvider } from "@/contexts/CardContext";
 import { DataProvider } from "@/contexts/DataContext";
+import { ErrorContextProvider } from "@/contexts/ErrorContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,20 +30,20 @@ export default function RootLayout({
       </head>
       <body>
         <Navbar />
-
-        <DataProvider>
-          <CardProvider>
-            <FilterProvider>
-              <Footer />
-              <DeviceProvider>
-                <DrawerTabsProvider>
-                  <DrawerProvider>{children}</DrawerProvider>
-                </DrawerTabsProvider>
-                <StarBackground />
-              </DeviceProvider>
-            </FilterProvider>
-          </CardProvider>
-        </DataProvider>
+        <ErrorContextProvider>
+          <DataProvider>
+            <CardProvider>
+              <FilterProvider>
+                <DeviceProvider>
+                  <DrawerTabsProvider>
+                    <DrawerProvider>{children}</DrawerProvider>
+                  </DrawerTabsProvider>
+                  <StarBackground />
+                </DeviceProvider>
+              </FilterProvider>
+            </CardProvider>
+          </DataProvider>
+        </ErrorContextProvider>
       </body>
     </html>
   );

@@ -1,10 +1,8 @@
 // Import necessary components and styles
 "use client";
-import { useState } from "react";
 import Image from "next/image";
 import React from "react";
 import { useDrawer } from "@/contexts/DrawerContext";
-import Silder from "./Silder";
 import { useCardContext } from "@/contexts/CardContext";
 interface dataProps {
   id: number;
@@ -46,12 +44,7 @@ const Card = ({ id, name, instructions, image, os, reward }: dataProps) => {
         </div>
         <div className="offer-reward ">
           <span className="old-reward"></span>
-          <Image
-            src="https://torox.io/assets/images/reward-coins.svg"
-            width={16}
-            height={16}
-            alt="reward"
-          />
+          <Image src="/reward-coins.svg" width={16} height={16} alt="reward" />
           <span className="actual-reward">{reward} points</span>
         </div>
       </div>

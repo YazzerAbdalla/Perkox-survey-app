@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -31,7 +29,11 @@
   padding: 8px;
   height: auto;
   border-radius: 18px;
-  background:linear-gradient(45deg, #B44092,#8b2654);
+  background: linear-gradient(
+    150deg,
+    rgb(84 1 141) 0%,
+    rgba(89, 42, 102, 1) 99%
+  );
   overflow: hidden;
   cursor: pointer;
   width: calc(85% - 20px);
@@ -425,7 +427,7 @@ body {
   border-radius: 18px;
   height: max-content;
 }
-.page{
+.page {
   z-index: -100 !important;
 }
 .horizontal-line {
