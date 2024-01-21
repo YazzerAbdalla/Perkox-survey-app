@@ -15,17 +15,21 @@
     return (
       <div className="w-full max-w-md px-2  sm:px-0 mx-auto justify-center ">
         <Tab.Group defaultIndex={0}>
-          <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
+          <Tab.List className="flex space-x-1 rounded-xl  p-1"
+           style={{
+            background: 'linear-gradient(150deg, rgb(84 1 141) 0%, rgba(89, 42, 102, 1) 99%)',
+          }}
+          >
             {Object.keys(categories).map((category) => (
               <Tab
                 key={category}
                 className={({ selected }) =>
                   classNames(
                     'w-full rounded-lg py-2.5 text-sm font-medium leading-5',
-                    'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
+                    'ring-white/60 ring-offset-2 ring-offset-#592a66  focus:outline-none focus:ring-2',
                     selected
-                      ? 'bg-white text-blue-700 shadow'
-                      : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
+                      ? 'bg-white text-#290233 shadow'
+                      : 'text-white hover:bg-white/[0.12] hover:text-white'
                   )
                 }
               >

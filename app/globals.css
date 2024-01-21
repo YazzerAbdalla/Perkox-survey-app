@@ -18,7 +18,7 @@
 
 .offer-card {
   flex-basis: 100%;
-  row-gap: 12px;
+  row-gap: 5px;
 }
 .offer-card {
   display: flex;
