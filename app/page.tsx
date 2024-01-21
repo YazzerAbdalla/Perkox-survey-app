@@ -31,7 +31,7 @@ export default function Home() {
       <OfferFilter typeFilter={typeFilter} setTypeFilter={setTypeFilter} />
       <ButtonFilter />
 
-      <div className="flex  flex-col md:flex-row gap-0  content-center flex-wrap px-20 mt-4 w-full">
+      <div className="flex  flex-col md:flex-row gap-0  content-center flex-wrap md:px-20 px-4 mt-4 w-full">
         {dataArr.map(
           ({ id, name, instructions, image, reward, os }: dataProps) => (
             <DrawerDemo
