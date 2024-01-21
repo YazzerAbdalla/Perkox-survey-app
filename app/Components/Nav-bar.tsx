@@ -12,7 +12,11 @@ const Navbar = () => {
 
   return (
     <header>
+      
+       <Link href="/" >
       <div className="logo">PerKos</div>
+      </Link>
+
       <input type="checkbox" id="nav_check" hidden />
       <nav className="z-[1000]">
         <ul>
