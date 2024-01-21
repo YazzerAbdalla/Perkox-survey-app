@@ -6,6 +6,7 @@ import { useDataContext } from "@/contexts/DataContext";
 import DrawerDemo from "./Components/Drawer";
 import fetchData from "./api/fetch";
 import { useErrorContext } from "@/contexts/ErrorContext";
+import OfferFilter from "./Components/offerFilter";
 
 interface dataProps {
   name: string;
@@ -26,7 +27,10 @@ export default function Home() {
   }, []);
   return (
     <>
+     
+      <OfferFilter  />
       <ButtonFilter />
+
       <div className="flex flex-col  content-center md:flex-row flex-wrap p-4 w-full">
         {dataArr.map(
           ({ id, name, instructions, image, reward, os }: dataProps) => (

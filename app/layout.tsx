@@ -10,6 +10,7 @@ import { DrawerTabsProvider } from "@/contexts/DrawerTabs";
 import { CardProvider } from "@/contexts/CardContext";
 import { DataProvider } from "@/contexts/DataContext";
 import { ErrorContextProvider } from "@/contexts/ErrorContext";
+import Footer from "./Components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,12 +31,15 @@ export default function RootLayout({
       </head>
       <body>
         <Navbar />
+        <div className="mt-20">
+
         <ErrorContextProvider>
           <DataProvider>
             <CardProvider>
               <FilterProvider>
                 <DeviceProvider>
                   <DrawerTabsProvider>
+                 
                     <DrawerProvider>{children}</DrawerProvider>
                   </DrawerTabsProvider>
                   <StarBackground />
@@ -44,6 +48,8 @@ export default function RootLayout({
             </CardProvider>
           </DataProvider>
         </ErrorContextProvider>
+        <Footer />
+         </div>     
       </body>
     </html>
   );
