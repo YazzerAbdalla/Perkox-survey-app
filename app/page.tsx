@@ -27,8 +27,7 @@ export default function Home() {
   }, []);
   return (
     <>
-     
-      <OfferFilter  />
+      <OfferFilter />
       <ButtonFilter />
 
       <div className="flex flex-col  content-center md:flex-row flex-wrap p-4 w-full">

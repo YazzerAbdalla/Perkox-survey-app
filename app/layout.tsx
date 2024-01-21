@@ -31,25 +31,23 @@ export default function RootLayout({
       </head>
       <body>
         <Navbar />
-        <div className="mt-20">
-
-        <ErrorContextProvider>
-          <DataProvider>
-            <CardProvider>
-              <FilterProvider>
-                <DeviceProvider>
-                  <DrawerTabsProvider>
-                 
-                    <DrawerProvider>{children}</DrawerProvider>
-                  </DrawerTabsProvider>
-                  <StarBackground />
-                </DeviceProvider>
-              </FilterProvider>
-            </CardProvider>
-          </DataProvider>
-        </ErrorContextProvider>
+        <div className="mt-20 min-h-[calc(100vh-180px)]">
+          <ErrorContextProvider>
+            <DataProvider>
+              <CardProvider>
+                <FilterProvider>
+                  <DeviceProvider>
+                    <DrawerTabsProvider>
+                      <DrawerProvider>{children}</DrawerProvider>
+                    </DrawerTabsProvider>
+                    {/* <StarBackground /> */}
+                  </DeviceProvider>
+                </FilterProvider>
+              </CardProvider>
+            </DataProvider>
+          </ErrorContextProvider>
+        </div>
         <Footer />
-         </div>     
       </body>
     </html>
   );

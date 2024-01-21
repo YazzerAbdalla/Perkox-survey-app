@@ -27,7 +27,7 @@ const Card = ({ id, name, instructions, image, os, reward }: dataProps) => {
   };
 
   return (
-    <div onClick={handleCardClick} className="offer-card mr-2 mb-2  ">
+    <div onClick={handleCardClick} className="offer-card mr-2 mb-2 z-[10]  ">
       <div className="offer-card__top" onClick={handleCardClick}>
         <Image src={image} width={60} height={60} alt="" loading="lazy" />
         <div className="text-content">
