@@ -1,7 +1,7 @@
 "use client";
 import ButtonFilter from "./Components/ButtonFilter";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDataContext } from "@/contexts/DataContext";
 import DrawerDemo from "./Components/Drawer";
 import fetchData from "./api/fetch";
@@ -20,6 +20,7 @@ interface dataProps {
 export default function Home() {
   const { dataArr, setDataArr } = useDataContext();
   const { error, setError } = useErrorContext();
+  const [typeFilter, setTypeFilter] = useState("offer");
   useEffect(() => {
     //@ts-ignore
     // Set the dataArr once the data is fetched
@@ -27,7 +28,7 @@ export default function Home() {
   }, []);
   return (
     <>
-      <OfferFilter />
+      <OfferFilter typeFilter={typeFilter} setTypeFilter={setTypeFilter} />
       <ButtonFilter />
 
       <div className="flex flex-col  content-center md:flex-row flex-wrap p-4 w-full">

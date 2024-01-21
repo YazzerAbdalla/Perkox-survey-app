@@ -8,20 +8,17 @@ import React, {
   SetStateAction,
 } from "react";
 
-interface Goal {
-  // Add properties based on the actual structure of the 'goals' array elements
-}
-
 interface Offer {
   id: number;
   offer_type: string;
   name: string;
+  model: string;
   instructions: string;
   description: string;
   short_description: string;
   disclaimer: string;
   image: string;
-  goals: Goal[];
+  goals: string[];
   os: string;
   incent: string;
   url: string;
