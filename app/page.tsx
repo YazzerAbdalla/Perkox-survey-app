@@ -7,6 +7,7 @@ import DrawerDemo from "./Components/Drawer";
 import fetchData from "./api/fetch";
 import { useErrorContext } from "@/contexts/ErrorContext";
 import OfferFilter from "./Components/offerFilter";
+import { useFilter } from "@/contexts/FilterContext";
 
 interface dataProps {
   name: string;
@@ -20,15 +21,17 @@ interface dataProps {
 export default function Home() {
   const { dataArr, setDataArr } = useDataContext();
   const { error, setError } = useErrorContext();
-  const [typeFilter, setTypeFilter] = useState("offer");
+  const { filter, setFilter } = useFilter();
   useEffect(() => {
     //@ts-ignore
     // Set the dataArr once the data is fetched
-    fetchData(setDataArr, setError);
+    fetchData(setDataArr, setError, filter);
   }, []);
+  console.log(dataArr);
+
   return (
     <>
-      <OfferFilter typeFilter={typeFilter} setTypeFilter={setTypeFilter} />
+      <OfferFilter setFilter={setFilter} />
       <ButtonFilter />
 
       <div className="flex  flex-col md:flex-row gap-0  content-center flex-wrap md:px-20 px-4 mt-4 w-full">

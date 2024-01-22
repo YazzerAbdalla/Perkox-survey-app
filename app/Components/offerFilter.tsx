@@ -1,16 +1,15 @@
+import { Offer } from "@/contexts/DataContext";
 import { Tab } from "@headlessui/react";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Example({
-  setTypeFilter,
-  typeFilter,
+  setFilter,
 }: {
-  setTypeFilter: Dispatch<SetStateAction<string>>;
-  typeFilter: string;
+  setFilter: Dispatch<SetStateAction<string>>;
 }) {
   return (
     <div className="w-full max-w-md px-2 sm:px-0 mx-auto justify-center ">
@@ -19,9 +18,9 @@ export default function Example({
         onChange={(index) => {
           // Execute additional code here based on the selected tab index
           if (index === 0) {
-            setTypeFilter("offer");
+            setFilter("offer");
           } else if (index === 1) {
-            setTypeFilter("survey");
+            setFilter("survey");
           }
         }}
       >

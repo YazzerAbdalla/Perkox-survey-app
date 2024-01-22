@@ -8,7 +8,7 @@ import React, {
   SetStateAction,
 } from "react";
 
-interface Offer {
+export interface Offer {
   id: number;
   offer_type: string;
   name: string;
