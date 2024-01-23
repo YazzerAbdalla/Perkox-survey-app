@@ -8,6 +8,7 @@ type ErrorType = {
 };
 const fetchData = async (
   data: Dispatch<SetStateAction<Offer[]>>,
+  setDataArr: Dispatch<SetStateAction<Offer[]>>,
   error: Dispatch<SetStateAction<ErrorType | null>>,
   filter: string
 ) => {
@@ -21,6 +22,7 @@ const fetchData = async (
     } else {
       let offers = dataJ.data.offers;
       data(offers);
+      setDataArr(offers);
     }
 
     return dataJ;

@@ -32,12 +32,10 @@ export default function Home() {
   useEffect(() => {
     //@ts-ignore
     // Set the dataArr once the data is fetched
-    fetchData(setDataArr, setError, filter);
+    fetchData(setFilteredDataArr, setDataArr, setError, filter);
   }, []);
   useEffect(() => {
-    console.log(filter);
     let filteredData = dataArr.filter((item: Offer) => item.model === filter);
-    console.log("🚀 ~ useEffect ~ filteredData:", filteredData);
     setFilteredDataArr(filteredData);
   }, [filter]);
 
