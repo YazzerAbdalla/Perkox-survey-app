@@ -7,7 +7,8 @@ import styled from "styled-components";
 import { colors } from "./theme/Color";
 
 const NavLink = styled(Link)<{ isActive: boolean }>`
-  color: ${({ isActive }) => (isActive ? colors.palette.purple : colors.palette.neutral100)};
+  color: ${({ isActive }) =>
+    isActive ? colors.palette.purple : colors.palette.neutral100};
 
   &:hover,
   &:active {
@@ -45,7 +46,7 @@ const Navbar = () => {
       </Link>
 
       <input type="checkbox" id="nav_check" hidden />
-      <nav>
+      <nav className="z-[1500]">
         <ul>
           <li>
             <NavLink isActive={pathname === routes.home} href={routes.home}>

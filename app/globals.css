@@ -233,7 +233,8 @@ body {
   padding-right: 73px;
   padding: 16px 32px 16px 16px;
   border-radius: 18px;
-  background-color: #0a1f59;
+  background-color: rgb(231, 33, 113);
+  /* background: linear-gradient(150deg, rgb(84 1 141) 0%); */
   column-gap: 30px;
   align-items: center;
   justify-content: space-between;

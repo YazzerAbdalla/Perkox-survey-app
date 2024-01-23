@@ -13,7 +13,7 @@ export default function Button() {
   const [selected, setSelected] = useState(people[0]);
 
   return (
-    <div className="flex items-center z-[1000] justify-center space-x-4  ">
+    <div className="flex items-center z-[10] justify-center space-x-4  ">
       {/* First dropdown */}
       <Listbox value={selected} onChange={setSelected}>
         <div className="relative mt-1">
