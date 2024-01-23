@@ -753,10 +753,7 @@ header nav ul li a {
   text-transform: uppercase;
   transition: 0.2s;
 }
-header nav ul li a:hover,
-header nav ul li a.active {
-  border-bottom-color:  rgb(194, 0, 248);
-}
+
 .hamburger {
   cursor: pointer;
   display: none;
@@ -822,7 +819,7 @@ header nav ul li a.active {
 }
 
 .title {
-  color: #111827;
+  
   font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 600;
@@ -839,8 +836,12 @@ header nav ul li a.active {
   font-weight: 500;
   align-items: center;
   gap: 0.25rem;
-  background-color: #2563EB;
-  padding: 4px 8px;
+  background: linear-gradient(
+    150deg,
+    rgb(84 1 141) 0%,
+    rgba(89, 42, 102, 1) 99%
+  ); 
+  padding: 6px 10px;
   border-radius: 4px;
 }
 
