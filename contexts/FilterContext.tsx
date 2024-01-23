@@ -14,7 +14,7 @@ interface FilterProviderProps {
 }
 
 const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState("offer");
 
   return (
     <FilterContext.Provider value={{ filter, setFilter }}>

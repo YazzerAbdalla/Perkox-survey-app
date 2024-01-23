@@ -1,59 +1,59 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { useFilter } from "@/contexts/FilterContext";
+import Link from "next/link";
+import { RxDiscordLogo, RxLinkedinLogo } from "react-icons/rx";
 
 const Footer = () => {
-  const { filter, setFilter } = useFilter();
   return (
-    <div className="fixed z-[1000] bottom-0 right-0 p-3 font-bold">
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button>
-            <Image
-              width="60"
-              height="50"
-              src="https://img.icons8.com/stickers/100/mail-filter.png"
-              alt="mail-filter"
-            />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-[150px] z-[1000] ">
-          <div className="flex flex-col gap-4">
-            <div className="space-y-2">
-              <h2 className="font-bold leading-none">Filters</h2>
-            </div>
-            <div className="flex flex-col">
-              <div
-                className={`bg-[#3b4c7a] flex mb-1 justify-center items-center rounded-[15px] max-w-[90px] px-2 cursor-pointer filter ${
-                  filter == "servay" && "active"
-                }`}
-                onClick={() =>
-                  filter == "servay" ? setFilter("") : setFilter("servay")
-                }
-              >
-                <h5>Servay</h5>
-              </div>
-              <div
-                onClick={() =>
-                  filter == "offer" ? setFilter("") : setFilter("offer")
-                }
-                className={`bg-[#3b4c7a] flex mb-1 justify-center items-center rounded-[15px] max-w-[90px] px-2 cursor-pointer filter ${
-                  filter == "offer" && "active"
-                }`}
-              >
-                <h5>Offer</h5>
-              </div>
-            </div>
+    <div
+      className="w-full h-full font-bold bg-transparent text-gray-200 p-[15px]"
+    >
+      
+      <hr className="my-4 border-t border-purple-700" />
+      <div className="w-full flex flex-col items-center justify-center m-auto">
+        <div className="w-full h-full flex flex-row items-center justify-center flex-wrap">
+          <div className="min-w-[200px] h-auto flex flex-col items-center justify-start">
+            <Link
+              href="https://www.linkedin.com/in/youssef-salib-644aa5266/"
+              passHref
+              legacyBehavior={true}
+            >
+              <p className="flex flex-row items-center my-[15px] cursor-pointer text-blue-500">
+                <RxLinkedinLogo />
+                <span className="text-[15px] ml-[6px]">Linkedin</span>
+              </p>
+            </Link>
+
+            <Link href="YoussefAmir311" passHref legacyBehavior={true}>
+              <a className="flex flex-row items-center my-[15px] cursor-pointer text-purple-400">
+                <RxDiscordLogo />
+                <span className="text-[15px] ml-[6px]">Discord</span>
+              </a>
+            </Link>
           </div>
-        </PopoverContent>
-      </Popover>
+
+          <div className="min-w-[200px] h-auto flex flex-col items-center justify-start">
+            <Link href="tel:+201063647856" passHref legacyBehavior={true}>
+              <a className="flex flex-row items-center my-[15px] cursor-pointer ">
+                TOS
+              </a>
+            </Link>
+
+            <Link
+              href="mailto:youssefsalib311@gmail.com"
+              passHref
+              legacyBehavior={true}
+            >
+              <a className="flex flex-row items-center my-[15px] cursor-pointer">
+                <span className="text-[15px] ml-[6px]">Privacy Policy</span>
+              </a>
+            </Link>
+          </div>
+        </div>
+
+        <div className="mb-[20px] text-[15px] text-center">
+          Support ID: 91331855
+        </div>
+      </div>
     </div>
   );
 };

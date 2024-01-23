@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Components/Nav-bar";
-import Footer from "./Components/Footer";
 import { DrawerProvider } from "@/contexts/DrawerContext";
 import { DeviceProvider } from "@/contexts/DeviceContext";
 import { FilterProvider } from "@/contexts/FilterContext";
@@ -10,6 +9,9 @@ import StarBackground from "./Components/StarBackground";
 import { DrawerTabsProvider } from "@/contexts/DrawerTabs";
 import { CardProvider } from "@/contexts/CardContext";
 import { DataProvider } from "@/contexts/DataContext";
+import { ErrorContextProvider } from "@/contexts/ErrorContext";
+import Footer from "./Components/Footer";
+import { FilteredDataProvider } from "@/contexts/FilteredDataContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,21 +31,28 @@ export default function RootLayout({
         <link rel="shortcut icon" href="White-Perkox.ico" type="image/x-icon" />
       </head>
       <body>
-        <Navbar />
-
-        <DataProvider>
-          <CardProvider>
-            <FilterProvider>
-              <Footer />
-              <DeviceProvider>
-                <DrawerTabsProvider>
-                  <DrawerProvider>{children}</DrawerProvider>
-                </DrawerTabsProvider>
-                <StarBackground />
-              </DeviceProvider>
-            </FilterProvider>
-          </CardProvider>
-        </DataProvider>
+        <div className="max-w-5xl mx-auto p-4 ">
+          <Navbar />
+        </div>
+        <div className="mt-17 min-h-[calc(100vh-180px)]">
+          <FilteredDataProvider>
+            <ErrorContextProvider>
+              <DataProvider>
+                <CardProvider>
+                  <FilterProvider>
+                    <DeviceProvider>
+                      <DrawerTabsProvider>
+                        <DrawerProvider>{children}</DrawerProvider>
+                      </DrawerTabsProvider>
+                      <StarBackground />
+                    </DeviceProvider>
+                  </FilterProvider>
+                </CardProvider>
+              </DataProvider>
+            </ErrorContextProvider>
+          </FilteredDataProvider>
+        </div>
+        <Footer />
       </body>
     </html>
   );

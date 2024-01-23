@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -20,7 +18,7 @@
 
 .offer-card {
   flex-basis: 100%;
-  row-gap: 12px;
+  row-gap: 5px;
 }
 .offer-card {
   display: flex;
@@ -31,7 +29,11 @@
   padding: 8px;
   height: auto;
   border-radius: 18px;
-  background:linear-gradient(45deg, #B44092,#8b2654);
+  background: linear-gradient(
+    150deg,
+    rgb(84 1 141) 0%,
+    rgba(89, 42, 102, 1) 99%
+  );
   overflow: hidden;
   cursor: pointer;
   width: calc(85% - 20px);
@@ -150,15 +152,15 @@ body {
   margin: 0;
   min-height: 100dvh;
   background-image: url(../public/background-icons-perkox-\(3\).png);
+  /* background-color: #220837; */
   background-size: cover;
-  /* background-size: auto; */
   background-position: 71% 54%;
   background-repeat: no-repeat;
 }
 
 .platform .android {
   display: block;
-  background-image: url(https://torox.io/assets/images/android-icon.svg);
+  background-image: url(/android.png);
   background-repeat: no-repeat;
   background-size: contain;
   width: 24px;
@@ -231,7 +233,8 @@ body {
   padding-right: 73px;
   padding: 16px 32px 16px 16px;
   border-radius: 18px;
-  background-color: #0a1f59;
+  background-color: rgb(231, 33, 113);
+  /* background: linear-gradient(150deg, rgb(84 1 141) 0%); */
   column-gap: 30px;
   align-items: center;
   justify-content: space-between;
@@ -425,7 +428,7 @@ body {
   border-radius: 18px;
   height: max-content;
 }
-.page{
+.page {
   z-index: -100 !important;
 }
 .horizontal-line {
@@ -717,4 +720,132 @@ body {
     text-overflow: ellipsis;
     font-size: 12px;
   }
+}
+
+header {
+  background: linear-gradient(
+    150deg,
+    rgb(84 1 141) 0%,
+    rgba(89, 42, 102, 1) 99%
+  );
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+header .logo {
+  font-size: 30px;
+  text-transform: uppercase;
+  color: white;
+  background-image: url(/White-Perkox.png);
+}
+header nav ul {
+  display: flex;
+}
+header nav ul li a {
+  display: inline-block;
+  color: white;
+  padding: 5px 0;
+  margin: 0 10px;
+  border: 3px solid transparent;
+  text-transform: uppercase;
+  transition: 0.2s;
+}
+.hamburger {
+  cursor: pointer;
+  display: none;
+}
+.hamburger div {
+  width: 30px;
+  height: 3px;
+  margin: 5px 0;
+  background: white;
+}
+@media only screen and (max-width: 900px) {
+  header {
+    padding: 0 30px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .hamburger {
+    display: block;
+  }
+  header nav {
+    position: absolute;
+    width: 100%;
+    left: -100%;
+    top: 70px;
+    width: 100%;
+    background: linear-gradient(
+      150deg,
+      rgb(84 1 141) 0%,
+      rgba(89, 42, 102, 1) 99%
+    );
+    padding: 30px;
+    transition: 0.3s;
+  }
+  header #nav_check:checked ~ nav {
+    left: 0;
+  }
+  header nav ul {
+    display: block;
+  }
+  header nav ul li a {
+    margin: 5px 0;
+  }
+}
+
+.card {
+  max-width: 300px;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.content {
+  padding: 1.1rem;
+}
+
+.image {
+  object-fit: cover;
+  background-image: url(/image_You_have_0_compeleted_tasks.png);
+}
+
+.title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.action {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  align-items: center;
+  gap: 0.25rem;
+  background: linear-gradient(
+    150deg,
+    rgb(84 1 141) 0%,
+    rgba(89, 42, 102, 1) 99%
+  );
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.action span {
+  transition: 0.3s ease;
+}
+
+.action:hover span {
+  transform: translateX(4px);
 }

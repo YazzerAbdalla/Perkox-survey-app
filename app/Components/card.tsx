@@ -1,6 +1,5 @@
 // Import necessary components and styles
 "use client";
-import { useState } from "react";
 import Image from "next/image";
 import React from "react";
 import { useDrawer } from "@/contexts/DrawerContext";
@@ -12,6 +11,7 @@ interface dataProps {
   image: string;
   os: string;
   reward: number;
+  onClick: () => void;
 }
 // Create the Card component
 const Card = ({ id, name, instructions, image, os, reward }: dataProps) => {
@@ -28,7 +28,10 @@ const Card = ({ id, name, instructions, image, os, reward }: dataProps) => {
   };
 
   return (
-    <div onClick={handleCardClick} className="offer-card mr-2 mb-2  ">
+    <div
+      onClick={handleCardClick}
+      className="offer-card   z-[10] max-w-xl  w-full    mx-auto justify-center  mb-4"
+    >
       <div className="offer-card__top" onClick={handleCardClick}>
         <Image src={image} width={60} height={60} alt="" loading="lazy" />
         <div className="text-content">
@@ -45,12 +48,7 @@ const Card = ({ id, name, instructions, image, os, reward }: dataProps) => {
         </div>
         <div className="offer-reward ">
           <span className="old-reward"></span>
-          <Image
-            src="https://torox.io/assets/images/reward-coins.svg"
-            width={16}
-            height={16}
-            alt="reward"
-          />
+          <Image src="/reward-coins.svg" width={16} height={16} alt="reward" />
           <span className="actual-reward">{reward} points</span>
         </div>
       </div>
