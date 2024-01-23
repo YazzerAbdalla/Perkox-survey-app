@@ -2,6 +2,7 @@
 import { useDataContext } from "@/contexts/DataContext";
 import { useDrawerTabs } from "@/contexts/DrawerTabs";
 import React from "react";
+
 interface DrawerHeaderProps {
   cardId: number;
 }
@@ -10,8 +11,15 @@ const DrawerDetails = ({ cardId }: DrawerHeaderProps) => {
   const { drawerTab } = useDrawerTabs();
   const { dataArr } = useDataContext();
 
-  const selectedCard = dataArr.filter(({ id }) => cardId == id);
-  let showDetail = drawerTab == "details" ? true : false;
+  // Use find instead of filter to get a single selected card
+  const selectedCard = dataArr.find(({ id }) => cardId === id);
+
+  // Check if selectedCard is not defined
+  if (!selectedCard) {
+    return null; // or display a loading state or an error message
+  }
+
+  let showDetail = drawerTab === "details";
 
   return (
     <>
@@ -21,8 +29,8 @@ const DrawerDetails = ({ cardId }: DrawerHeaderProps) => {
             <div className="offer-description">
               <span className="title">Offer description</span>
               <p className="description">
-                {selectedCard[0].name}:{" "}
-                {selectedCard[0].instructions && selectedCard[0].description}
+                {selectedCard.name}:{" "}
+                {selectedCard.instructions && selectedCard.instructions}
               </p>
             </div>
             <div className="offer-text-wrapper">
@@ -60,9 +68,9 @@ const DrawerDetails = ({ cardId }: DrawerHeaderProps) => {
                   </li>
                 </ol>
               </div>
-            </div>
+              </div>
           </div>
-          {selectedCard[0].goals && (
+          {selectedCard.goals && (
             <div className="new-offer-popup__steps-wrapper w-[50%]">
               <span className="title">All steps</span>
               <span className="horizontal-line"></span>

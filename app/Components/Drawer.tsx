@@ -6,12 +6,8 @@ import { Button } from "@/components/ui/button";
 import {
   Drawer as RadixDrawer, // Rename your local Drawer component
   Drawer,
-  DrawerClose,
   DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import Card from "./card";
@@ -41,22 +37,25 @@ const DrawerDemo = ({
   image,
   os,
   reward,
-}: dataProps) => {
+  onClick, // Add onClick prop
+}: dataProps & { onClick: () => void }) => {
   const [goal, setGoal] = useState(350);
-
   const { isDrawerOpen, setIsDrawerOpen } = useDrawer();
   const { setDrawerTab } = useDrawerTabs();
-  const { cardID } = useCardContext();
+  const { cardID, setCardID } = useCardContext();
 
-  function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)));
+  function handleClick() {
+    onClick(); 
+    setCardID(id); 
   }
 
   // Function to close the drawer
   const closeDrawer = () => {
     setIsDrawerOpen(false);
     setDrawerTab("details");
+    setCardID(0); 
   };
+
   return (
     <Drawer>
       <DrawerTrigger asChild>
@@ -67,10 +66,11 @@ const DrawerDemo = ({
           image={image}
           reward={reward}
           os={os}
+          onClick={handleClick} // Handle the click event
         />
       </DrawerTrigger>
 
-      <RadixDrawer open={isDrawerOpen} onClose={closeDrawer}>
+      <RadixDrawer open={isDrawerOpen && cardID === id} onClose={closeDrawer}>
         <DrawerContent className="z-[2000] text-white">
           <>
             <DrawerHeader className="">
