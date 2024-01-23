@@ -160,7 +160,7 @@ body {
 
 .platform .android {
   display: block;
-  background-image: url(https://torox.io/assets/images/android-icon.svg);
+  background-image: url(/android.png);
   background-repeat: no-repeat;
   background-size: contain;
   width: 24px;
