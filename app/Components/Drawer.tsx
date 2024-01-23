@@ -71,16 +71,23 @@ const DrawerDemo = ({
       </DrawerTrigger>
 
       <RadixDrawer open={isDrawerOpen && cardID === id} onClose={closeDrawer}>
-        <DrawerContent className="z-[2000] text-white">
+        <DrawerContent className="z-[2000] text-white "
+          style={{
+            background: 'linear-gradient(150deg, rgb(84 1 141) 0%, rgba(89, 42, 102, 1) 99%)',
+          }}>
           <>
-            <DrawerHeader className="">
+            <DrawerHeader className=""
+              style={{
+                background: 'linear-gradient(150deg, rgb(84 1 141) 0%, rgba(89, 42, 102, 1) 99%)',
+              }}>
               <DrawerNewHeader cardId={cardID} />
               <DrawerTabs />
               <button
                 onClick={closeDrawer}
                 className="popup__close-js top-[2rem] right-[2rem] absolute"
               >
-                <Image src="/x.svg" alt="" width={16} height={16} />
+                <Image src="/x.svg" alt="" width={16} height={16} 
+                  />
               </button>
             </DrawerHeader>
             <DrawerDetails cardId={cardID} />
