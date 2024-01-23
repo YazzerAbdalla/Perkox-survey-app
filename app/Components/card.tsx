@@ -42,7 +42,7 @@ const Card = ({ id, name, instructions, image, os, reward }: dataProps) => {
       <div className="offer-card__bottom">
         <div className="offer-tags">
           <div className="platform">
-            <span className={os == "all" ? "desktop" : os}></span>
+            <span className={os == "web" ? "desktop" : os}></span>
           </div>
           <span className="offer-tag">Gaming</span>
         </div>
