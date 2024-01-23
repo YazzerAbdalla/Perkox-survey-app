@@ -11,6 +11,7 @@ import { CardProvider } from "@/contexts/CardContext";
 import { DataProvider } from "@/contexts/DataContext";
 import { ErrorContextProvider } from "@/contexts/ErrorContext";
 import Footer from "./Components/Footer";
+import { FilteredDataProvider } from "@/contexts/FilteredDataContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,24 +31,26 @@ export default function RootLayout({
         <link rel="shortcut icon" href="White-Perkox.ico" type="image/x-icon" />
       </head>
       <body>
-         <div className="max-w-5xl mx-auto p-4 "> 
-        <Navbar />
-         </div> 
+        <div className="max-w-5xl mx-auto p-4 ">
+          <Navbar />
+        </div>
         <div className="mt-17 min-h-[calc(100vh-180px)]">
-          <ErrorContextProvider>
-            <DataProvider>
-              <CardProvider>
-                <FilterProvider>
-                  <DeviceProvider>
-                    <DrawerTabsProvider>
-                      <DrawerProvider>{children}</DrawerProvider>
-                    </DrawerTabsProvider>
-                   <StarBackground /> 
-                  </DeviceProvider>
-                </FilterProvider>
-              </CardProvider>
-            </DataProvider>
-          </ErrorContextProvider>
+          <FilteredDataProvider>
+            <ErrorContextProvider>
+              <DataProvider>
+                <CardProvider>
+                  <FilterProvider>
+                    <DeviceProvider>
+                      <DrawerTabsProvider>
+                        <DrawerProvider>{children}</DrawerProvider>
+                      </DrawerTabsProvider>
+                      <StarBackground />
+                    </DeviceProvider>
+                  </FilterProvider>
+                </CardProvider>
+              </DataProvider>
+            </ErrorContextProvider>
+          </FilteredDataProvider>
         </div>
         <Footer />
       </body>

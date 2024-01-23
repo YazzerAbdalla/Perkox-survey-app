@@ -153,7 +153,6 @@ body {
   min-height: 100dvh;
   background-image: url(../public/background-icons-perkox-\(3\).png);
   background-size: cover;
-  /* background-size: auto; */
   background-position: 71% 54%;
   background-repeat: no-repeat;
 }
@@ -737,7 +736,7 @@ header {
 header .logo {
   font-size: 30px;
   text-transform: uppercase;
-  color:white;
+  color: white;
 }
 header nav ul {
   display: flex;
@@ -753,7 +752,7 @@ header nav ul li a {
 }
 header nav ul li a:hover,
 header nav ul li a.active {
-  border-bottom-color:  rgb(194, 0, 248);
+  border-bottom-color: rgb(194, 0, 248);
 }
 .hamburger {
   cursor: pointer;
@@ -784,7 +783,8 @@ header nav ul li a.active {
       150deg,
       rgb(84 1 141) 0%,
       rgba(89, 42, 102, 1) 99%
-    );    padding: 30px;
+    );
+    padding: 30px;
     transition: 0.3s;
   }
   header #nav_check:checked ~ nav {

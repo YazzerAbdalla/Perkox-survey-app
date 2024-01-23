@@ -12,17 +12,15 @@ const fetchData = async (
   filter: string
 ) => {
   try {
-    const dataJ: any = await axios
-      .get("https://perkox.com/api/v1/offers-iframe/10000/ker00sama")
-      .then((res) => res.data.error && error(res.data.error))
-      .then((res) => console.log("🚀 ~ dataJ:", res));
-    
-    if (dataJ.data.offer) {
-      let offers = dataJ.data.offer;
-      const filteredData = offers.filter(
-        (item: Offer) => item.model === filter
-      );
-      data(filteredData);
+    const dataJ: any = await axios.get(
+      "https://perkox.com/api/v1/offers-iframe/10000/ker00sama"
+    );
+
+    if (dataJ.data.error) {
+      error(dataJ.data.error);
+    } else {
+      let offers = dataJ.data.offers;
+      data(offers);
     }
 
     return dataJ;
