@@ -1,18 +1,17 @@
 "use client";
-import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
 import { RxDiscordLogo, RxLinkedinLogo } from "react-icons/rx";
 
 const Footer = () => {
   return (
     <div
-      className="w-full h-full font-bold   bg-transparent text-gray-200 p-[15px]"
-      id="Footer"
+      className="w-full h-full font-bold bg-transparent text-gray-200 p-[15px]"
     >
+      
+      <hr className="my-4 border-t border-purple-700" />
       <div className="w-full flex flex-col items-center justify-center m-auto">
-        <div className="w-full h-full flex flex-row items-center justify-around flex-wrap">
+        <div className="w-full h-full flex flex-row items-center justify-center flex-wrap">
           <div className="min-w-[200px] h-auto flex flex-col items-center justify-start">
-            <div className="font-bold text-[16px]">Social Media</div>
             <Link
               href="https://www.linkedin.com/in/youssef-salib-644aa5266/"
               passHref

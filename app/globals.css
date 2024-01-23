@@ -159,7 +159,7 @@ body {
 
 .platform .android {
   display: block;
-  background-image: url(https://torox.io/assets/images/android-icon.svg);
+  background-image: url(/android.png);
   background-repeat: no-repeat;
   background-size: contain;
   width: 24px;
@@ -737,6 +737,7 @@ header .logo {
   font-size: 30px;
   text-transform: uppercase;
   color: white;
+  background-image: url(/White-Perkox.png);
 }
 header nav ul {
   display: flex;
@@ -749,10 +750,6 @@ header nav ul li a {
   border: 3px solid transparent;
   text-transform: uppercase;
   transition: 0.2s;
-}
-header nav ul li a:hover,
-header nav ul li a.active {
-  border-bottom-color: rgb(194, 0, 248);
 }
 .hamburger {
   cursor: pointer;
@@ -796,4 +793,57 @@ header nav ul li a.active {
   header nav ul li a {
     margin: 5px 0;
   }
+}
+
+.card {
+  max-width: 300px;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.content {
+  padding: 1.1rem;
+}
+
+.image {
+  object-fit: cover;
+  background-image: url(/image_You_have_0_compeleted_tasks.png);
+}
+
+.title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.action {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  align-items: center;
+  gap: 0.25rem;
+  background: linear-gradient(
+    150deg,
+    rgb(84 1 141) 0%,
+    rgba(89, 42, 102, 1) 99%
+  );
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.action span {
+  transition: 0.3s ease;
+}
+
+.action:hover span {
+  transform: translateX(4px);
 }

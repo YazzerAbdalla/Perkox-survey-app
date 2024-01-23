@@ -1,45 +1,37 @@
 "use client";
-import { useState, useEffect } from "react";
-import { FaApple, FaDesktop, FaAndroid } from "react-icons/fa";
+import Link from "next/link";
+import Image from "next/image";
 
-type Device = "iOS" | "Desktop" | "Android";
 
 const Activity = () => {
-  const [selectedDevice, setSelectedDevice] = useState<Device | null>(null);
-
-  // useEffect to set the initial selected device
-  useEffect(() => {
-    setSelectedDevice('Desktop');
-  }, []);
 
   return (
-    <div>
-      <h1>Activities page</h1>
-      <div>
-        <p>Choose a device:</p>
-        {["iOS", "Desktop", "Android"].map((device) => (
-          <button
-            key={device}
-            style={{
-              border:
-                selectedDevice === device
-                  ? "3px solid green"
-                  : "2px solid transparent",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "10px", // Add padding for better appearance
-            }}
-            onClick={() => setSelectedDevice(device as Device)}
-          >
-            {device === "iOS" && <FaApple color="white" />}
-            {device === "Desktop" && <FaDesktop color="white" />}
-            {device === "Android" && <FaAndroid color="green" />}
-            {device}
-          </button>
-        ))}
-      </div>
+    <div className="flex items-center  justify-center ">
+      <div className="card mt-20 "style={{ outline: "5px solid #6B46C1" }}>
+        <div className="image">
+          <Image
+            src="/image_You_have_0_compeleted_tasks.png"  
+            alt="image_You_have_0_compeleted_tasks"
+            width={200}  
+            height={80}  
+          /></div>
+          <div className="content">
+            <Link href="/">
+              <span className="title">
+              You have 0 compeleted tasks
+              </span>
+            </Link>
+
+         
+
+            <Link className="action bg-purple-900" href="/">
+              Check our offers!
+              <span aria-hidden="true">
+                →
+              </span>
+            </Link>
+          </div>
+        </div>
     </div>
   );
 };

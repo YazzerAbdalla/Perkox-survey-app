@@ -1,9 +1,8 @@
 "use client";
-import { useDevice } from "@/contexts/DeviceContext";
 
 const Settings = () => {
   return (
-    <section className="content-wrapper page more-page-active  mt-6 ">
+    <section className="content-wrapper page more-page-active  mt-14 ">
       <div className="more-page flex flex-col row-gap-10 p-10 md:p-10">
         <div className="more-page__device-select"></div>
         <div className="more-page__terms-wrapper">

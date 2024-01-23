@@ -11,6 +11,7 @@ interface dataProps {
   image: string;
   os: string;
   reward: number;
+  onClick: () => void;
 }
 // Create the Card component
 const Card = ({ id, name, instructions, image, os, reward }: dataProps) => {
