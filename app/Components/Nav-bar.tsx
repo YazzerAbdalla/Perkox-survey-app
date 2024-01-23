@@ -14,7 +14,12 @@ const Navbar = () => {
     <header>
       
        <Link href="/" >
-      <div className="logo">PerKos</div>
+      <div className="logo"> <Image
+            src="/White-Perkox.png"  
+            alt="White-Perkox"
+            width={150}  
+            height={60}  
+          /></div>
       </Link>
 
       <input type="checkbox" id="nav_check" hidden />

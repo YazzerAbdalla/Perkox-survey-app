@@ -7,6 +7,7 @@ import DrawerDemo from "./Components/Drawer";
 import fetchData from "./api/fetch";
 import { useErrorContext } from "@/contexts/ErrorContext";
 import OfferFilter from "./Components/offerFilter";
+import Favorite from "./Components/favorite";
 
 interface dataProps {
   name: string;
@@ -21,6 +22,10 @@ export default function Home() {
   const { dataArr, setDataArr } = useDataContext();
   const { error, setError } = useErrorContext();
   const [typeFilter, setTypeFilter] = useState("offer");
+  
+    // Add more items as needed
+
+
   useEffect(() => {
     //@ts-ignore
     // Set the dataArr once the data is fetched
@@ -28,10 +33,13 @@ export default function Home() {
   }, []);
   return (
     <>
+      
+      
       <OfferFilter typeFilter={typeFilter} setTypeFilter={setTypeFilter} />
       <ButtonFilter />
+      <Favorite/>
 
-      <div className="flex  flex-col md:flex-row gap-0  content-center flex-wrap md:px-20 px-4 mt-4 w-full">
+      <div className="flex  flex-col md:flex-row gap-0  content-center flex-wrap md:px-20 px-4 mt-7 w-full">
         {dataArr.map(
           ({ id, name, instructions, image, reward, os }: dataProps) => (
             <DrawerDemo
