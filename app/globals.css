@@ -868,3 +868,27 @@ header nav ul li a {
   background-color: #6b46c1;
   margin: 25px;
 }
+
+
+/* CleopatraLoading.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.rotating-image {
+  animation: rotateAnimation 2s linear infinite; /* Customize animation duration and type */
+}
+
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
