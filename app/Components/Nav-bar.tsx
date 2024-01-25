@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styled from "styled-components";
 import { colors } from "./theme/Color";
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const NavLink = styled(Link)<{ isActive: boolean }>`
   color: ${({ isActive }) =>
@@ -42,7 +42,7 @@ const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <header>
+    <header className="fixed z-[1000]">
       <Link href="/">
         <div className="logo">
           <Image
@@ -55,11 +55,12 @@ const Navbar = () => {
       </Link>
 
       <input type="checkbox" id="nav_check" hidden />
-      <nav className={`z-[1500] ${isMenuOpen ? 'open' : ''}`}>
+      <nav className={`z-[1500]  ${isMenuOpen ? "" : "close"}`}>
         <ul>
           <li>
-            <NavLink 
-              isActive={pathname === routes.home} 
+            <NavLink
+              isActive={pathname === routes.home}
+              onClick={toggleMenu}
               href={routes.home}
             >
               Home
@@ -70,6 +71,7 @@ const Navbar = () => {
             <NavLink
               isActive={pathname === routes.activities}
               href={routes.activities}
+              onClick={toggleMenu}
             >
               Activity
             </NavLink>
@@ -78,6 +80,7 @@ const Navbar = () => {
           <li>
             <NavLink
               isActive={pathname === routes.term}
+              onClick={toggleMenu}
               href={routes.term}
             >
               Term of service
@@ -86,9 +89,7 @@ const Navbar = () => {
         </ul>
       </nav>
       <label htmlFor="nav_check" className="hamburger" onClick={toggleMenu}>
-        <HamburgerIcon>
-          {isMenuOpen ? <FaTimes /> : <FaBars />}
-        </HamburgerIcon>
+        <HamburgerIcon>{isMenuOpen ? <FaTimes /> : <FaBars />}</HamburgerIcon>
       </label>
     </header>
   );

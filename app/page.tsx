@@ -45,7 +45,7 @@ export default function Home() {
   }, [filter]);
 
   return (
-    <>
+    <section  className="mt-14">
       <OfferFilter setFilter={setFilter} />
       <ButtonFilter />
       {fav.length !== 0 && (
@@ -55,7 +55,7 @@ export default function Home() {
       )}
       <div className="flex  flex-col md:flex-row gap-0  content-center flex-wrap md:px-20 px-4 mt-7 w-full">
         {filteredDataArr.length === 0 ? (
-          <div className="w-full flex justify-center">
+          <div className="w-full z-[10] flex justify-center">
             <NOoffer />
           </div>
         ) : (
@@ -75,6 +75,6 @@ export default function Home() {
           )
         )}
       </div>
-    </>
+    </section>
   );
 }

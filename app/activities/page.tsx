@@ -21,7 +21,7 @@ const Activity = () => {
       );
   }, []);
   return (
-    <>
+    <section className="mt-14">
       {activities ? (
         <div className="flex  flex-col md:flex-row gap-10  content-center flex-wrap md:px-8 px-4 mt-7 w-full">
           {activities.map(({ id, offername, status }) => (
@@ -35,7 +35,7 @@ const Activity = () => {
           <IfNoActivities />
         </div>
       )}
-    </>
+    </section>
   );
 };
 
