@@ -867,4 +867,25 @@ header nav ul li a {
 }
 
 
+/* CleopatraLoading.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.rotating-image {
+  animation: rotateAnimation 2s linear infinite; /* Customize animation duration and type */
+}
+
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
