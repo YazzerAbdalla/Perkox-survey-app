@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styled from "styled-components";
 import { colors } from "./theme/Color";
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const NavLink = styled(Link)<{ isActive: boolean }>`
   color: ${({ isActive }) =>
@@ -15,6 +16,14 @@ const NavLink = styled(Link)<{ isActive: boolean }>`
     color: ${colors.palette.purple};
     border-bottom-color: rgb(194, 0, 248);
   }
+`;
+
+const HamburgerIcon = styled.div`
+  color: ${colors.palette.neutral100};
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const routes = {
@@ -46,10 +55,13 @@ const Navbar = () => {
       </Link>
 
       <input type="checkbox" id="nav_check" hidden />
-      <nav className="z-[1500]">
+      <nav className={`z-[1500] ${isMenuOpen ? 'open' : ''}`}>
         <ul>
           <li>
-            <NavLink isActive={pathname === routes.home} href={routes.home}>
+            <NavLink 
+              isActive={pathname === routes.home} 
+              href={routes.home}
+            >
               Home
             </NavLink>
           </li>
@@ -64,16 +76,19 @@ const Navbar = () => {
           </li>
 
           <li>
-            <NavLink isActive={pathname === routes.term} href={routes.term}>
+            <NavLink
+              isActive={pathname === routes.term}
+              href={routes.term}
+            >
               Term of service
             </NavLink>
           </li>
         </ul>
       </nav>
-      <label htmlFor="nav_check" className="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
+      <label htmlFor="nav_check" className="hamburger" onClick={toggleMenu}>
+        <HamburgerIcon>
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        </HamburgerIcon>
       </label>
     </header>
   );
