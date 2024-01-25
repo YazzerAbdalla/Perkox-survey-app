@@ -25,6 +25,7 @@ export interface Offer {
   reward: number;
   payout?: undefined;
   countries?: undefined;
+  favorite: number;
 }
 
 interface DataContextProps {
