@@ -28,10 +28,11 @@ const DrawerDetails = ({ cardId }: DrawerHeaderProps) => {
           <div className="flex flex-col w-[50%] gap-1 offer-instructoins">
             <div className="offer-description">
               <span className="title">Offer description :</span>
+              <h1 className="text-gray-300 font-bold text-sm "> {selectedCard.name} : </h1> 
               <p className="description">
-               <h1 className="text-white font-bold text-sm "> {selectedCard.name} : </h1> 
                {" "} {selectedCard.description && selectedCard.description}
               </p>
+              
             </div>
             <div className="offer-text-wrapper">
               <span className="title">
