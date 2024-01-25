@@ -11,6 +11,7 @@ import { useFilter } from "@/contexts/FilterContext";
 import { useFilteredDataContext } from "@/contexts/FilteredDataContext";
 import Favorite from "./Components/favorite";
 import NOoffer from "./Components/No-offer";
+import CardError from "./Components/cardError";
 
 export interface dataProps {
   name: string;
@@ -47,7 +48,8 @@ export default function Home() {
   return (
     <section  className="mt-14">
       <OfferFilter setFilter={setFilter} />
-      <ButtonFilter />
+     <CardError />
+      {/* <ButtonFilter />
       {fav.length !== 0 && (
         <>
           <Favorite fav={fav} />
@@ -74,7 +76,7 @@ export default function Home() {
             )
           )
         )}
-      </div>
+      </div> */}
     </section>
   );
 }
