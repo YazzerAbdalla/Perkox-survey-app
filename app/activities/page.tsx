@@ -1,38 +1,41 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import ActivitiesCard from "../Components/ActivitiesCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import IfNoActivities from "../Components/IfNoActivities";
 
-
+interface Activities {
+  id: number;
+  offername: string;
+  status: string;
+}
 const Activity = () => {
-
+  const [activities, setActivities] = useState<Activities[] | null>();
+  useEffect(() => {
+    const data = axios
+      .get("https://perkox.com/api/v1/offers-iframe/clicks/10000/ker00sama")
+      .then((res) =>
+        res.data.error ? setActivities(null) : setActivities(res.data)
+      );
+  }, []);
   return (
-    <div className="flex items-center  justify-center ">
-      <div className="card mt-20 "style={{ outline: "5px solid #6B46C1" }}>
-        <div className="image">
-          <Image
-            src="/image_You_have_0_compeleted_tasks.png"  
-            alt="image_You_have_0_compeleted_tasks"
-            width={200}  
-            height={80}  
-          /></div>
-          <div className="content">
-            <Link href="/">
-              <span className="title">
-              You have 0 compeleted tasks
-              </span>
-            </Link>
-
-         
-
-            <Link className="action bg-purple-900" href="/">
-              Check our offers!
-              <span aria-hidden="true">
-                →
-              </span>
-            </Link>
-          </div>
+    <>
+      {activities ? (
+        <div className="flex  flex-col md:flex-row gap-10  content-center flex-wrap md:px-8 px-4 mt-7 w-full">
+          {activities.map(({ id, offername, status }) => (
+            <>
+              <ActivitiesCard key={id} offername={offername} status={status} />
+            </>
+          ))}
         </div>
-    </div>
+      ) : (
+        <div className="flex items-center w-full  justify-center">
+          <IfNoActivities />
+        </div>
+      )}
+    </>
   );
 };
 

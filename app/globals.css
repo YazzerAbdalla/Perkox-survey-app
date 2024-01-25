@@ -1,6 +1,6 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 ::-webkit-scrollbar {
   width: 4px;
@@ -19,6 +19,13 @@
 .offer-card {
   flex-basis: 100%;
   row-gap: 5px;
+}
+.activities-card {
+  background: linear-gradient(
+    150deg,
+    rgb(84 1 141) 0%,
+    rgba(89, 42, 102, 1) 99%
+  );
 }
 .offer-card {
   display: flex;
@@ -149,13 +156,13 @@
 }
 
 body {
-    /* margin: 0;  
+  /* margin: 0;  
     min-height: 10dvh;   */
-   background-image: url(/background-icons-perkox-\(3\).png);
+  background-image: url(/background-icons-perkox-\(3\).png);
   /* background-color: #220837; */
   background-size: auto;
-    background-position: 71% 18% ; 
-   background-repeat: repeat; 
+  background-position: 71% 18%;
+  background-repeat: repeat;
 }
 .platform .android {
   display: block;
@@ -848,4 +855,3 @@ header nav ul li a {
 .action:hover span {
   transform: translateX(4px);
 }
-
