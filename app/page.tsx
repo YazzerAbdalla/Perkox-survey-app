@@ -10,6 +10,7 @@ import OfferFilter from "./Components/offerFilter";
 import { useFilter } from "@/contexts/FilterContext";
 import { useFilteredDataContext } from "@/contexts/FilteredDataContext";
 import Favorite from "./Components/favorite";
+import NOoffer from "./Components/No-offer";
 
 interface dataProps {
   name: string;
@@ -44,6 +45,8 @@ export default function Home() {
       <OfferFilter setFilter={setFilter} />
       <ButtonFilter />
       <Favorite />
+      {/* <NOoffer /> */}
+ 
       <div className="flex  flex-col md:flex-row gap-0  content-center flex-wrap md:px-20 px-4 mt-7 w-full">
         {filteredDataArr.map(
           ({ id, name, instructions, image, reward, os }: dataProps) => (
@@ -59,7 +62,7 @@ export default function Home() {
             />
           )
         )}
-      </div>
+      </div> 
     </>
   );
 }

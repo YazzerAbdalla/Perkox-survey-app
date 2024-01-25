@@ -849,3 +849,15 @@ header nav ul li a {
   transform: translateX(4px);
 }
 
+.card {
+  width: 600px; /* Adjust the width as needed */
+  height: 350px;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #6B46C1;
+  margin: 25px;
+}
+
+
+
