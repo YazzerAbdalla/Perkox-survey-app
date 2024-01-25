@@ -27,10 +27,10 @@ const DrawerDetails = ({ cardId }: DrawerHeaderProps) => {
         <div className="z-[1000] w-full gap-4 new-offer-popup__text-content overflow-y-scroll">
           <div className="flex flex-col w-[50%] gap-1 offer-instructoins">
             <div className="offer-description">
-              <span className="title">Offer description</span>
+              <span className="title">Offer description :</span>
               <p className="description">
-                {selectedCard.name}:{" "}
-                {selectedCard.instructions && selectedCard.instructions}
+               <h1 className="text-white font-bold text-sm "> {selectedCard.name} : </h1> 
+               {" "} {selectedCard.description && selectedCard.description}
               </p>
             </div>
             <div className="offer-text-wrapper">
