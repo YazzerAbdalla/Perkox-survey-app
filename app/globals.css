@@ -767,7 +767,7 @@ header nav ul li a {
   width: 30px;
   height: 3px;
   margin: 5px 0;
-  background: white;
+  /* background: white; */
 }
 @media only screen and (max-width: 900px) {
   header {
