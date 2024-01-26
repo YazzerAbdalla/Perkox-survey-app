@@ -5,6 +5,7 @@ import ActivitiesCard from "../Components/ActivitiesCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import IfNoActivities from "../Components/IfNoActivities";
+import PerkoxLoader from "../Components/PerkoxLoader";
 
 interface Activities {
   id: number;
@@ -13,29 +14,42 @@ interface Activities {
 }
 const Activity = () => {
   const [activities, setActivities] = useState<Activities[] | null>();
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const data = axios
       .get("https://perkox.com/api/v1/offers-iframe/clicks/10000/ker00sama")
       .then((res) =>
         res.data.error ? setActivities(null) : setActivities(res.data)
-      );
+      )
+      .then(() => setLoading(false));
   }, []);
   return (
-    <section className="mt-14">
-      {activities ? (
-        <div className="flex  flex-col md:flex-row gap-10  content-center flex-wrap md:px-8 px-4 mt-7 w-full">
-          {activities.map(({ id, offername, status }) => (
-            <>
-              <ActivitiesCard key={id} offername={offername} status={status} />
-            </>
-          ))}
-        </div>
+    <>
+      {loading ? (
+        <PerkoxLoader />
       ) : (
-        <div className="flex items-center w-full  justify-center">
-          <IfNoActivities />
-        </div>
+        <section className="mt-14">
+          {activities ? (
+            <div className="flex  flex-col md:flex-row gap-10  content-center flex-wrap md:px-8 px-4 mt-7 w-full">
+              {activities.map(({ id, offername, status }) => (
+                <>
+                  <ActivitiesCard
+                    key={id}
+                    offername={offername}
+                    status={status}
+                  />
+                </>
+              ))}
+            </div>
+          ) : (
+            <div className="flex items-center w-full  justify-center">
+              <IfNoActivities />
+            </div>
+          )}
+        </section>
       )}
-    </section>
+    </>
   );
 };
 
