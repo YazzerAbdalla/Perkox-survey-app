@@ -47,7 +47,7 @@ export default function Home() {
   };
 
   const sortArrayByPlatform = (platform: string) => {
-    if (platform === "All") return ;
+    if (platform === "All") return;
     return filteredDataArr.sort((a, b) => {
       //@ts-ignore
       if (a.os === OS[platform]) return -1;
@@ -56,8 +56,15 @@ export default function Home() {
       return 0;
     });
   };
+  const sortArray = (sortType: string) => {
+    if (sortType === "Highest Paying") {
+      return filteredDataArr.sort((a, b) => {
+        return b.reward - a.reward;
+      });
+    }
+  };
   // console.log();
-
+  sortArray(selectedSort.name)
   sortArrayByPlatform(selectedPlatform.name);
   useEffect(() => {
     //@ts-ignore
