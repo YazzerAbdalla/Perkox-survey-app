@@ -60,28 +60,28 @@ const Navbar = () => {
             background:
               "linear-gradient(150deg, rgb(84 1 141) 0%, rgba(89, 42, 102, 1) 99%)",
           }}
-          className={`w-full pb-12 absolute md:flex md:items-center md:pb-0 md:static z-1 md:z-auto md:w-auto md:pl-0 pl-9 transition-all duration-500 ease top-20 ${
+          className={`w-full pb-12  absolute md:flex md:items-center md:pb-0 md:static z-1 md:z-auto md:w-auto md:pl-0 pl-9 transition-all duration-500 ease top-20 ${
             isOpen ? " left-0" : " -left-full "
           }`}
         >
-          {navData.map((link) => (
-            <li
-              key={link.id}
-              onClick={() => setIsOpen(false)}
-              className="md:ml-8 text-xl md:my-0 my-7"
-            >
-              <Link
-                href={link.url}
-                className={`${
-                  currentRoute === link.url
-                    ? "text-purple-500 border-b-2 border-purple-500"
-                    : "text-white hover:text-gray-300 hover:border-purple-500 border-b-2 border-transparent "
-                }`}
+                   {navData.map((link) => (
+              <li
+                key={link.id}
+                onClick={() => setIsOpen(false)}
+                className="md:ml-8 text-xl md:my-2 my-7"
               >
-                {link.title}
-              </Link>
-            </li>
-          ))}
+                <Link
+                  href={link.url}
+                  className={`${
+                    currentRoute === link.url
+                      ? "text-purple-600 "
+                      : "text-white hover:text-purple-600"
+                  }`}
+                >
+                  <span className="mr-2">{link.title}</span>
+                </Link>
+              </li>
+            ))}
         </ul>
       </nav>
     </div>

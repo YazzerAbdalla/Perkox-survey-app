@@ -13,7 +13,7 @@ export const navData = [
    
     {
       id: 3,
-      title: "Term of Servies",
+      title: "Term of servies",
       url: "/term-of-service",
     },
    
