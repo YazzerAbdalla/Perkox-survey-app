@@ -78,8 +78,10 @@ const Navbar = () => {
               <Link
                 href={link.url}
                 className={`  ${
-                  currentRoute === link.url ? "text-purple-500" : "text-white"
-                }`}
+                  currentRoute === link.url
+                  ? "text-purple-500 border-b-2 border-purple-500"
+                  : "text-white hover:text-gray-300 hover:border-purple-500 border-b-2 border-transparent "
+              }`}
               >
                 {link.title}{" "}
               </Link>
