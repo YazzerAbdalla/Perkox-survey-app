@@ -1,8 +1,8 @@
 import React from "react";
-import CleopatraLoading from "./Components/CleopatraLoading";
+import PerkoxLoader from "./Components/PerkoxLoader";
 
 const loading = () => {
-  return <CleopatraLoading />;
+  return <PerkoxLoader />;
 };
 
 export default loading;

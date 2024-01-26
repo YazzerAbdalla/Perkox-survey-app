@@ -10,11 +10,11 @@ interface ActivitiesCardProps {
 const ActivitiesCard = ({ offername, status }: ActivitiesCardProps) => {
   const getStatusColor = () => {
     if (status === "pending" &&"Pending") {
-      return "#FFFF00"; 
+      return "#EDC55E"; 
     } else if (status === "completed" && "Completed") {
-      return "#b7f763"; 
+      return "#409977"; 
     }
-    return "#fa0000"; 
+    return "#D53F3F"; 
   };
 
   const cardStyle = {
@@ -29,8 +29,8 @@ const ActivitiesCard = ({ offername, status }: ActivitiesCardProps) => {
     padding: "0.5rem 1rem",
     borderRadius: "18px",
     marginLeft: "-5px",
-    color: "#0a1f59",
-    fontWeight: "bold",
+    color: "#000000" ,
+    fontWeight: "solid",
     backgroundColor: getStatusColor(), 
   };
 

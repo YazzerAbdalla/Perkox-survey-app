@@ -10,7 +10,8 @@ const fetchData = async (
   data: Dispatch<SetStateAction<Offer[]>>,
   setDataArr: Dispatch<SetStateAction<Offer[]>>,
   error: Dispatch<SetStateAction<ErrorType | null>>,
-  filter: string
+  filter: string,
+  setLoading: Dispatch<SetStateAction<boolean>>
 ) => {
   try {
     const dataJ: any = await axios.get(
@@ -23,11 +24,14 @@ const fetchData = async (
       let offers = dataJ.data.offers;
       data(offers);
       setDataArr(offers);
+      setLoading(false);
     }
 
     return dataJ;
   } catch (e) {
-    console.log(e);
+    //@ts-ignore
+    error(e.response.data.error);
+    setLoading(false);
   }
 };
 export default fetchData;
