@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import ActivitiesCard from "../Components/ActivitiesCard";
+import ActivitiesCard from "../../Components/ActivitiesCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import IfNoActivities from "../Components/IfNoActivities";
-import PerkoxLoader from "../Components/PerkoxLoader";
+import IfNoActivities from "../../Components/IfNoActivities";
+import PerkoxLoader from "../../Components/PerkoxLoader";
 
 interface Activities {
   id: number;
