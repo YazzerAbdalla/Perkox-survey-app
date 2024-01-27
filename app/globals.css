@@ -159,13 +159,15 @@
 }
 
 body {
-  /* margin: 0;  
-    min-height: 10dvh;   */
+   margin: 0;  
+    min-height: 10dvh;   
   background-image: url(/background-icons-perkox-\(3\).png);
    background-color: #220837; 
-  background-size: auto;
+  background-size: cover;
   background-position: 71% 18%;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
 }
 .platform .android {
   display: block;
