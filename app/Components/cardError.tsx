@@ -16,9 +16,8 @@ export default function NoOffer({ error }: ErrorProps) {
       />
       <div
         className="flex justify-center mt-3 px-24 flex-col items-center "
-        style={{ outline: "4px solid #8369be" }}
       >
-        <h2 className=" " style={{ color: "#D53F3F" }}>
+        <h2 className="font-bold " style={{ color: "#D53F3F" }}>
           Something went wrong...
         </h2>
         <h2 className="font-bold" style={{ color: "#D53F3F" }}>{error}</h2>
