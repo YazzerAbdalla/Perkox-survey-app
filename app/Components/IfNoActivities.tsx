@@ -15,7 +15,6 @@ const IfNoActivities = () => {
       <Link href="/" className="">
         <h2
           className="flex justify-center items-center px-10 text-white mt-6"
-          style={{ outline: "4px solid #8369be" }}
         >
           You have 0 compeleted tasks
         </h2>
@@ -25,7 +24,7 @@ const IfNoActivities = () => {
         className="action  bg-purple-900 mt-4 flex justify-center w-fit"
         href="/"
       >
-        <span className="px-10">
+        <span className="px-10 font-bold">
           Check our offers!
           <span className="ml-2"> →</span>
         </span>
