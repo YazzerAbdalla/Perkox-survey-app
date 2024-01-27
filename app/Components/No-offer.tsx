@@ -10,8 +10,8 @@ export default function NoOffer() {
       alt="hero image"
       width={1025}
       height={500}
-      className="flex items-center justify-center mx-auto w-80 xl:w-120" 
-    />
+      className="flex items-center justify-center mx-auto w-80 lg:w-96" 
+      />
     <h2
       className="flex justify-center items-center text-white mt-6"
       style={{ outline: "4px solid #8369be" }}
