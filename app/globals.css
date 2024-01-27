@@ -159,15 +159,14 @@
 }
 
 body {
-   margin: 0;  
-    min-height: 10dvh;   
+  margin: 0;
+  min-height: 10dvh;
   background-image: url(/background-icons-perkox-\(3\).png);
-   background-color: #220837; 
+  background-color: #220837;
   background-size: cover;
   background-position: 71% 18%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
 }
 .platform .android {
   display: block;
@@ -779,7 +778,14 @@ header nav ul li a {
     padding: 0 30px;
   }
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 766px) {
+  nav ul {
+    background: linear-gradient(
+      150deg,
+      rgb(84 1 141) 0%,
+      rgba(89, 42, 102, 1) 99%
+    );
+  }
   .hamburger {
     display: block;
   }
@@ -807,8 +813,6 @@ header nav ul li a {
     margin: 5px 0;
   }
 }
-
-
 
 .action {
   display: inline-flex;
@@ -954,4 +958,3 @@ header nav ul li a {
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
-

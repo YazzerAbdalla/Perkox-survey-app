@@ -57,7 +57,7 @@ const Navbar = () => {
         </div>
 
         <ul
-          className={`w-full md:bg-transparent bg-[#53018c] pb-12  absolute md:flex md:items-center md:pb-0 md:static z-1 md:z-auto md:w-auto md:pl-0 pl-9 transition-all duration-500 ease top-[4.4rem] ${
+          className={`w-full pb-12  absolute md:flex md:items-center md:pb-0 md:static z-1 md:z-auto md:w-auto md:pl-0 pl-9 transition-all duration-500 ease top-[4.4rem] ${
             isOpen ? " left-0" : " -left-full "
           }`}
         >

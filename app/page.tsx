@@ -58,9 +58,15 @@ export default function Home() {
   };
   const sortArray = (sortType: string) => {
     if (sortType === "Highest Paying") {
-      return filteredDataArr.sort((a, b) => {
-        return b.reward - a.reward;
-      });
+      if (selectedPlatform.name !== "All") {
+        return filteredDataArr.sort((a, b) => {
+          return a.reward - b.reward;
+        });
+      } else {
+        return filteredDataArr.sort((a, b) => {
+          return b.reward - a.reward;
+        });
+      }
     }
   };
   // console.log();
