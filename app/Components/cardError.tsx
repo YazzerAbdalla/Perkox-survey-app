@@ -6,14 +6,22 @@ interface ErrorProps {
 }
 export default function NoOffer({ error }: ErrorProps) {
   return (
-    <div className="flex justify-center items-center mt-20">
+    <div className="pt-10 xl:pt-20 flex flex-col items-center justify-center">
+      <Image
+        src="/Asset_2.svg"
+        alt="hero image"
+        width={1025}
+        height={500}
+        className="flex items-center justify-center mx-auto w-80 lg:w-96"
+      />
       <div
-        className="error-message text-red-500 "
-        style={{ outline: "3px solid #D53F3F", backgroundColor: "#F2F3F4" }}
+        className="flex justify-center mt-3 px-24 flex-col items-center "
+        style={{ outline: "4px solid #8369be" }}
       >
-        <strong>Something went wrong... </strong>
-        <p className="mt-2"> {error}</p>
-        <button className="try-again-button">TRY AGAIN</button>
+        <h2 className=" " style={{ color: "#D53F3F" }}>
+          Something went wrong...
+        </h2>
+        <h2 className="font-bold" style={{ color: "#D53F3F" }}>{error}</h2>
       </div>
     </div>
   );

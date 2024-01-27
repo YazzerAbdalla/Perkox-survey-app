@@ -3,13 +3,12 @@ import Image from "next/image";
 
 const PerkoxLoader = () => {
   return (
-    
-      <div className="container">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+   <div className="bodyLoading">
+   <div className="container">
+      <div className="lds-dual-ring"></div>
+    </div>
+    </div>
+
   );
 };
 

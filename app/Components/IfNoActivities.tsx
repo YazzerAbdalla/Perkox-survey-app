@@ -4,27 +4,33 @@ import React from "react";
 
 const IfNoActivities = () => {
   return (
-    
-      <div className="card mt-20 " style={{ outline: "5px solid #6B46C1" }}>
-        <div className="image">
-          <Image
-            src="/image_You_have_0_compeleted_tasks.png"
-            alt="image_You_have_0_compeleted_tasks"
-            width={200}
-            height={80}
-          />
-        </div>
-        <div className="content">
-          <Link href="/">
-            <span className="title">You have 0 compeleted tasks</span>
-          </Link>
+    <div className="pt-10 mt-7 xl:pt-20 items-center flex flex-col justify-center">
+      <Image
+        src="/Asset_1.svg"
+        alt="hero image"
+        width={1025}
+        height={500}
+        className="flex items-center justify-center mx-auto w-80 lg:w-96"
+      />
+      <Link href="/" className="">
+        <h2
+          className="flex justify-center items-center px-10 text-white mt-6"
+          style={{ outline: "4px solid #8369be" }}
+        >
+          You have 0 compeleted tasks
+        </h2>
+      </Link>
 
-          <Link className="action bg-purple-900" href="/">
-            Check our offers!
-            <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-      </div>
+      <Link
+        className="action  bg-purple-900 mt-4 flex justify-center w-fit"
+        href="/"
+      >
+        <span className="px-10">
+          Check our offers!
+          <span className="ml-2"> →</span>
+        </span>
+      </Link>
+    </div>
   );
 };
 

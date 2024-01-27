@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import ActivitiesCard from "../Components/ActivitiesCard";
+import ActivitiesCard from "../../Components/ActivitiesCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import IfNoActivities from "../Components/IfNoActivities";
-import PerkoxLoader from "../Components/PerkoxLoader";
+import IfNoActivities from "../../Components/IfNoActivities";
+import PerkoxLoader from "../../Components/PerkoxLoader";
+import Navbar from "../../Components/Nav-bar";
 
 interface Activities {
   id: number;
@@ -31,9 +32,11 @@ const Activity = () => {
       ) : (
         <section className="mt-20">
           {activities ? (
+
             <div className="flex  flex-col md:flex-row gap-10  content-center flex-wrap md:px-8 px-4 mt-7 w-full">
               {activities.map(({ id, offername, status }) => (
                 <>
+
                   <ActivitiesCard
                     key={id}
                     offername={offername}
@@ -49,6 +52,8 @@ const Activity = () => {
           )}
         </section>
       )}
+                                        <Navbar />
+
     </>
   );
 };

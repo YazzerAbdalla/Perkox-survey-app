@@ -1,97 +1,87 @@
 "use client";
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import styled from "styled-components";
-import { colors } from "./theme/Color";
-import { FaBars, FaTimes } from "react-icons/fa";
-
-const NavLink = styled(Link)<{ isActive: boolean }>`
-  color: ${({ isActive }) =>
-    isActive ? colors.palette.purple : colors.palette.neutral100};
-
-  &:hover,
-  &:active {
-    color: ${colors.palette.purple};
-    border-bottom-color: rgb(194, 0, 248);
-  }
-`;
-
-const HamburgerIcon = styled.div`
-  color: ${colors.palette.neutral100};
-  font-size: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const routes = {
-  home: "/",
-  activities: "/activities",
-  term: "/term-of-service",
-};
+import { useState } from "react";
+import { navData } from "./data";
+import Image from "next/image";
+import { BsList } from "react-icons/bs";
 
 const Navbar = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const currentRoute = usePathname();
 
-  const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
   };
 
-  const pathname = usePathname();
-
   return (
-    <header className="fixed z-[1000]">
-      <Link href="/">
-        <div className="logo">
-          <Image
-            src="/White-Perkox.png"
-            alt="White-Perkox"
-            width={150}
-            height={60}
-          />
+    <div className="w-full z-[1500] items-center">
+      {/* Navbar container */}
+      <nav
+        className="fixed top-0 left-0 right-0 z-[1500] md:flex justify-between md:px-10 px-7"
+        style={{
+          background:
+            "linear-gradient(150deg, rgb(84 1 141) 0%, rgba(89, 42, 102, 1) 99%)",
+          height: "70px", // Set height to 70px
+          display: "flex",
+          alignItems: "center",
+          padding: "0 50px",
+        }}
+      >
+        {/* Logo on the left */}
+        <div className="flex items-center">
+          <Link href="/">
+            <Image
+              src="/White-Perkox.png"
+              alt="White-Perkox"
+              width={150}
+              height={60}
+              className="font-size: 30px; text-transform: uppercase; color: white; background-image: url(/White-Perkox.png);"
+            />
+          </Link>
         </div>
-      </Link>
 
-      <input type="checkbox" id="nav_check" hidden />
-      <nav className={`z-[1500]  ${isMenuOpen ? "" : "close"}`}>
-        <ul>
-          <li>
-            <NavLink
-              isActive={pathname === routes.home}
-              onClick={toggleMenu}
-              href={routes.home}
-            >
-              Home
-            </NavLink>
-          </li>
+        {/* Centered menu icon */}
+        <div className="hover:text-purple-500 z-[1500] text-2xl absolute right-4 top-15 cursor-pointer md:hidden">
+          <button
+            className="focus:outline-none w-8 h-8 overflow-hidden flex items-center justify-center transition-all duration-300 ease-in-out  text-white"
+            onClick={handleClick}
+          >
+            {/* Menu Icon using react-icons */}
+            <BsList
+              className={`text-white transition-all duration-300 ease-in-out block h-6 w-6 ${
+                isOpen ? "rotate-45 translate-y-1" : "-translate-y-1"
+              }`}
+            />
+          </button>
+        </div>
 
-          <li>
-            <NavLink
-              isActive={pathname === routes.activities}
-              href={routes.activities}
-              onClick={toggleMenu}
+        <ul
+          className={`w-full pb-12  absolute md:flex md:items-center md:pb-0 md:static z-1 md:z-auto md:w-auto md:pl-0 pl-9 transition-all duration-500 ease top-[4.4rem] ${
+            isOpen ? " left-0" : " -left-full "
+          }`}
+        >
+          {navData.map((link) => (
+            <li
+              key={link.id}
+              onClick={() => setIsOpen(false)}
+              className="md:ml-8 text-xl md:my-2 my-7"
             >
-              Activity
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              isActive={pathname === routes.term}
-              onClick={toggleMenu}
-              href={routes.term}
-            >
-              Term of service
-            </NavLink>
-          </li>
+              <Link
+                href={link.url}
+                className={`${
+                  currentRoute === link.url
+                    ? "text-purple-600 "
+                    : "text-white hover:text-purple-600"
+                }`}
+              >
+                <span className="mr-2">{link.title}</span>
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
-      <label htmlFor="nav_check" className="hamburger" onClick={toggleMenu}>
-        <HamburgerIcon>{isMenuOpen ? <FaTimes /> : <FaBars />}</HamburgerIcon>
-      </label>
-    </header>
+    </div>
   );
 };
 
