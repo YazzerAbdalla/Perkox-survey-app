@@ -70,6 +70,18 @@ export default function Home() {
       }
     }
   };
+  function isMobile() {
+    const iOS = /webOS|iPhone|iPad|iPod|Opera Mini/i;
+    const Android = /Mobi|Android|BlackBerry|IEMobile/i;
+    if (iOS.test(navigator.userAgent)) {
+      return console.log("iOS");
+    } else if (Android.test(navigator.userAgent)) {
+      return console.log("Android");
+    } else {
+      return console.log("Desktop");
+    }
+  }
+  isMobile();
   // console.log();
   sortArray(selectedSort.name);
   sortArrayByPlatform(selectedPlatform.name);
@@ -148,6 +160,4 @@ export default function Home() {
       )}
     </>
   );
-  console.log("🚀 ~ Home ~ loading:", loading);
-  console.log("🚀 ~ Home ~ loading:", loading);
 }
