@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./Components/Nav-bar";
 import { DrawerProvider } from "@/contexts/DrawerContext";
 import { DeviceProvider } from "@/contexts/DeviceContext";
 import { FilterProvider } from "@/contexts/FilterContext";
@@ -32,7 +31,6 @@ export default function RootLayout({
       </head>
       <body>
         {/* <div className="max-w-5xl mx-auto p-4 "> */}
-        <Navbar />
         {/* </div> */}
         <div className=" p-6 min-h-[calc(100vh-180px)]">
           <FilteredDataProvider>

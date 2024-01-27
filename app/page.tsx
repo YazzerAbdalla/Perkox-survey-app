@@ -16,6 +16,7 @@ import Favorite from "./Components/favorite";
 import NOoffer from "./Components/No-offer";
 import CardError from "./Components/cardError";
 import PerkoxLoader from "./Components/PerkoxLoader";
+import Navbar from "./Components/Nav-bar";
 
 export interface dataProps {
   name: string;
@@ -86,10 +87,14 @@ export default function Home() {
 
   return (
     <>
+
       {loading && !error ? (
         <PerkoxLoader />
       ) : (
+
         <section className="mt-14">
+                  <Navbar />
+
           <OfferFilter setFilter={setFilter} />
           <ButtonFilter
             selectedSort={selectedSort}
