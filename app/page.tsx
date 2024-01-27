@@ -64,7 +64,7 @@ export default function Home() {
     }
   };
   // console.log();
-  sortArray(selectedSort.name)
+  sortArray(selectedSort.name);
   sortArrayByPlatform(selectedPlatform.name);
   useEffect(() => {
     //@ts-ignore
