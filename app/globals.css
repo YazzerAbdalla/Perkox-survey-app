@@ -855,13 +855,21 @@ header nav ul li a {
 }
 
 /* CleopatraLoading.css */
+.bodyLoading {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  padding: 70px;
 }
+
 
 .rotating-image {
   animation: rotateAnimation 2s linear infinite; /* Customize animation duration and type */
