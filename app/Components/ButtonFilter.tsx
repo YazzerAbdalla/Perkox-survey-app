@@ -43,7 +43,7 @@ export default function Button({
     <div className="flex items-center z-[10] justify-center space-x-4  ">
       {/* First dropdown */}
       <Listbox value={selectedSort} onChange={setSelectedSort}>
-        <div className="relative mt-1 z-[100] min-w-[7rem]">
+        <div className="relative mt-1 z-[100] min-w-[8.8rem]">
           <Listbox.Button
             className="relative w-full cursor-default rounded-lg text-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
             style={{
@@ -101,7 +101,7 @@ export default function Button({
 
       {/* Second dropdown */}
       <Listbox value={selectedPlatform} onChange={setSelectedPlatform}>
-        <div className="relative mt-1 z-[100] min-w-[7rem]">
+        <div className="relative mt-1 z-[100] min-w-[8.8rem] ">
           <Listbox.Button
             className="relative w-full cursor-default rounded-lg text-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
             style={{
