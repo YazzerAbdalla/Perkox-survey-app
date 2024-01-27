@@ -1,5 +1,8 @@
 "use client";
-import ButtonFilter from "./Components/ButtonFilter";
+import ButtonFilter, {
+  platforms,
+  sortOptions,
+} from "./Components/ButtonFilter";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Offer, useDataContext } from "@/contexts/DataContext";
@@ -31,22 +34,68 @@ export default function Home() {
   const { filter, setFilter } = useFilter();
   const [selectedCardID, setSelectedCardID] = useState<number | null>(null);
   const [fav, setFav] = useState<Offer[] | []>([]);
+  const [selectedSort, setSelectedSort] = useState(sortOptions[0]);
+  const [selectedPlatform, setSelectedPlatform] = useState(platforms[0]);
   // Track selected card ID
 
   // Add more items as needed
+  const OS = {
+    All: "all",
+    iOS: "ios",
+    Android: "android",
+    Web: "web",
+  };
 
+  const sortArrayByPlatform = (platform: string) => {
+    if (platform === "All") return;
+    return filteredDataArr.sort((a, b) => {
+      //@ts-ignore
+      if (a.os === OS[platform]) return -1;
+      //@ts-ignore
+      if (b.os === OS[platform]) return 1;
+      return 0;
+    });
+  };
+  const sortArray = (sortType: string) => {
+    if (sortType === "Highest Paying") {
+      if (selectedPlatform.name !== "All") {
+        return filteredDataArr.sort((a, b) => {
+          return a.reward - b.reward;
+        });
+      } else {
+        return filteredDataArr.sort((a, b) => {
+          return b.reward - a.reward;
+        });
+      }
+    }
+  };
+  function isMobile() {
+    const iOS = /webOS|iPhone|iPad|iPod|Opera Mini/i;
+    const Android = /Mobi|Android|BlackBerry|IEMobile/i;
+    if (iOS.test(navigator.userAgent)) {
+      return console.log("iOS");
+    } else if (Android.test(navigator.userAgent)) {
+      return console.log("Android");
+    } else {
+      return console.log("Desktop");
+    }
+  }
+  isMobile();
+  // console.log();
+  sortArray(selectedSort.name);
+  sortArrayByPlatform(selectedPlatform.name);
   useEffect(() => {
     //@ts-ignore
     // Set the dataArr once the data is fetched
     fetchData(setFilteredDataArr, setDataArr, setError, filter, setLoading);
-    let theFavCards = dataArr.filter((item) => item.favorite === 1);
+    let theFavCards: Offer[] = dataArr.filter((item) => item.favorite === 1);
     setFav(theFavCards);
   }, []);
   useEffect(() => {
     let filteredData = dataArr.filter((item: Offer) => item.model === filter);
     setFilteredDataArr(filteredData);
   }, [filter]);
-  console.log(loading);
+
   return (
     <>
       {loading && !error ? (
@@ -54,7 +103,12 @@ export default function Home() {
       ) : (
         <section className="mt-14">
           <OfferFilter setFilter={setFilter} />
-          <ButtonFilter />
+          <ButtonFilter
+            selectedSort={selectedSort}
+            setSelectedSort={setSelectedSort}
+            selectedPlatform={selectedPlatform}
+            setSelectedPlatform={setSelectedPlatform}
+          />
 
           {error ? (
             //@ts-ignore
@@ -101,6 +155,4 @@ export default function Home() {
       )}
     </>
   );
-  console.log("🚀 ~ Home ~ loading:", loading);
-  console.log("🚀 ~ Home ~ loading:", loading);
 }
