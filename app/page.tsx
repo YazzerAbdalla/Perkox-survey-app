@@ -70,19 +70,6 @@ export default function Home() {
       }
     }
   };
-  function isMobile() {
-    const iOS = /webOS|iPhone|iPad|iPod|Opera Mini/i;
-    const Android = /Mobi|Android|BlackBerry|IEMobile/i;
-    if (iOS.test(navigator.userAgent)) {
-      return console.log("iOS");
-    } else if (Android.test(navigator.userAgent)) {
-      return console.log("Android");
-    } else {
-      return console.log("Desktop");
-    }
-  }
-  isMobile();
-  // console.log();
   sortArray(selectedSort.name);
   sortArrayByPlatform(selectedPlatform.name);
   useEffect(() => {
@@ -99,13 +86,11 @@ export default function Home() {
 
   return (
     <>
-
       {loading && !error ? (
         <PerkoxLoader />
       ) : (
-
         <section className="mt-14">
-                  <Navbar />
+          <Navbar />
 
           <OfferFilter setFilter={setFilter} />
           <ButtonFilter
