@@ -5,8 +5,8 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
 export const sortOptions = [
   { name: "All" },
-  { name: "Most Popular" },
   { name: "Highest Paying" },
+  { name: "Lowest Paying" },
 ];
 export const platforms = [
   { name: "All" },

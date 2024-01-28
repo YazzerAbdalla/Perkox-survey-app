@@ -14,7 +14,7 @@ export default function Example({
   return (
     <div className="w-full max-w-md px-2 sm:px-0 mx-auto justify-center ">
       <Tab.Group
-        defaultIndex={0}
+        defaultIndex={1}
         onChange={(index) => {
           // Execute additional code here based on the selected tab index
           if (index === 0) {

@@ -72,6 +72,16 @@ export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
           return b.reward - a.reward;
         });
       }
+    } else if (sortType === "Lowest Paying") {
+      if (selectedPlatform.name !== "All") {
+        return filteredDataArr.sort((a, b) => {
+          return b.reward - a.reward;
+        });
+      } else {
+        return filteredDataArr.sort((a, b) => {
+          return a.reward - b.reward;
+        });
+      }
     }
   };
   sortArray(selectedSort.name);
@@ -92,8 +102,14 @@ export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
     setFav(theFavCards);
   }, []);
   useEffect(() => {
-    let filteredData = dataArr.filter((item: Offer) => item.model === filter);
-    setFilteredDataArr(filteredData);
+    if (filter === "CPI") {
+      let filteredData = dataArr.filter(
+        (item: Offer) => item.offer_type === filter
+      );
+      setFilteredDataArr(filteredData);
+    } else {
+      setFilteredDataArr(dataArr);
+    }
   }, [filter]);
 
   return (
