@@ -10,8 +10,8 @@ const DrawerTabs = () => {
         onClick={() => setDrawerTab("details")}
         className={`flex items-center px-3 py-2  cursor-pointer rounded ${
           drawerTab === "details"
-            ? "bg-gray-500 text-black"
-            : "text-white hover:bg-gray-200"
+            ? "bg-pink-500 text-black"
+            : "text-white hover:bg-pink-500"
         }`}
       >
         <svg
