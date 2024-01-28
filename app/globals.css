@@ -16,10 +16,7 @@
   z-index: 10;
 }
 
-.offer-card {
-  flex-basis: 100%;
-  row-gap: 5px;
-}
+
 .activities-card {
   background: linear-gradient(
     150deg,
@@ -27,15 +24,15 @@
     rgba(89, 42, 102, 1) 99%
   );
 }
+
 .offer-card {
   display: flex;
   position: relative;
-  flex-basis: calc(50% - 8px);
   flex-flow: column;
   row-gap: 14px;
   padding: 8px;
   height: auto;
-  border-radius: 18px;
+  border-radius: 18px;  
   background: linear-gradient(
     150deg,
     rgb(84 1 141) 0%,
@@ -43,12 +40,13 @@
   );
   overflow: hidden;
   cursor: pointer;
-  width: calc(85% - 20px);
+  justify-content: center;  /* Center vertically */
+
 }
 
 @media (max-width: 767px) {
   .offer-card {
-    flex-basis: 100%;
+    flex-basis: 100%; 
     width: calc(100% - 20px);
   }
 }
@@ -243,8 +241,7 @@ body {
   padding-right: 73px;
   padding: 16px 32px 16px 16px;
   border-radius: 18px;
-  background-color: rgb(231, 33, 113);
-  /* background: linear-gradient(150deg, rgb(84 1 141) 0%); */
+  background: transparent;
   column-gap: 30px;
   align-items: center;
   justify-content: space-between;
@@ -636,7 +633,8 @@ body {
   column-gap: 16px;
   padding: 16px;
   border-radius: 18px;
-  background-color: #0a1f59;
+  background:transparent;
+
 }
 .new-offer-popup__links .qrcode-wrapper #qrcode {
   padding: 8px;

@@ -66,13 +66,13 @@ const DrawerDemo = ({
           image={image}
           reward={reward}
           os={os}
-          onClick={handleClick} // Handle the click event
+          onClick={handleClick}
         />
       </DrawerTrigger>
 
       <RadixDrawer open={isDrawerOpen && cardID === id} onClose={closeDrawer}>
         <DrawerContent
-          className="z-[2000] text-white "
+          className="z-[2000] text-white flex justify-center items-center "
           style={{
             background:
               "linear-gradient(150deg, rgb(84 1 141) 0%, rgba(89, 42, 102, 1) 99%)",
@@ -80,7 +80,7 @@ const DrawerDemo = ({
         >
           <>
             <DrawerHeader
-              className=""
+              className=" "
               style={{
                 background:
                   "linear-gradient(150deg, rgb(84 1 141) 0%, rgba(89, 42, 102, 1) 99%)",

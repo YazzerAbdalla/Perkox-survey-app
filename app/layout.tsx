@@ -8,7 +8,6 @@ import { DrawerTabsProvider } from "@/contexts/DrawerTabs";
 import { CardProvider } from "@/contexts/CardContext";
 import { DataProvider } from "@/contexts/DataContext";
 import { ErrorContextProvider } from "@/contexts/ErrorContext";
-import Footer from "./Components/Footer";
 import { FilteredDataProvider } from "@/contexts/FilteredDataContext";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -48,7 +47,6 @@ export default function RootLayout({
             </ErrorContextProvider>
           </FilteredDataProvider>
         </div>
-        <Footer />
       </body>
     </html>
   );

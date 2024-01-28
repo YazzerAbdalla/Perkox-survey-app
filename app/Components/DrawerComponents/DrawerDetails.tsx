@@ -24,7 +24,7 @@ const DrawerDetails = ({ cardId }: DrawerHeaderProps) => {
   return (
     <>
       {showDetail && (
-        <div className="z-[1000] w-full gap-4 new-offer-popup__text-content overflow-y-scroll">
+        <div className="z-[1000] w-full gap-4 new-offer-popup__text-content overflow-y-scroll flex  left-4 ">
           <div className="flex flex-col w-[50%] gap-1 offer-instructoins">
             <div className="offer-description">
               <span className="title">Offer description :</span>
@@ -34,42 +34,7 @@ const DrawerDetails = ({ cardId }: DrawerHeaderProps) => {
               </p>
               
             </div>
-            <div className="offer-text-wrapper">
-              <span className="title">
-                To enjoy our offerwall, please remember:
-              </span>
-              <div className="text">
-                <ol>
-                  <li>
-                    Use a genuine device: Emulators are not allowed. Avoid using
-                    VPNs or proxies to ensure accurate location tracking and the
-                    best user experience.
-                  </li>
-                  <li>
-                    Stick with one device and location: Completing tasks on the
-                    same device and location helps track your progress.
-                  </li>
-                  <li>
-                    Time limit: Most offers have a 30-day completion window
-                    unless stated otherwise, but also pay attention to specified
-                    time limits for offer completion.
-                  </li>
-                  <li>
-                    New users: If you’re new you will be able to enjoy the
-                    offers. Existing users may not be eligible unless
-                    specifically mentioned in the offer details.
-                  </li>
-                  <li>
-                    Reward delivery: Rewards are usually prompt, but there may
-                    be up to a 24-hour delay in some cases.
-                  </li>
-                  <li>
-                    Mobile app tips: Open the app immediately after installation
-                    for a smooth experience and higher completion chances.
-                  </li>
-                </ol>
-              </div>
-              </div>
+           
           </div>
           {selectedCard.goals && (
             <div className="new-offer-popup__steps-wrapper w-[50%]">
