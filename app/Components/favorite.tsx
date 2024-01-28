@@ -2,7 +2,7 @@
 
 import { Offer } from "@/contexts/DataContext";
 import DrawerDemo from "./Drawer";
-import { dataProps } from "../page";
+import { dataProps } from "./pages/HomePage";
 import { useState } from "react";
 
 // p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start
