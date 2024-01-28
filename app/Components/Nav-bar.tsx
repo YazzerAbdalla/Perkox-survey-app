@@ -6,7 +6,12 @@ import { navData } from "./data";
 import Image from "next/image";
 import { BsList } from "react-icons/bs";
 
-const Navbar = () => {
+interface NavProps {
+  navTab: string;
+  setNavTab: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Navbar = ({ navTab, setNavTab }: NavProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const currentRoute = usePathname();
 
@@ -30,7 +35,7 @@ const Navbar = () => {
       >
         {/* Logo on the left */}
         <div className="flex items-center">
-          <Link href="/">
+          <Link href="" onClick={() => setNavTab("Home")}>
             <Image
               src="/White-Perkox.png"
               alt="White-Perkox"
@@ -68,12 +73,13 @@ const Navbar = () => {
               className="md:ml-8 text-xl md:my-2 my-7"
             >
               <Link
-                href={link.url}
+                href={""}
                 className={`${
                   currentRoute === link.url
                     ? "text-purple-600 "
                     : "text-white hover:text-purple-600"
                 }`}
+                onClick={() => setNavTab(link.title)}
               >
                 <span className="mr-2">{link.title}</span>
               </Link>

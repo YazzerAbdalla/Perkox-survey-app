@@ -11,11 +11,13 @@ const fetchData = async (
   setDataArr: Dispatch<SetStateAction<Offer[]>>,
   error: Dispatch<SetStateAction<ErrorType | null>>,
   filter: string,
-  setLoading: Dispatch<SetStateAction<boolean>>
+  setLoading: Dispatch<SetStateAction<boolean>>,
+  id: string,
+  userID: string
 ) => {
   try {
     const dataJ: any = await axios.get(
-      "https://perkox.com/api/v1/offers-iframe/10000/ker00sama"
+      `https://perkox.com/api/v1/offers-iframe/${id}/${userID}`
     );
 
     if (dataJ.data.error) {

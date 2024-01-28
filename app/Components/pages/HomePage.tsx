@@ -1,22 +1,19 @@
 "use client";
-import ButtonFilter, {
-  platforms,
-  sortOptions,
-} from "./Components/ButtonFilter";
+import ButtonFilter, { platforms, sortOptions } from "../ButtonFilter";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Offer, useDataContext } from "@/contexts/DataContext";
-import DrawerDemo from "./Components/Drawer";
-import fetchData from "./api/fetch";
+import DrawerDemo from "../Drawer";
+import fetchData from "../../api/fetch";
 import { useErrorContext } from "@/contexts/ErrorContext";
-import OfferFilter from "./Components/offerFilter";
+import OfferFilter from "../offerFilter";
 import { useFilter } from "@/contexts/FilterContext";
 import { useFilteredDataContext } from "@/contexts/FilteredDataContext";
-import Favorite from "./Components/favorite";
-import NOoffer from "./Components/No-offer";
-import CardError from "./Components/cardError";
-import PerkoxLoader from "./Components/PerkoxLoader";
-import Navbar from "./Components/Nav-bar";
+import Favorite from "../favorite";
+import NOoffer from "../No-offer";
+import CardError from "../cardError";
+import PerkoxLoader from "../PerkoxLoader";
+import Navbar from "../Nav-bar";
 
 export interface dataProps {
   name: string;
@@ -26,8 +23,14 @@ export interface dataProps {
   reward: number;
   id: number;
 }
+interface HomeProps {
+  navTab: string;
+  setNavTab: React.Dispatch<React.SetStateAction<string>>;
+  id: string;
+  userID: string;
+}
 
-export default function Home() {
+export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
   const [loading, setLoading] = useState(true);
   const { dataArr, setDataArr } = useDataContext();
   const { filteredDataArr, setFilteredDataArr } = useFilteredDataContext();
@@ -70,25 +73,20 @@ export default function Home() {
       }
     }
   };
-  function isMobile() {
-    const iOS = /webOS|iPhone|iPad|iPod|Opera Mini/i;
-    const Android = /Mobi|Android|BlackBerry|IEMobile/i;
-    if (iOS.test(navigator.userAgent)) {
-      return console.log("iOS");
-    } else if (Android.test(navigator.userAgent)) {
-      return console.log("Android");
-    } else {
-      return console.log("Desktop");
-    }
-  }
-  isMobile();
-  // console.log();
   sortArray(selectedSort.name);
   sortArrayByPlatform(selectedPlatform.name);
   useEffect(() => {
     //@ts-ignore
     // Set the dataArr once the data is fetched
-    fetchData(setFilteredDataArr, setDataArr, setError, filter, setLoading);
+    fetchData(
+      setFilteredDataArr,
+      setDataArr,
+      setError,
+      filter,
+      setLoading,
+      id,
+      userID
+    );
     let theFavCards: Offer[] = dataArr.filter((item) => item.favorite === 1);
     setFav(theFavCards);
   }, []);
@@ -99,13 +97,11 @@ export default function Home() {
 
   return (
     <>
-
       {loading && !error ? (
         <PerkoxLoader />
       ) : (
-
         <section className="mt-14">
-                  <Navbar />
+          <Navbar navTab={navTab} setNavTab={setNavTab} />
 
           <OfferFilter setFilter={setFilter} />
           <ButtonFilter
