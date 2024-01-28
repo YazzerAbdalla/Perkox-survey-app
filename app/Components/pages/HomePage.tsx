@@ -118,12 +118,8 @@ export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
         <PerkoxLoader />
       ) : (
         <section className="mt-14">
-<<<<<<< HEAD:app/page.tsx
-          <Navbar />
-=======
           <Navbar navTab={navTab} setNavTab={setNavTab} />
           <StarBackground />
->>>>>>> develop:app/Components/pages/HomePage.tsx
 
           <OfferFilter setFilter={setFilter} />
           <ButtonFilter

@@ -35,14 +35,9 @@ const Activity = ({ navTab, setNavTab, id, userID }: HomeProps) => {
       {loading ? (
         <PerkoxLoader />
       ) : (
-<<<<<<< HEAD:app/(CustomePath)/activities/page.tsx
-        <section className="mt-20">
-          {activities ? (
-=======
         <section className="mt-14">
           <Navbar navTab={navTab} setNavTab={setNavTab} />
           <StarBackground />
->>>>>>> develop:app/Components/pages/ActivitiesPage.tsx
 
           {activities ? (
             <div className="flex  flex-col md:flex-row gap-10  content-center flex-wrap md:px-8 px-4 mt-7 w-full">
