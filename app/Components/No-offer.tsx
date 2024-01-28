@@ -13,8 +13,7 @@ export default function NoOffer() {
       className="flex items-center justify-center mx-auto w-80 lg:w-96" 
       />
     <h2
-      className="flex justify-center items-center text-white mt-6"
-      style={{ outline: "4px solid #8369be" }}
+      className="flex justify-center items-center text-white mt-6 font-bold"
     >
       Sorry, No offers yet
     </h2>
