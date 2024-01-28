@@ -1,11 +1,17 @@
 "use client";
-import { useDevice } from "@/contexts/DeviceContext";
-import Navbar from "../../Components/Nav-bar";
+import Navbar from "../Nav-bar";
+import StarBackground from "../StarBackground";
 
-const Settings = () => {
+
+interface TermsProps {
+  navTab: string;
+  setNavTab: React.Dispatch<React.SetStateAction<string>>;
+}
+const Settings = ({ navTab, setNavTab }: TermsProps) => {
   return (
-   <section className="content-wrapper page more-page-active z-10  mt-6 ">
-        <Navbar />
+    <section className="content-wrapper page more-page-active z-10  mt-6 ">
+      <Navbar navTab={navTab} setNavTab={setNavTab} />
+      <StarBackground />
 
       <div className="more-page flex flex-col row-gap-10 p-10 md:p-10">
         <div className="more-page__device-select"></div>

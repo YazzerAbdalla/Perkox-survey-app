@@ -1,25 +1,30 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
-import ActivitiesCard from "../../Components/ActivitiesCard";
+import ActivitiesCard from "../ActivitiesCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import IfNoActivities from "../../Components/IfNoActivities";
-import PerkoxLoader from "../../Components/PerkoxLoader";
-import Navbar from "../../Components/Nav-bar";
+import IfNoActivities from "../IfNoActivities";
+import PerkoxLoader from "../PerkoxLoader";
+import Navbar from "../Nav-bar";
+import StarBackground from "../StarBackground";
 
 interface Activities {
   id: number;
   offername: string;
   status: string;
 }
-const Activity = () => {
+interface HomeProps {
+  navTab: string;
+  setNavTab: React.Dispatch<React.SetStateAction<string>>;
+  id: string;
+  userID: string;
+}
+const Activity = ({ navTab, setNavTab, id, userID }: HomeProps) => {
   const [activities, setActivities] = useState<Activities[] | null>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const data = axios
-      .get("https://perkox.com/api/v1/offers-iframe/clicks/10000/ker00sama")
+      .get(`https://perkox.com/api/v1/offers-iframe/clicks/${id}/${userID}`)
       .then((res) =>
         res.data.error ? setActivities(null) : setActivities(res.data)
       )
@@ -30,13 +35,19 @@ const Activity = () => {
       {loading ? (
         <PerkoxLoader />
       ) : (
+<<<<<<< HEAD:app/(CustomePath)/activities/page.tsx
         <section className="mt-20">
           {activities ? (
+=======
+        <section className="mt-14">
+          <Navbar navTab={navTab} setNavTab={setNavTab} />
+          <StarBackground />
+>>>>>>> develop:app/Components/pages/ActivitiesPage.tsx
 
+          {activities ? (
             <div className="flex  flex-col md:flex-row gap-10  content-center flex-wrap md:px-8 px-4 mt-7 w-full">
               {activities.map(({ id, offername, status }) => (
                 <>
-
                   <ActivitiesCard
                     key={id}
                     offername={offername}
@@ -52,8 +63,6 @@ const Activity = () => {
           )}
         </section>
       )}
-                                        <Navbar />
-
     </>
   );
 };

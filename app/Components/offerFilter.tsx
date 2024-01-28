@@ -14,13 +14,13 @@ export default function Example({
   return (
     <div className="w-full max-w-md px-2 sm:px-0 mx-auto justify-center ">
       <Tab.Group
-        defaultIndex={0}
+        defaultIndex={1}
         onChange={(index) => {
           // Execute additional code here based on the selected tab index
           if (index === 0) {
-            setFilter("offer");
+            setFilter("CPI");
           } else if (index === 1) {
-            setFilter("survey");
+            setFilter("offer");
           }
         }}
       >
@@ -42,7 +42,7 @@ export default function Example({
               )
             }
           >
-            Offer
+            App Install
           </Tab>
           <Tab
             className={({ selected }) =>
@@ -55,7 +55,7 @@ export default function Example({
               )
             }
           >
-            Survey
+            Offer
           </Tab>
         </Tab.List>
       </Tab.Group>

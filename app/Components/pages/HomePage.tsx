@@ -1,22 +1,20 @@
 "use client";
-import ButtonFilter, {
-  platforms,
-  sortOptions,
-} from "./Components/ButtonFilter";
+import ButtonFilter, { platforms, sortOptions } from "../ButtonFilter";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Offer, useDataContext } from "@/contexts/DataContext";
-import DrawerDemo from "./Components/Drawer";
-import fetchData from "./api/fetch";
+import DrawerDemo from "../Drawer";
+import fetchData from "../../api/fetch";
 import { useErrorContext } from "@/contexts/ErrorContext";
-import OfferFilter from "./Components/offerFilter";
+import OfferFilter from "../offerFilter";
 import { useFilter } from "@/contexts/FilterContext";
 import { useFilteredDataContext } from "@/contexts/FilteredDataContext";
-import Favorite from "./Components/favorite";
-import NOoffer from "./Components/No-offer";
-import CardError from "./Components/cardError";
-import PerkoxLoader from "./Components/PerkoxLoader";
-import Navbar from "./Components/Nav-bar";
+import Favorite from "../favorite";
+import NOoffer from "../No-offer";
+import CardError from "../cardError";
+import PerkoxLoader from "../PerkoxLoader";
+import Navbar from "../Nav-bar";
+import StarBackground from "../StarBackground";
 
 export interface dataProps {
   name: string;
@@ -26,8 +24,14 @@ export interface dataProps {
   reward: number;
   id: number;
 }
+interface HomeProps {
+  navTab: string;
+  setNavTab: React.Dispatch<React.SetStateAction<string>>;
+  id: string;
+  userID: string;
+}
 
-export default function Home() {
+export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
   const [loading, setLoading] = useState(true);
   const { dataArr, setDataArr } = useDataContext();
   const { filteredDataArr, setFilteredDataArr } = useFilteredDataContext();
@@ -68,6 +72,16 @@ export default function Home() {
           return b.reward - a.reward;
         });
       }
+    } else if (sortType === "Lowest Paying") {
+      if (selectedPlatform.name !== "All") {
+        return filteredDataArr.sort((a, b) => {
+          return b.reward - a.reward;
+        });
+      } else {
+        return filteredDataArr.sort((a, b) => {
+          return a.reward - b.reward;
+        });
+      }
     }
   };
   sortArray(selectedSort.name);
@@ -75,13 +89,27 @@ export default function Home() {
   useEffect(() => {
     //@ts-ignore
     // Set the dataArr once the data is fetched
-    fetchData(setFilteredDataArr, setDataArr, setError, filter, setLoading);
+    fetchData(
+      setFilteredDataArr,
+      setDataArr,
+      setError,
+      filter,
+      setLoading,
+      id,
+      userID
+    );
     let theFavCards: Offer[] = dataArr.filter((item) => item.favorite === 1);
     setFav(theFavCards);
   }, []);
   useEffect(() => {
-    let filteredData = dataArr.filter((item: Offer) => item.model === filter);
-    setFilteredDataArr(filteredData);
+    if (filter === "CPI") {
+      let filteredData = dataArr.filter(
+        (item: Offer) => item.offer_type === filter
+      );
+      setFilteredDataArr(filteredData);
+    } else {
+      setFilteredDataArr(dataArr);
+    }
   }, [filter]);
 
   return (
@@ -90,7 +118,12 @@ export default function Home() {
         <PerkoxLoader />
       ) : (
         <section className="mt-14">
+<<<<<<< HEAD:app/page.tsx
           <Navbar />
+=======
+          <Navbar navTab={navTab} setNavTab={setNavTab} />
+          <StarBackground />
+>>>>>>> develop:app/Components/pages/HomePage.tsx
 
           <OfferFilter setFilter={setFilter} />
           <ButtonFilter
