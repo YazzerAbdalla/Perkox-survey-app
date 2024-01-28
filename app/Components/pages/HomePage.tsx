@@ -14,6 +14,7 @@ import NOoffer from "../No-offer";
 import CardError from "../cardError";
 import PerkoxLoader from "../PerkoxLoader";
 import Navbar from "../Nav-bar";
+import StarBackground from "../StarBackground";
 
 export interface dataProps {
   name: string;
@@ -102,6 +103,7 @@ export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
       ) : (
         <section className="mt-14">
           <Navbar navTab={navTab} setNavTab={setNavTab} />
+          <StarBackground />
 
           <OfferFilter setFilter={setFilter} />
           <ButtonFilter

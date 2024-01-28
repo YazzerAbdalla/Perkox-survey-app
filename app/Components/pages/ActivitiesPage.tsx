@@ -5,6 +5,7 @@ import axios from "axios";
 import IfNoActivities from "../IfNoActivities";
 import PerkoxLoader from "../PerkoxLoader";
 import Navbar from "../Nav-bar";
+import StarBackground from "../StarBackground";
 
 interface Activities {
   id: number;
@@ -36,6 +37,8 @@ const Activity = ({ navTab, setNavTab, id, userID }: HomeProps) => {
       ) : (
         <section className="mt-14">
           <Navbar navTab={navTab} setNavTab={setNavTab} />
+          <StarBackground />
+
           {activities ? (
             <div className="flex  flex-col md:flex-row gap-10  content-center flex-wrap md:px-8 px-4 mt-7 w-full">
               {activities.map(({ id, offername, status }) => (
