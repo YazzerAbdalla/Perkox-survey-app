@@ -1,17 +1,37 @@
-import { useDrawerTabs } from "@/contexts/DrawerTabs";
-import React from "react";
+import React, { useEffect, useState } from 'react';
+import { useDrawerTabs } from '@/contexts/DrawerTabs';
 
 const DrawerTabs = () => {
   const { drawerTab, setDrawerTab } = useDrawerTabs();
+  const [deviceType, setDeviceType] = useState('Unknown');
+
+  useEffect(() => {
+    const userAgent = window.navigator.userAgent;
+
+    const detectDeviceType = (userAgent:string) => {
+      if (userAgent.match(/iPad|iPhone|iPod/i)) {
+        return 'iOS';
+      } else if (userAgent.match(/Android/i)) {
+        return 'Android';
+      } else if (userAgent.match(/Macintosh|Windows|Linux/i)) {
+        return 'PC';
+      } else {
+        return 'Unknown';
+      }
+    };
+
+    const currentDeviceType = detectDeviceType(userAgent);
+    setDeviceType(currentDeviceType);
+  }, []);
 
   return (
     <div className="flex justify-center items-center space-x-2 top-0">
       <div
-        onClick={() => setDrawerTab("details")}
-        className={`flex items-center px-3 py-2  cursor-pointer rounded ${
-          drawerTab === "details"
-            ? "bg-gray-500 text-black"
-            : "text-white hover:bg-gray-200"
+        onClick={() => setDrawerTab('details')}
+        className={`flex items-center px-3 py-2 cursor-pointer rounded ${
+          drawerTab === 'details'
+            ? 'bg-pink-500 text-black'
+            : 'text-white hover:bg-pink-500'
         }`}
       >
         <svg
@@ -40,46 +60,48 @@ const DrawerTabs = () => {
         Offer Details
       </div>
 
-      <div
-        onClick={() => setDrawerTab("links")}
-        className={`flex items-center px-3 py-2 cursor-pointer rounded ${
-          drawerTab === "links"
-            ? "bg-white text-white"
-            : "text-white hover:bg-gray-200"
-        }`}
-      >
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="mr-2"
+      {deviceType === 'PC' && (
+        <div
+          onClick={() => setDrawerTab('links')}
+          className={`flex items-center px-3 py-2 cursor-pointer rounded ${
+            drawerTab === 'links'
+              ? 'bg-white text-white'
+              : 'text-white hover:bg-gray-200'
+          }`}
         >
-          <path
-            d="M9.99414 11.6663H11.0008C13.0141 11.6663 14.6675 10.0197 14.6675 7.99967C14.6675 5.98634 13.0208 4.33301 11.0008 4.33301H9.99414"
-            stroke="#0000009e"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-          <path
-            d="M6.00065 4.33301H5.00065C2.98065 4.33301 1.33398 5.97967 1.33398 7.99967C1.33398 10.013 2.98065 11.6663 5.00065 11.6663H6.00065"
-            stroke="#0000009e"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-          <path
-            d="M5.33398 8H10.6673"
-            stroke="#0000009e"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-        </svg>
-        Get link options
-      </div>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="mr-2"
+          >
+            <path
+              d="M9.99414 11.6663H11.0008C13.0141 11.6663 14.6675 10.0197 14.6675 7.99967C14.6675 5.98634 13.0208 4.33301 11.0008 4.33301H9.99414"
+              stroke="#0000009e"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+            <path
+              d="M6.00065 4.33301H5.00065C2.98065 4.33301 1.33398 5.97967 1.33398 7.99967C1.33398 10.013 2.98065 11.6663 5.00065 11.6663H6.00065"
+              stroke="#0000009e"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+            <path
+              d="M5.33398 8H10.6673"
+              stroke="#0000009e"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+          </svg>
+          Get link options
+        </div>
+      )}
     </div>
   );
 };
