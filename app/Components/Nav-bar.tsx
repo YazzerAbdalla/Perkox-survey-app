@@ -1,41 +1,44 @@
 "use client";
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { navData } from "./data";
 import Image from "next/image";
 import { BsList } from "react-icons/bs";
-
+import { navData } from "./data"; 
 interface NavProps {
   navTab: string;
   setNavTab: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Navbar = ({ navTab, setNavTab }: NavProps) => {
+const Navbar: React.FC<NavProps> = ({ navTab, setNavTab }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const currentRoute = usePathname();
+  const [activeRoute, setActiveRoute] = useState<string>("Home");
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleLinkClick = (title: string) => {
+    setIsOpen(false);
+    setActiveRoute(title);
+    setNavTab(title);
+  };
+
   return (
     <div className="w-full z-[1500] items-center">
-      {/* Navbar container */}
       <nav
         className="fixed top-0 left-0 right-0 z-[1500] md:flex justify-between md:px-10 px-7"
         style={{
           background:
             "linear-gradient(150deg, rgb(84 1 141) 0%, rgba(89, 42, 102, 1) 99%)",
-          height: "70px", // Set height to 70px
+          height: "70px",
           display: "flex",
           alignItems: "center",
           padding: "0 50px",
         }}
       >
-        {/* Logo on the left */}
         <div className="flex items-center">
-          <Link href="" onClick={() => setNavTab("Home")}>
+          <Link href="" onClick={() => handleLinkClick("Home")}>
             <Image
               src="/White-Perkox.png"
               alt="White-Perkox"
@@ -46,13 +49,11 @@ const Navbar = ({ navTab, setNavTab }: NavProps) => {
           </Link>
         </div>
 
-        {/* Centered menu icon */}
         <div className="hover:text-purple-500 z-[1500] text-2xl absolute right-4 top-15 cursor-pointer md:hidden">
           <button
             className="focus:outline-none w-8 h-8 overflow-hidden flex items-center justify-center transition-all duration-300 ease-in-out  text-white"
             onClick={handleClick}
           >
-            {/* Menu Icon using react-icons */}
             <BsList
               className={`text-white transition-all duration-300 ease-in-out block h-6 w-6 ${
                 isOpen ? "rotate-45 translate-y-1" : "-translate-y-1"
@@ -69,17 +70,17 @@ const Navbar = ({ navTab, setNavTab }: NavProps) => {
           {navData.map((link) => (
             <li
               key={link.id}
-              onClick={() => setIsOpen(false)}
+              onClick={() => handleLinkClick(link.title)}
               className="md:ml-8 text-xl md:my-2 my-7"
             >
               <Link
-                href={""}
+                href=""
                 className={`${
-                  currentRoute === link.url
+                  activeRoute === link.title
                     ? "text-purple-600 "
                     : "text-white hover:text-purple-600"
                 }`}
-                onClick={() => setNavTab(link.title)}
+                onClick={() => handleLinkClick(link.title)}
               >
                 <span className="mr-2">{link.title}</span>
               </Link>
