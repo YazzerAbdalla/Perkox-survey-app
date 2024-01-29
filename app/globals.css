@@ -291,7 +291,6 @@ body {
   font-style: normal;
   font-weight: 700;
   line-height: 16px;
-  color: #b7f763;
 }
 .new-offer-popup__header .right .offer-reward img {
   filter: invert(82%) sepia(92%) saturate(339%) hue-rotate(28deg)
@@ -468,14 +467,14 @@ body {
   align-items: center;
   column-gap: 6px;
   border-radius: 100px;
-  border: 1px solid #3b4c7a;
+  border: 3px solid #ffffff;
   padding: 5px 10px;
   width: max-content;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
   line-height: 16px;
-  color: #b7f763;
+  color: #ffffff;
 }
 .new-offer-popup__steps-wrapper .step-counter {
   display: flex;
@@ -503,14 +502,14 @@ body {
   align-items: center;
   column-gap: 6px;
   border-radius: 100px;
-  border: 1px solid #3b4c7a;
+  border: 1px solid #f1f1f1;
   padding: 5px 10px;
   width: max-content;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
   line-height: 16px;
-  color: #b7f763;
+  color: #ffffff;
 }
 .new-offer-popup__steps-wrapper .offer-reward img {
   filter: invert(82%) sepia(92%) saturate(339%) hue-rotate(28deg)
@@ -1037,4 +1036,18 @@ header nav ul li a {
   100% {
     transform: rotate(360deg);
   }
+}
+.offer-rewardDrawer{
+  position: relative;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  border-radius: 100px;
+  padding: 10px 15px;
+  width: max-content;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+  height: 30px;
 }

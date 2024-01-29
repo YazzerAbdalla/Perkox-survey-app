@@ -44,9 +44,9 @@ const DrawerNewHeader = ({ cardId }: DrawerHeaderProps) => {
             ></span>
           </div>
         </div>
-        <div className="offer-reward">
-          <Image src="/reward-coins.svg" width={18} height={18} alt="reward" />
-          <span className="actual-reward">{selectedCard.reward}</span>
+        <div className="offer-rewardDrawer bg-purple-600 font-bold ">
+        <Image src="/Perkox-icon.png" width={16} height={16} alt="reward"  />
+          <span className="actual-reward text-black">{selectedCard.reward} points</span>
         </div>
       </div>
     </div>
