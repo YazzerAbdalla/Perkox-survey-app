@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { BsList } from "react-icons/bs";
-import { navData } from "./data"; 
+import { navData } from "./data";
 interface NavProps {
   navTab: string;
   setNavTab: React.Dispatch<React.SetStateAction<string>>;
@@ -76,7 +76,7 @@ const Navbar: React.FC<NavProps> = ({ navTab, setNavTab }) => {
               <Link
                 href=""
                 className={`${
-                  activeRoute === link.title
+                  navTab === link.title
                     ? "text-purple-600 "
                     : "text-white hover:text-purple-600"
                 }`}
