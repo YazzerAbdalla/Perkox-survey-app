@@ -11,6 +11,7 @@ interface Activities {
   id: number;
   offername: string;
   status: string;
+  image:string;
 }
 interface HomeProps {
   navTab: string;
@@ -45,12 +46,13 @@ const Activity = ({ navTab, setNavTab, id, userID }: HomeProps) => {
 
           {activities ? (
             <div className="flex  flex-col md:flex-row gap-10  content-center flex-wrap md:px-8 px-4 mt-7 w-full">
-              {activities.map(({ id, offername, status }) => (
+              {activities.map(({ id, offername, status ,image }) => (
                 <>
                   <ActivitiesCard
                     key={id}
                     offername={offername}
                     status={status}
+                    image={image}
                   />
                 </>
               ))}
