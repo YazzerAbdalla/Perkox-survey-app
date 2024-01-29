@@ -16,7 +16,6 @@
   z-index: 10;
 }
 
-
 .activities-card {
   background: linear-gradient(
     150deg,
@@ -32,7 +31,7 @@
   row-gap: 14px;
   padding: 8px;
   height: auto;
-  border-radius: 18px;  
+  border-radius: 18px;
   background: linear-gradient(
     150deg,
     rgb(84 1 141) 0%,
@@ -40,14 +39,12 @@
   );
   overflow: hidden;
   cursor: pointer;
-  justify-content: center;  /* Center vertically */
-
+  justify-content: center; /* Center vertically */
 }
 
 @media (max-width: 767px) {
   .offer-card {
-    flex-basis: 100%; 
-    width: calc(100% - 20px);
+    flex-basis: 100%;
   }
 }
 .offer-card__top {
@@ -633,8 +630,7 @@ body {
   column-gap: 16px;
   padding: 16px;
   border-radius: 18px;
-  background:transparent;
-
+  background: transparent;
 }
 .new-offer-popup__links .qrcode-wrapper #qrcode {
   padding: 8px;
@@ -873,7 +869,7 @@ header nav ul li a {
   margin: -75px 0 0 -75px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #9370DB;
+  border-top-color: #9370db;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
@@ -887,7 +883,7 @@ header nav ul li a {
   bottom: 5px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #BA55D3;
+  border-top-color: #ba55d3;
   -webkit-animation: spin 3s linear infinite;
   animation: spin 3s linear infinite;
 }
@@ -901,7 +897,7 @@ header nav ul li a {
   bottom: 15px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #FF00FF;
+  border-top-color: #ff00ff;
   -webkit-animation: spin 1.5s linear infinite;
   animation: spin 1.5s linear infinite;
 }
@@ -952,7 +948,7 @@ header nav ul li a {
 }
 
 .gaming-button:hover {
-  background: linear-gradient(45deg, #ffad11, #f8d210);
+  background: linear-gradient(45deg, #ffad11,  #f8d210);
 }
 
 /* CleopatraLoading.css */
@@ -970,7 +966,6 @@ header nav ul li a {
   align-items: center;
   padding: 70px;
 }
-
 
 .rotating-image {
   animation: rotateAnimation 2s linear infinite; /* Customize animation duration and type */
