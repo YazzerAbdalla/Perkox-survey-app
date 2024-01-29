@@ -26,7 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="shortcut icon" href="White-Perkox.ico" type="image/x-icon" />
+        <link
+          rel="shortcut icon"
+          href="/perkox-logo-1.ico"
+          type="image/x-icon"
+        />
       </head>
       <body>
         {/* <div className="max-w-5xl mx-auto p-4 "> */}
