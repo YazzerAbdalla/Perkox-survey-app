@@ -17,7 +17,7 @@ const DrawerDetails = ({ cardId }: DrawerHeaderProps) => {
 
   // Check if selectedCard is not defined
   if (!selectedCard) {
-    return null; // or display a loading state or an error message
+    return null; 
   }
 
   let showDetail = drawerTab === "details";
@@ -49,7 +49,7 @@ const DrawerDetails = ({ cardId }: DrawerHeaderProps) => {
                  <br/> <li>5.Reward delivery: Rewards are usually prompt, but there may be up to a 24-hour delay in some cases.</li><br/><hr style={hrStyle}/>
                  <br/> <li>6.Mobile app tips: Open the app immediately after installation for a smooth experience and higher completion chances.</li><br/><hr style={hrStyle}/>
                 </ol>
-                <br/>  <a href={selectedCard?.url} className="gaming-button flex text-center item-center mx-25 justify-center">Earn +{selectedCard?.reward} points</a>
+                <br/>  <a href={selectedCard?.url} className="gaming-button flex text-center item-center mx-30 justify-center">Earn +{selectedCard?.reward} points</a>
 
               </p>
 
