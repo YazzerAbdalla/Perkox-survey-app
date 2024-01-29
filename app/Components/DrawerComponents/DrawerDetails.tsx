@@ -10,6 +10,7 @@ interface DrawerHeaderProps {
 const DrawerDetails = ({ cardId }: DrawerHeaderProps) => {
   const { drawerTab } = useDrawerTabs();
   const { dataArr } = useDataContext();
+  const hrStyle: React.CSSProperties = { borderColor: 'black' };
 
   // Use find instead of filter to get a single selected card
   const selectedCard = dataArr.find(({ id }) => cardId === id);
@@ -36,6 +37,20 @@ const DrawerDetails = ({ cardId }: DrawerHeaderProps) => {
                 {" "}
                 {selectedCard.description && selectedCard.description}
               </p>
+              <span className="title">
+              To enjoy our offerwall, please remember:
+              </span>
+              <p className="text-gray-300 font-bold text-sm ">
+              <ol>
+                 <br/> <li>1.Use a genuine device: Emulators are not allowed. Avoid using VPNs or proxies to ensure accurate location tracking and the best user experience.</li><br/><hr style={hrStyle}/>
+                 <br/> <li>2.Stick with one device and location: Completing tasks on the same device and location helps track your progress.</li><br/><hr style={hrStyle}/>
+                 <br/> <li>3.Time limit: Most offers have a 30-day completion window unless stated otherwise, but also pay attention to specified time limits for offer completion.</li><br/><hr style={hrStyle}/>
+                 <br/> <li>4.New users: If you’re new, you will be able to enjoy the offers. Existing users may not be eligible unless specifically mentioned in the offer details.</li><br/><hr style={hrStyle}/>
+                 <br/> <li>5.Reward delivery: Rewards are usually prompt, but there may be up to a 24-hour delay in some cases.</li><br/><hr style={hrStyle}/>
+                 <br/> <li>6.Mobile app tips: Open the app immediately after installation for a smooth experience and higher completion chances.</li><br/><hr style={hrStyle}/>
+                </ol>
+              </p>
+
             </div>
           </div>
           {selectedCard.goals && (
@@ -77,6 +92,7 @@ const DrawerDetails = ({ cardId }: DrawerHeaderProps) => {
                     <div className="text-content">
                       <span className="title">Get 5000 coins.</span>
                       <p className="text"></p>
+                      
                     </div>
                   </div>
                   <div className="offer-reward">
