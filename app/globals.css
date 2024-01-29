@@ -673,7 +673,7 @@ body {
   }
   .new-offer-popup__header .right .android {
     display: block;
-    background-image: url(/android-icon.svg);
+    background-image: url(/android.png);
     background-repeat: no-repeat;
     background-size: contain;
     width: 24px;
