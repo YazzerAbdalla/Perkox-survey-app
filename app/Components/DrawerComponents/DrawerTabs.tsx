@@ -42,7 +42,7 @@ const DrawerTabs = () => {
         Offer Details
       </div>
 
-      {deviceType === "PC" && (
+      {deviceType === "web" && (
         <div
           onClick={() => setDrawerTab("links")}
           className={`flex items-center px-3 py-2 cursor-pointer rounded ${
