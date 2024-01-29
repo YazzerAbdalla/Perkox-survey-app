@@ -47,7 +47,9 @@ export default function RootLayout({
             </ErrorContextProvider>
           </FilteredDataProvider>
         </div>
+    
       </body>
+
     </html>
   );
 }

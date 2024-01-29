@@ -47,9 +47,8 @@ const Card = ({ id, name, instructions, image, os, reward }: dataProps) => {
           </div>
           <span className="offer-tag">Gaming</span>
         </div>
-        <div className="offer-reward ">
-          <span className="old-reward"></span>
-          <Image src="/reward-coins.svg" width={16} height={16} alt="reward" />
+        <div className="gaming-button">
+          <Image src="/Perkox-icon.png" width={16} height={16} alt="reward"  className="gaming-icon"/>
           <span className="actual-reward">{reward} points</span>
         </div>
       </div>

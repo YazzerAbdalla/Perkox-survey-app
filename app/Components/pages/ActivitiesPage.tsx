@@ -33,7 +33,11 @@ const Activity = ({ navTab, setNavTab, id, userID }: HomeProps) => {
   return (
     <>
       {loading ? (
-        <PerkoxLoader />
+        <div className="bodyLoading">
+        <div className="container">
+           <div className="lds-dual-ring"></div>
+         </div>
+         </div>
       ) : (
         <section className="mt-14">
           <Navbar navTab={navTab} setNavTab={setNavTab} />
