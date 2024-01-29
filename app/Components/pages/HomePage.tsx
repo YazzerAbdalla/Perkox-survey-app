@@ -139,7 +139,7 @@ export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
                   <Favorite fav={fav} />
                 </>
               )}
-              <div className="grid md:grid-cols-2  gap-x-8 px-10  content-center flex-wrap   mt-7 w-full">
+              <div className="grid md:grid-cols-2  gap-x-8 md:px-10 px-0 mt-7 w-full">
                 {filteredDataArr.length === 0 ? (
                   <div className="w-full z-[10] flex justify-center">
                     <NOoffer />

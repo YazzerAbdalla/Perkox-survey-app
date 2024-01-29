@@ -72,7 +72,7 @@ const DrawerDemo = ({
 
       <RadixDrawer open={isDrawerOpen && cardID === id} onClose={closeDrawer}>
         <DrawerContent
-          className="z-[2000] text-white h-fit flex "
+          className="z-[2000] text-white h-fit flex md:max-h-[90vh] max-h-[80vh]"
           style={{
             background:
               "linear-gradient(150deg, rgb(84 1 141) 0%, rgba(89, 42, 102, 1) 99%)",
