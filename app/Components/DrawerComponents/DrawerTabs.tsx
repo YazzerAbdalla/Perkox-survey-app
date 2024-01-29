@@ -1,37 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useDrawerTabs } from '@/contexts/DrawerTabs';
+import React from "react";
+import { useDrawerTabs } from "@/contexts/DrawerTabs";
+import { useDeviceType } from "@/contexts/DeviceTypeContext";
 
 const DrawerTabs = () => {
   const { drawerTab, setDrawerTab } = useDrawerTabs();
-  const [deviceType, setDeviceType] = useState('Unknown');
-
-  useEffect(() => {
-    const userAgent = window.navigator.userAgent;
-
-    const detectDeviceType = (userAgent:string) => {
-      if (userAgent.match(/iPad|iPhone|iPod/i)) {
-        return 'iOS';
-      } else if (userAgent.match(/Android/i)) {
-        return 'Android';
-      } else if (userAgent.match(/Macintosh|Windows|Linux/i)) {
-        return 'PC';
-      } else {
-        return 'Unknown';
-      }
-    };
-
-    const currentDeviceType = detectDeviceType(userAgent);
-    setDeviceType(currentDeviceType);
-  }, []);
+  const { deviceType } = useDeviceType();
 
   return (
     <div className="flex justify-center items-center space-x-2 top-0">
       <div
-        onClick={() => setDrawerTab('details')}
+        onClick={() => setDrawerTab("details")}
         className={`flex items-center px-3 py-2 cursor-pointer rounded ${
-          drawerTab === 'details'
-            ? 'bg-pink-500 text-black'
-            : 'text-white hover:bg-pink-500'
+          drawerTab === "details"
+            ? "bg-pink-500 text-black"
+            : "text-white hover:bg-pink-500"
         }`}
       >
         <svg
@@ -60,13 +42,13 @@ const DrawerTabs = () => {
         Offer Details
       </div>
 
-      {deviceType === 'PC' && (
+      {deviceType === "PC" && (
         <div
-          onClick={() => setDrawerTab('links')}
+          onClick={() => setDrawerTab("links")}
           className={`flex items-center px-3 py-2 cursor-pointer rounded ${
-            drawerTab === 'links'
-            ? 'bg-pink-500 text-black'
-            : 'text-white hover:bg-pink-500'
+            drawerTab === "links"
+              ? "bg-pink-500 text-black"
+              : "text-white hover:bg-pink-500"
           }`}
         >
           <svg

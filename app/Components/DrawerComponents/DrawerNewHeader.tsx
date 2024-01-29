@@ -39,14 +39,16 @@ const DrawerNewHeader = ({ cardId }: DrawerHeaderProps) => {
           <div className="platform">
             <span
               className={
-                selectedCard.os === "all" ? "desktop" : selectedCard.os
+                selectedCard.os === "web" ? "desktop" : selectedCard.os
               }
             ></span>
           </div>
         </div>
         <div className="offer-rewardDrawer bg-purple-600 font-bold ">
-        <Image src="/Perkox-icon.png" width={16} height={16} alt="reward"  />
-          <span className="actual-reward text-black">{selectedCard.reward} points</span>
+          <Image src="/Perkox-icon.png" width={16} height={16} alt="reward" />
+          <span className="actual-reward text-black">
+            {selectedCard.reward} points
+          </span>
         </div>
       </div>
     </div>

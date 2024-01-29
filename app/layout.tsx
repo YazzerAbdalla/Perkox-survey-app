@@ -9,6 +9,7 @@ import { CardProvider } from "@/contexts/CardContext";
 import { DataProvider } from "@/contexts/DataContext";
 import { ErrorContextProvider } from "@/contexts/ErrorContext";
 import { FilteredDataProvider } from "@/contexts/FilteredDataContext";
+import { DeviceTypeProvider } from "@/contexts/DeviceTypeContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,25 +32,25 @@ export default function RootLayout({
         {/* <div className="max-w-5xl mx-auto p-4 "> */}
         {/* </div> */}
         <div className=" p-6 min-h-[calc(100vh-180px)]">
-          <FilteredDataProvider>
-            <ErrorContextProvider>
-              <DataProvider>
-                <CardProvider>
-                  <FilterProvider>
-                    <DeviceProvider>
-                      <DrawerTabsProvider>
-                        <DrawerProvider>{children}</DrawerProvider>
-                      </DrawerTabsProvider>
-                    </DeviceProvider>
-                  </FilterProvider>
-                </CardProvider>
-              </DataProvider>
-            </ErrorContextProvider>
-          </FilteredDataProvider>
+          <DeviceTypeProvider>
+            <FilteredDataProvider>
+              <ErrorContextProvider>
+                <DataProvider>
+                  <CardProvider>
+                    <FilterProvider>
+                      <DeviceProvider>
+                        <DrawerTabsProvider>
+                          <DrawerProvider>{children}</DrawerProvider>
+                        </DrawerTabsProvider>
+                      </DeviceProvider>
+                    </FilterProvider>
+                  </CardProvider>
+                </DataProvider>
+              </ErrorContextProvider>
+            </FilteredDataProvider>
+          </DeviceTypeProvider>
         </div>
-    
       </body>
-
     </html>
   );
 }

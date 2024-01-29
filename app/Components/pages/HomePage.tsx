@@ -15,6 +15,8 @@ import CardError from "../cardError";
 import PerkoxLoader from "../PerkoxLoader";
 import Navbar from "../Nav-bar";
 import StarBackground from "../StarBackground";
+import { detectDeviceType } from "@/lib/DetectDevice";
+import { useDeviceType } from "@/contexts/DeviceTypeContext";
 
 export interface dataProps {
   name: string;
@@ -41,6 +43,8 @@ export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
   const [fav, setFav] = useState<Offer[] | []>([]);
   const [selectedSort, setSelectedSort] = useState(sortOptions[0]);
   const [selectedPlatform, setSelectedPlatform] = useState(platforms[0]);
+  const { deviceType, setDeviceType } = useDeviceType();
+
   // Track selected card ID
 
   // Add more items as needed
@@ -53,6 +57,15 @@ export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
 
   const sortArrayByPlatform = (platform: string) => {
     if (platform === "All") return;
+    if (platform === "Device Type") {
+      return filteredDataArr.sort((a, b) => {
+        //@ts-ignore
+        if (a.os === deviceType) return -1;
+        //@ts-ignore
+        if (b.os === deviceType) return 1;
+        return 0;
+      });
+    }
     return filteredDataArr.sort((a, b) => {
       //@ts-ignore
       if (a.os === OS[platform]) return -1;
@@ -100,6 +113,10 @@ export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
     );
     let theFavCards: Offer[] = dataArr.filter((item) => item.favorite === 1);
     setFav(theFavCards);
+    const userAgent = window.navigator.userAgent;
+
+    const currentDeviceType = detectDeviceType(userAgent);
+    setDeviceType(currentDeviceType);
   }, []);
   useEffect(() => {
     if (filter === "CPI") {

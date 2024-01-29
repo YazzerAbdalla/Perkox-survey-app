@@ -103,7 +103,7 @@
 }
 .platform .ios {
   display: block;
-  background-image: url(/assets/images/ios-icon.svg);
+  background-image: url(/ios-icon.svg);
   background-repeat: no-repeat;
   background-size: contain;
   width: 24px;
