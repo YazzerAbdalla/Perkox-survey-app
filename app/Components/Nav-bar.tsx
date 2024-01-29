@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { BsList } from "react-icons/bs";
 import { navData } from "./data";
+
 interface NavProps {
   navTab: string;
   setNavTab: React.Dispatch<React.SetStateAction<string>>;
@@ -38,15 +39,28 @@ const Navbar: React.FC<NavProps> = ({ navTab, setNavTab }) => {
         }}
       >
         <div className="flex items-center">
-          <Link href="" onClick={() => handleLinkClick("Home")}>
-            <Image
-              src="/White-Perkox.png"
-              alt="White-Perkox"
-              width={150}
-              height={60}
-              className="font-size: 30px; text-transform: uppercase; color: white; background-image: url(/White-Perkox.png);"
-            />
-          </Link>
+          {/* Show different images based on screen size */}
+          {window.innerWidth <= 768 ? (
+            <Link href="" onClick={() => handleLinkClick("Home")}>
+              <Image
+                src="/perkox-logo-1.png"  // Provide the path to the mobile image
+                alt="Mobile-Logo"
+                width={75}
+                height={60}
+                className="font-size: 30px; text-transform: uppercase; color: white; background-image: url(/Mobile-Logo.png);"
+              />
+            </Link>
+          ) : (
+            <Link href="" onClick={() => handleLinkClick("Home")}>
+              <Image
+                src="/White-Perkox.png"
+                alt="White-Perkox"
+                width={150}
+                height={60}
+                className="font-size: 30px; text-transform: uppercase; color: white; background-image: url(/White-Perkox.png);"
+              />
+            </Link>
+          )}
         </div>
 
         <div className="hover:text-purple-500 z-[1500] text-2xl absolute right-4 top-15 cursor-pointer md:hidden">
