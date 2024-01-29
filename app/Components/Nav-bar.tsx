@@ -45,8 +45,8 @@ const Navbar: React.FC<NavProps> = ({ navTab, setNavTab }) => {
               <Image
                 src="/perkox-logo-1.png"  // Provide the path to the mobile image
                 alt="Mobile-Logo"
-                width={75}
-                height={60}
+                width={65}
+                height={50}
                 className="font-size: 30px; text-transform: uppercase; color: white; background-image: url(/Mobile-Logo.png);"
               />
             </Link>
