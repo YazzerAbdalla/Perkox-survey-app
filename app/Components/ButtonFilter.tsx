@@ -4,13 +4,11 @@ import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
 export const sortOptions = [
-  {name: "Most Popular"},
-  { name: "All" },
   { name: "Highest Paying" },
   { name: "Lowest Paying" },
 ];
 export const platforms = [
-  {name: "Devices Type"},
+  {name: "Device Type"},
   { name: "All" },
   { name: "iOS" },
   { name: "Android" },
@@ -77,7 +75,7 @@ export default function Button({
                     }`
                   }
                   value={option}
-                  disabled={option.name === "Most Popular"}
+                
 
                >
                   {({ selected }) => (
@@ -137,7 +135,7 @@ export default function Button({
                     }`
                   }
                   value={option}
-                  disabled={option.name === "Devices Type"}
+                  disabled={option.name === "Device Type"}
 
                 >
                   {({ selected }) => (
