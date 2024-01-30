@@ -1,17 +1,33 @@
 import React from "react";
-import QRCode from "qrcode.react";
-interface codeProps {
-  url: string;
+import { useQRCode } from 'next-qrcode';
+
+interface CodeProps {
+    url: string;
 }
 
-const GenerateQRCode = ({ url }: codeProps) => {
-  return (
-    <QRCode
-      value={url}
-      size={147} // Adjust the size of the QR code as needed
-      renderAs="svg" // You can use "canvas" or "svg"
-    />
-  );
+const GenerateQRCode: React.FC<CodeProps> = ({ url }) => {
+    const { Image } = useQRCode();
+
+    // Encode the URL
+    const encodedUrl = encodeURI(url);
+
+    return (
+        <Image
+            text={encodedUrl}
+            options={{
+                type: 'image/jpeg',
+                quality: 1,
+                errorCorrectionLevel: 'M',
+                margin: 3,
+                scale: 4,
+                width: 200,
+                color: {
+                    dark: '#000',
+                    light: '#FFFFFF',
+                },
+            }}
+        />
+    );
 };
 
 export default GenerateQRCode;

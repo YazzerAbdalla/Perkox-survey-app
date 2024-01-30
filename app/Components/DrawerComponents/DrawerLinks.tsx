@@ -34,7 +34,7 @@ const DrawerLinks = ({ cardId }: DrawerLinksProps) => {
                     ? "Android"
                     : selectedCard?.os === "ios"
                     ? "iOS"
-                    : "Desktop"}{" "}
+                    : "Other"}{" "}
                   device
                 </p>
               </div>
