@@ -45,7 +45,7 @@ const Activity = ({ navTab, setNavTab, id, userID }: HomeProps) => {
           <StarBackground />
 
           {activities ? (
-            <div className="flex  flex-col md:flex-row gap-10  content-center flex-wrap md:px-8 px-4 mt-7 w-full">
+            <div className="flex  flex-col md:flex-row content-center flex-wrap md:px-8 px-4 mt-7 w-full">
               {activities.map(({ id, offername, status ,image }) => (
                 <>
                   <ActivitiesCard

@@ -37,7 +37,7 @@ const ActivitiesCard = ({ offername, status, image }: ActivitiesCardProps) => {
   };
 
   return (
-    <div style={cardStyle} className="rounded-[1.5rem] mt-6 h-[10rem] activities-card p-5">
+    <div style={cardStyle} className="rounded-[1.5rem] ml-5 mt-6 h-[10rem] activities-card p-5">
       <div className="flex mt-1 row-auto gap-3 items-center text-white">
         {/* Add your Image component here */}
         <Image src={image} width={60} height={60} alt="" loading="lazy" />

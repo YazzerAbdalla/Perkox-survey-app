@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
@@ -21,11 +20,13 @@
     "@react-three/drei": "^9.93.0",
     "@react-three/fiber": "^8.15.13",
     "@types/recharts": "^1.8.29",
-    "axios": "^1.6.5",
+    "axios": "^1.6.7",
     "browser-env": "^3.3.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "crypto-js": "^4.2.0",
     "embla-carousel-react": "^8.0.0-rc18",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.303.0",
     "next": "14.0.4",
     "next-qrcode": "^2.5.1",

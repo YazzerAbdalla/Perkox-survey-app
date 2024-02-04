@@ -55,7 +55,7 @@ export default function Example({
               )
             }
           >
-            Offer
+            Offers
           </Tab>
         </Tab.List>
       </Tab.Group>
