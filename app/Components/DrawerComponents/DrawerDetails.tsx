@@ -69,10 +69,9 @@ const DrawerDetails = ({cardId}: DrawerHeaderProps) => {
                                 {" "}
                                 {selectedCard.name} :{" "}
                             </h1>
-                            <p className="description">
-                                {" "}
-                                {selectedCard.description && selectedCard.description}
-                            </p>
+                            <p className="description" dangerouslySetInnerHTML={{ __html: selectedCard.description || 'No description available' }} />
+
+
                             <span className="title">
                             To enjoy our offerwall, please remember:
                         </span>
