@@ -1,6 +1,6 @@
 import React from "react";
 import { useQRCode } from "next-qrcode";
-import { shortenUrl } from "@/app/api/shortLink";
+import { shortenUrl } from "@/api/shortLink";
 
 interface CodeProps {
   url: string;

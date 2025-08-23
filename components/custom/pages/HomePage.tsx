@@ -4,7 +4,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Offer, useDataContext } from "@/contexts/DataContext";
 import DrawerDemo from "../Drawer";
-import fetchData from "../../api/fetch";
 import { useErrorContext } from "@/contexts/ErrorContext";
 import OfferFilter from "../offerFilter";
 import { useFilter } from "@/contexts/FilterContext";
@@ -17,6 +16,7 @@ import Navbar from "../Nav-bar";
 import StarBackground from "../StarBackground";
 import { detectDeviceType } from "@/lib/DetectDevice";
 import { useDeviceType } from "@/contexts/DeviceTypeContext";
+import fetchData from "@/api/fetch";
 
 export interface dataProps {
   name: string;
@@ -35,25 +35,19 @@ interface HomeProps {
 
 export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
   const [loading, setLoading] = useState(true);
-  const { dataArr, setDataArr } = useDataContext();
-  const { filteredDataArr, setFilteredDataArr } = useFilteredDataContext();
-  const { error, setError } = useErrorContext();
-  const { filter, setFilter } = useFilter();
-  const [selectedCardID, setSelectedCardID] = useState<number | null>(null);
   const [fav, setFav] = useState<Offer[] | []>([]);
   const [selectedSort, setSelectedSort] = useState(sortOptions[0]);
   const [selectedPlatform, setSelectedPlatform] = useState(platforms[0]);
+
+  const { filter, setFilter } = useFilter();
+  const { error, setError } = useErrorContext();
+  const { dataArr, setDataArr } = useDataContext();
   const { deviceType, setDeviceType } = useDeviceType();
+  const { filteredDataArr, setFilteredDataArr } = useFilteredDataContext();
 
   // Track selected card ID
 
   // Add more items as needed
-  const OS = {
-    All: "all",
-    iOS: "ios",
-    Android: "android",
-    Web: "web",
-  };
 
   const sortArrayByPlatform = (platform: string) => {
     if (platform === "All") return;
@@ -100,7 +94,6 @@ export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
   sortArray(selectedSort.name);
   sortArrayByPlatform(selectedPlatform.name);
   useEffect(() => {
-    //@ts-ignore
     // Set the dataArr once the data is fetched
     fetchData(
       setFilteredDataArr,
@@ -118,6 +111,7 @@ export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
     const currentDeviceType = detectDeviceType(userAgent);
     setDeviceType(currentDeviceType);
   }, []);
+
   useEffect(() => {
     if (filter === "CPI") {
       let filteredData = dataArr.filter(
@@ -179,7 +173,7 @@ export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
                         reward={reward}
                         os={os}
                         id={id}
-                        onClick={() => setSelectedCardID(id)} // Set the selected card ID on click
+                        onClick={() => {}} // Set the selected card ID on click
                       />
                     )
                   )

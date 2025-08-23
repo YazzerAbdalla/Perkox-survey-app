@@ -9,9 +9,9 @@ import StarBackground from "../StarBackground";
 
 interface Activities {
   id: number;
-  offername: string;
+  offerName: string;
   status: string;
-  image:string;
+  image: string;
 }
 interface HomeProps {
   navTab: string;
@@ -35,10 +35,10 @@ const Activity = ({ navTab, setNavTab, id, userID }: HomeProps) => {
     <>
       {loading ? (
         <div className="bodyLoading">
-        <div className="container">
-           <div className="lds-dual-ring"></div>
-         </div>
-         </div>
+          <div className="container">
+            <div className="lds-dual-ring"></div>
+          </div>
+        </div>
       ) : (
         <section className="mt-14">
           <Navbar navTab={navTab} setNavTab={setNavTab} />
@@ -46,11 +46,11 @@ const Activity = ({ navTab, setNavTab, id, userID }: HomeProps) => {
 
           {activities ? (
             <div className="flex  flex-col md:flex-row content-center flex-wrap md:px-8 px-4 mt-7 w-full">
-              {activities.map(({ id, offername, status ,image }) => (
+              {activities.map(({ id, offerName, status, image }) => (
                 <>
                   <ActivitiesCard
                     key={id}
-                    offername={offername}
+                    offerName={offerName}
                     status={status}
                     image={image}
                   />
