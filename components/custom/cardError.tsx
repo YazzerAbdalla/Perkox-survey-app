@@ -14,13 +14,13 @@ export default function NoOffer({ error }: ErrorProps) {
         height={500}
         className="flex items-center justify-center mx-auto w-80 lg:w-96"
       />
-      <div
-        className="flex justify-center mt-3 px-24 flex-col items-center "
-      >
+      <div className="flex justify-center mt-3 px-24 flex-col items-center ">
         <h2 className="font-bold " style={{ color: "#D53F3F" }}>
           Something went wrong...
         </h2>
-        <h2 className="font-bold" style={{ color: "#D53F3F" }}>{error}</h2>
+        <h2 className="font-bold" style={{ color: "#D53F3F" }}>
+          {error}
+        </h2>
       </div>
     </div>
   );

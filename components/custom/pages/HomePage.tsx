@@ -1,22 +1,24 @@
 "use client";
-import ButtonFilter, { platforms, sortOptions } from "../ButtonFilter";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Offer, useDataContext } from "@/contexts/DataContext";
-import DrawerDemo from "../Drawer";
-import { useErrorContext } from "@/contexts/ErrorContext";
-import OfferFilter from "../offerFilter";
-import { useFilter } from "@/contexts/FilterContext";
+
+import { useEffect, useReducer, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useDataContext } from "@/contexts/DataContext";
 import { useFilteredDataContext } from "@/contexts/FilteredDataContext";
+import { filtersInitialState, filtersReducer } from "@/features/filtersReducer";
+import { detectDeviceType } from "@/lib/DetectDevice";
+import fetchData from "@/api/fetch";
+import { Offer } from "@/types/offerProps";
+
+// UI Components
+import ButtonFilter from "../ButtonFilter";
+import DrawerDemo from "../Drawer";
+import OfferFilter from "../offerFilter";
 import Favorite from "../favorite";
 import NOoffer from "../No-offer";
 import CardError from "../cardError";
 import PerkoxLoader from "../PerkoxLoader";
-import Navbar from "../Nav-bar";
 import StarBackground from "../StarBackground";
-import { detectDeviceType } from "@/lib/DetectDevice";
-import { useDeviceType } from "@/contexts/DeviceTypeContext";
-import fetchData from "@/api/fetch";
+import Navbar from "../Navbar";
 
 export interface dataProps {
   name: string;
@@ -26,6 +28,7 @@ export interface dataProps {
   reward: number;
   id: number;
 }
+
 interface HomeProps {
   navTab: string;
   setNavTab: React.Dispatch<React.SetStateAction<string>>;
@@ -34,155 +37,102 @@ interface HomeProps {
 }
 
 export default function Home({ navTab, setNavTab, id, userID }: HomeProps) {
-  const [loading, setLoading] = useState(true);
-  const [fav, setFav] = useState<Offer[] | []>([]);
-  const [selectedSort, setSelectedSort] = useState(sortOptions[0]);
-  const [selectedPlatform, setSelectedPlatform] = useState(platforms[0]);
+  const [filtersState, dispatch] = useReducer(
+    filtersReducer,
+    filtersInitialState
+  );
+  console.log("🚀 ~ Home ~ filtersState:", filtersState);
+  const [fav, setFav] = useState<Offer[]>([]);
 
-  const { filter, setFilter } = useFilter();
-  const { error, setError } = useErrorContext();
   const { dataArr, setDataArr } = useDataContext();
-  const { deviceType, setDeviceType } = useDeviceType();
   const { filteredDataArr, setFilteredDataArr } = useFilteredDataContext();
 
-  // Track selected card ID
+  // ✅ Fetch data with React Query
+  const {
+    error,
+    isLoading,
+    data: queryData,
+  } = useQuery({
+    queryKey: ["data"],
+    queryFn: async () => {
+      const res = await fetchData();
+      setDataArr(res.data);
+      return res.data;
+    },
+  });
 
-  // Add more items as needed
-
-  const sortArrayByPlatform = (platform: string) => {
-    if (platform === "All") return;
-    if (platform === "Device Type") {
-      return filteredDataArr.sort((a, b) => {
-        //@ts-ignore
-        if (a.os === deviceType) return -1;
-        //@ts-ignore
-        if (b.os === deviceType) return 1;
-        return 0;
-      });
-    }
-    return filteredDataArr.sort((a, b) => {
-      //@ts-ignore
-      if (a.os === OS[platform]) return -1;
-      //@ts-ignore
-      if (b.os === OS[platform]) return 1;
-      return 0;
-    });
-  };
-  const sortArray = (sortType: string) => {
-    if (sortType === "Highest Paying") {
-      if (selectedPlatform.name !== "All") {
-        return filteredDataArr.sort((a, b) => {
-          return a.reward - b.reward;
-        });
-      } else {
-        return filteredDataArr.sort((a, b) => {
-          return b.reward - a.reward;
-        });
-      }
-    } else if (sortType === "Lowest Paying") {
-      if (selectedPlatform.name !== "All") {
-        return filteredDataArr.sort((a, b) => {
-          return b.reward - a.reward;
-        });
-      } else {
-        return filteredDataArr.sort((a, b) => {
-          return a.reward - b.reward;
-        });
-      }
-    }
-  };
-  sortArray(selectedSort.name);
-  sortArrayByPlatform(selectedPlatform.name);
+  // ✅ Compute favorites when data changes
   useEffect(() => {
-    // Set the dataArr once the data is fetched
-    fetchData(
-      setFilteredDataArr,
-      setDataArr,
-      setError,
-      filter,
-      setLoading,
-      id,
-      userID
-    );
-    let theFavCards: Offer[] = dataArr.filter((item) => item.favorite === 1);
-    setFav(theFavCards);
-    const userAgent = window.navigator.userAgent;
+    if (!dataArr.length) return;
+    const favCards = dataArr.filter((item) => item.favorite === 1);
+    setFav(favCards);
+  }, [dataArr]);
 
+  // ✅ Detect device type once on mount
+  useEffect(() => {
+    const userAgent = window.navigator.userAgent;
     const currentDeviceType = detectDeviceType(userAgent);
-    setDeviceType(currentDeviceType);
+    dispatch({ type: "changeSelectedDeviceType", payload: currentDeviceType });
   }, []);
 
+  // ✅ Filter data based on selected filter
   useEffect(() => {
-    if (filter === "CPI") {
-      let filteredData = dataArr.filter(
-        (item: Offer) => item.offer_type === filter
+    if (filtersState.selectedFilter === "CPI") {
+      const filteredData = dataArr.filter(
+        (item: Offer) => item.offer_type === filtersState.selectedFilter
       );
       setFilteredDataArr(filteredData);
     } else {
       setFilteredDataArr(dataArr);
     }
-  }, [filter]);
+  }, [dataArr, filtersState.selectedFilter, setFilteredDataArr]);
+
+  // ✅ Handle errors & loading
+  if (error) return <CardError error="Something went wrong." />;
+  if (isLoading) return <PerkoxLoader />;
 
   return (
-    <>
-      {loading && !error ? (
-        <PerkoxLoader />
-      ) : (
-        <section className="mt-14">
-          <Navbar navTab={navTab} setNavTab={setNavTab} />
-          <StarBackground />
+    <main className="mt-14">
+      {/* <StarBackground /> */}
+      <Navbar navTab={navTab} setNavTab={setNavTab} />
+      {/* Filters */}
+      <OfferFilter
+        setFilter={(value: string) =>
+          dispatch({ type: "changeSelectedFilter", payload: value })
+        }
+      />
+      <ButtonFilter
+        selectedSort={filtersState.selectedSort}
+        selectedPlatform={filtersState.selectedPlatform}
+        sortDispatch={dispatch}
+      />
 
-          <OfferFilter setFilter={setFilter} />
-          <ButtonFilter
-            selectedSort={selectedSort}
-            setSelectedSort={setSelectedSort}
-            selectedPlatform={selectedPlatform}
-            setSelectedPlatform={setSelectedPlatform}
-          />
+      {/* Favorite section */}
+      {fav.length > 0 && <Favorite fav={fav} />}
 
-          {error ? (
-            //@ts-ignore
-            <CardError error={error} />
-          ) : (
-            <>
-              {fav.length !== 0 && (
-                <>
-                  <Favorite fav={fav} />
-                </>
-              )}
-              <div className="grid md:grid-cols-2  gap-x-8 md:px-10 px-0 mt-7 w-full">
-                {filteredDataArr.length === 0 ? (
-                  <div className="w-full z-[10] flex justify-center">
-                    <NOoffer />
-                  </div>
-                ) : (
-                  filteredDataArr.map(
-                    ({
-                      id,
-                      name,
-                      instructions,
-                      image,
-                      reward,
-                      os,
-                    }: dataProps) => (
-                      <DrawerDemo
-                        key={id}
-                        name={name}
-                        instructions={instructions}
-                        image={image}
-                        reward={reward}
-                        os={os}
-                        id={id}
-                        onClick={() => {}} // Set the selected card ID on click
-                      />
-                    )
-                  )
-                )}
-              </div>
-            </>
-          )}
-        </section>
-      )}
-    </>
+      {/* Cards section */}
+      <section className="grid md:grid-cols-2 gap-x-8 md:px-10 px-0 mt-7 w-full">
+        {Array.isArray(filteredDataArr) && filteredDataArr.length > 0 ? (
+          filteredDataArr.map(
+            ({ id, name, instructions, image, reward, os }: dataProps) => (
+              <DrawerDemo
+                key={id}
+                name={name}
+                instructions={instructions}
+                image={image}
+                reward={reward}
+                os={os}
+                id={id}
+                onClick={() => {}}
+              />
+            )
+          )
+        ) : (
+          <div className="w-full z-[10] flex justify-center">
+            <NOoffer />
+          </div>
+        )}
+      </section>
+    </main>
   );
 }

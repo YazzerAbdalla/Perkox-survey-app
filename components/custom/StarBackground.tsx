@@ -7,7 +7,7 @@ import { Points, PointMaterial, Preload } from "@react-three/drei";
 import * as random from "maath/random/dist/maath-random.esm";
 
 const StarBackground = (props: any) => {
-  const ref: any = useRef();
+  const ref: any = useRef({ rotation: { x: 0, y: 0 } });
   const [sphere] = useState(() =>
     random.inSphere(new Float32Array(5000), { radius: 1.2 })
   );
@@ -26,7 +26,6 @@ const StarBackground = (props: any) => {
           // siza edit
           size={0.004}
           sizeAttenuation={true}
-          dethWrite={false}
         />
       </Points>
     </group>

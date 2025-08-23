@@ -1,5 +1,5 @@
 "use client";
-import { Offer } from "./DataContext";
+import { Offer } from "@/types/offerProps";
 import React, {
   createContext,
   useContext,

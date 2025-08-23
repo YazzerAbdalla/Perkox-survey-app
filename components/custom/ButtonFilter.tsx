@@ -1,48 +1,40 @@
 "use client";
-import { Dispatch, Fragment, SetStateAction, useState } from "react";
+import { Dispatch, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import {
+  Platforms,
+  platforms,
+  SortOptions,
+  sortOptions,
+} from "@/types/sortAndFilterOptions";
+import { FiltersActionProps } from "@/features/filtersReducer";
 
-export const sortOptions = [
-  { name: "Highest Paying" },
-  { name: "Lowest Paying" },
-];
-export const platforms = [
-  {name: "Device Type"},
-  { name: "All" },
-  { name: "iOS" },
-  { name: "Android" },
-  { name: "Web" },
-];
-interface sortProps {
-  selectedSort: {
-    name: string;
-  };
-  selectedPlatform: {
-    name: string;
-  };
-  setSelectedSort: Dispatch<
-    SetStateAction<{
-      name: string;
-    }>
-  >;
-  setSelectedPlatform: Dispatch<
-    SetStateAction<{
-      name: string;
-    }>
-  >;
+interface ButtonFilterComponentProps {
+  selectedSort: SortOptions;
+  selectedPlatform: Platforms;
+  sortDispatch: Dispatch<FiltersActionProps>;
 }
 
 export default function Button({
   selectedSort,
-  setSelectedSort,
   selectedPlatform,
-  setSelectedPlatform,
-}: sortProps) {
+  sortDispatch,
+}: ButtonFilterComponentProps) {
+  console.log("🚀 ~ Button ~ selectedPlatform:", selectedPlatform);
+  console.log("🚀 ~ Button ~ selectedSort:", selectedSort);
+
+  //FIXME: The sort is missing
+  // Objects are not valid as a React child (found: object with keys {name}). If you meant to render a collection of children, use an array instead.
   return (
     <div className="flex items-center z-[10] justify-center space-x-4  ">
       {/* First dropdown */}
-      <Listbox value={selectedSort} onChange={setSelectedSort}>
+      <Listbox
+        value={selectedSort}
+        onChange={(value) =>
+          sortDispatch({ type: "changeSelectedSort", payload: value })
+        }
+      >
         <div className="relative mt-1 z-[100] min-w-[8.8rem]">
           <Listbox.Button
             className="relative w-full cursor-default rounded-lg text-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
@@ -51,7 +43,7 @@ export default function Button({
                 "linear-gradient(150deg, rgb(84 1 141) 0%, rgba(89, 42, 102, 1) 99%)",
             }}
           >
-            <span className="block truncate">{selectedSort.name}</span>
+            <span className="block truncate">{selectedSort}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon
                 className="h-5 w-5 text-white"
@@ -75,9 +67,7 @@ export default function Button({
                     }`
                   }
                   value={option}
-                
-
-               >
+                >
                   {({ selected }) => (
                     <>
                       <span
@@ -102,7 +92,12 @@ export default function Button({
       </Listbox>
 
       {/* Second dropdown */}
-      <Listbox value={selectedPlatform} onChange={setSelectedPlatform}>
+      <Listbox
+        value={selectedPlatform}
+        onChange={(value) =>
+          sortDispatch({ type: "changeSelectedPlatform", payload: value })
+        }
+      >
         <div className="relative mt-1 z-[100] min-w-[8.8rem] ">
           <Listbox.Button
             className="relative w-full cursor-default rounded-lg text-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
@@ -111,7 +106,7 @@ export default function Button({
                 "linear-gradient(150deg, rgb(84 1 141) 0%, rgba(89, 42, 102, 1) 99%)",
             }}
           >
-            <span className="block truncate">{selectedPlatform.name}</span>
+            <span className="block truncate">{selectedPlatform}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon
                 className="h-5 w-5 text-white"
@@ -136,7 +131,6 @@ export default function Button({
                   }
                   value={option}
                   disabled={option.name === "Device Type"}
-
                 >
                   {({ selected }) => (
                     <>

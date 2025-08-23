@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import IfNoActivities from "../IfNoActivities";
 import PerkoxLoader from "../PerkoxLoader";
-import Navbar from "../Nav-bar";
+import Navbar from "../Navbar";
 import StarBackground from "../StarBackground";
 
 interface Activities {
@@ -24,13 +24,17 @@ const Activity = ({ navTab, setNavTab, id, userID }: HomeProps) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const data = axios
-      .get(`https://perkox.com/api/v1/offers-iframe/clicks/${id}/${userID}`)
-      .then((res) =>
-        res.data.error ? setActivities(null) : setActivities(res.data)
-      )
-      .then(() => setLoading(false));
+    // const data = axios
+    //   .get(`https://perkox.com/api/v1/offers-iframe/clicks/${id}/${userID}`)
+    //   .then((res) =>
+    //     res.data.error ? setActivities(null) : setActivities(res.data)
+    //   )
+    //   .then(() => );
+    setLoading(false);
   }, []);
+
+  if (loading) <PerkoxLoader />;
+
   return (
     <>
       {loading ? (

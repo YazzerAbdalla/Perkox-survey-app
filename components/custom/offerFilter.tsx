@@ -1,4 +1,3 @@
-import { Offer } from "@/contexts/DataContext";
 import { Tab } from "@headlessui/react";
 import { Dispatch, SetStateAction, useEffect } from "react";
 
@@ -9,7 +8,7 @@ function classNames(...classes: string[]): string {
 export default function Example({
   setFilter,
 }: {
-  setFilter: Dispatch<SetStateAction<string>>;
+  setFilter: (value: string) => void;
 }) {
   return (
     <div className="w-full max-w-md px-2 sm:px-0 mx-auto justify-center ">

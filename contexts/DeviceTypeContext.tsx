@@ -18,7 +18,7 @@ interface DeviceTypeProviderProps {
 const DeviceTypeProvider: React.FC<DeviceTypeProviderProps> = ({
   children,
 }) => {
-  const [deviceType, setDeviceType] = useState("unkown");
+  const [deviceType, setDeviceType] = useState("unknown");
 
   return (
     <DeviceTypeContext.Provider value={{ deviceType, setDeviceType }}>

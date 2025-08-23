@@ -1,7 +1,6 @@
 "use client";
-import Navbar from "../Nav-bar";
+import Navbar from "../Navbar";
 import StarBackground from "../StarBackground";
-
 
 interface TermsProps {
   navTab: string;
